@@ -59,6 +59,7 @@ The `uHOME Server` owns:
 - DVR rule storage and scheduling control
 - post-processing lane ownership
 - library organization
+- storage aggregation across local and LAN-visible media volumes
 - LAN playback serving for household clients
 - primary install-time and upgrade-time state
 
@@ -70,6 +71,8 @@ Required capabilities:
 - deterministic local config and file-backed state where applicable
 - at least one living-room presentation surface
 - Linux-hosted server runtime ownership
+- resilient handling of drives, partitions, and peer nodes entering or leaving
+  availability
 
 Optional capabilities:
 
@@ -240,6 +243,60 @@ Rules:
   network
 - temporary loss of a dual-boot node must not take down the whole household
   `uHOME` experience if other Linux-side nodes remain available
+- any eligible Linux node on the LAN may be a potential `uHOME Server`, even if
+  it is not currently acting as the primary authority
+
+### Decentralized server model
+
+`uHOME` should support a decentralized LAN of potential servers rather than a
+single permanently fixed appliance model.
+
+Rules:
+
+- multiple Linux hosts may advertise `uHOME Server` capability on the LAN
+- one or more nodes may be active at a given time, while others remain dormant,
+  partial, or temporarily offline
+- server participation may change over time without redefining the household
+  architecture
+- temporary node loss is expected operating behavior, not an exceptional
+  topology failure
+
+### Aggregated library model
+
+The `uHOME` library may be composed from multiple storage locations across the
+LAN, including:
+
+- local disks
+- external drives
+- mounted partitions
+- removable media when explicitly allowed
+- library shares exposed by other `uHOME` nodes
+
+Rules:
+
+- library composition must tolerate individual drives, partitions, and nodes
+  appearing or disappearing
+- missing storage should degrade availability of specific media paths rather
+  than corrupting or invalidating the whole library
+- canonical metadata and index state should be recoverable when some storage
+  members are offline
+- ingest, DVR, and post-processing jobs must declare which storage class or
+  volume targets they require
+- the system should prefer explicit volume identities over fragile mount-path
+  assumptions
+
+### Availability behavior
+
+`uHOME` must treat changing storage and node availability as a normal part of
+home operation.
+
+Baseline expectations:
+
+- nodes may come online and offline at scheduled or unscheduled times
+- drives and partitions may be mounted, unmounted, or powered down over time
+- the active server should surface partial-availability state clearly
+- playback, browsing, and job orchestration should continue where possible with
+  the currently reachable subset of the library
 
 ### Wizard networking protocol alignment
 

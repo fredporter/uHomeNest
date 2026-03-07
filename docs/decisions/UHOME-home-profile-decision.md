@@ -56,6 +56,9 @@ processing, and open-box media workflow definitions where practical.
 - playback is served across the LAN to household devices
 - additional satellite-style Steam servers may remain on the LAN to preserve
   household availability if a dual-boot gaming machine is offline
+- the effective household library may be composed from multiple drives,
+  partitions, and cooperating `uHOME` nodes rather than one permanently mounted
+  storage path
 
 ### Processing model
 
@@ -65,6 +68,7 @@ uHOME supports:
 - post-processing jobs
 - library organization
 - metadata enrichment where allowed by policy
+- storage aggregation across intermittently available media volumes
 
 ### Runtime ownership
 
@@ -104,6 +108,10 @@ home-profile commitments tracked in the roadmap.
 - the Linux side is the canonical `uHOME Server` runtime target
 - a dual-boot Windows gaming layer must not become required for baseline
   `uHOME` household operation
+- decentralized LAN operation is valid: multiple potential `uHOME` servers may
+  exist, and storage members may come online or offline over time
+- partial loss of drives, partitions, or peer nodes must degrade gracefully
+  rather than invalidating the whole home-profile lane
 
 ## Related Documents
 

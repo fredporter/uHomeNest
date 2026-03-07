@@ -25,6 +25,9 @@ deployment where Windows 10 is present as an auxiliary gaming layer.
 - LAN topology may include multiple satellite-style Steam servers so household
   playback and launcher capacity can stay available when a more powerful
   dual-boot machine is offline for dedicated Windows gaming
+- the media library may span multiple interconnected drives, partitions, and
+  server nodes that appear or disappear over time without collapsing the whole
+  household lane
 
 ## Repository Layout
 
