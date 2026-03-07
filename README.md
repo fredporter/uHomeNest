@@ -37,6 +37,8 @@ deployment where Windows 10 is present as an auxiliary gaming layer.
 - `library/` git-backed library manifests and cloned runtime support
 - `docs/specs/` implementation-facing specifications
 - `docs/decisions/` architecture and product decisions
+- `docs/services/` migrated service-level operational docs
+- `docs/ui/` dashboard and client-surface contracts
 - `docs/workspace/` migrated workspace templates and instructions
 
 ## Development
@@ -55,6 +57,7 @@ The API exposes:
 - `/api/library/*` for cloned library repo management
 - `/api/containers/*` for manifest-driven container clone/launch status
 - `/api/network/*` for decentralized node and storage-volume registry state
+- `/api/dashboard/*` for aggregated `uHOME` dashboard health and summary state
 
 ## License
 
