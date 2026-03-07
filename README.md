@@ -14,9 +14,12 @@ server extracted from the `uDOS` home profile lane.
 ## Repository Layout
 
 - `src/uhome_server/` standalone service and install-plan code
+- `defaults/workspace/` migrated workspace seed defaults for `uHOME`
 - `tests/` focused coverage for migrated routes and Sonic contracts
+- `library/` git-backed library manifests and cloned runtime support
 - `docs/specs/` implementation-facing specifications
 - `docs/decisions/` architecture and product decisions
+- `docs/workspace/` migrated workspace templates and instructions
 
 ## Development
 
@@ -31,6 +34,8 @@ The API exposes:
 
 - `/api/ha/*` for the Home Assistant bridge
 - `/api/platform/uhome/*` for presentation status/control
+- `/api/library/*` for cloned library repo management
+- `/api/containers/*` for manifest-driven container clone/launch status
 
 ## License
 

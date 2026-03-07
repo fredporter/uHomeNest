@@ -65,6 +65,21 @@ class UHomePresentationService:
             "session_id": state.get("session_id"),
         }
 
+    def _intent_payload(self, presentation: str | None, node_role: str, action: str) -> dict[str, Any]:
+        launcher = presentation or self._preferred_presentation()[0]
+        return {
+            "intent": {
+                "target": "uhome-console",
+                "mode": "home",
+                "launcher": launcher,
+                "workspace": "uhome",
+                "profile_id": node_role,
+                "auth": {"wizard_mode_active": False, "uhome_role": node_role},
+            },
+            "action": action,
+            "status": "ready" if action == "start" else "stopped",
+        }
+
     def start(self, presentation: str) -> dict[str, Any]:
         normalized = (presentation or "").strip().lower()
         if not normalized:
@@ -77,6 +92,7 @@ class UHomePresentationService:
             "node_role": node_role,
             "updated_at": utc_now_iso_z(),
             "last_action": "start",
+            "thin_gui": self._intent_payload(normalized, node_role, "start"),
         }
         self._write_state(payload)
         return payload
@@ -88,6 +104,7 @@ class UHomePresentationService:
             "node_role": node_role,
             "updated_at": utc_now_iso_z(),
             "last_action": "stop",
+            "thin_gui": self._intent_payload(None, node_role, "stop"),
         }
         self._write_state(payload)
         return payload

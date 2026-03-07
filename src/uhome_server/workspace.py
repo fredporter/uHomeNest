@@ -20,12 +20,15 @@ class TemplateWorkspaceService:
     def __init__(self, repo_root: Path | None = None):
         self.repo_root = repo_root or get_repo_root()
         self.base_dir = self.repo_root / "memory" / "workspace" / "settings"
+        self.defaults_dir = self.repo_root / "defaults" / "workspace" / "settings"
 
     def _component_path(self, section: str, component_id: str) -> Path:
         return self.base_dir / f"{section}-{component_id}.json"
 
-    def read_fields(self, section: str, component_id: str) -> dict[str, Any]:
-        path = self._component_path(section, component_id)
+    def _default_component_path(self, section: str, component_id: str) -> Path:
+        return self.defaults_dir / f"{section}-{component_id}.json"
+
+    def _read_json_dict(self, path: Path) -> dict[str, Any]:
         if not path.exists():
             return {}
         try:
@@ -35,6 +38,11 @@ class TemplateWorkspaceService:
         except json.JSONDecodeError:
             pass
         return {}
+
+    def read_fields(self, section: str, component_id: str) -> dict[str, Any]:
+        defaults = self._read_json_dict(self._default_component_path(section, component_id))
+        overrides = self._read_json_dict(self._component_path(section, component_id))
+        return {**defaults, **overrides}
 
     def write_user_field(
         self,
@@ -67,6 +75,7 @@ class TemplateWorkspaceService:
         return {
             "component_id": component_id,
             "settings": self.read_fields("settings", component_id),
+            "instructions_ref": f"docs/workspace/instructions/{component_id}.md",
         }
 
 
