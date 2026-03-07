@@ -1,7 +1,10 @@
 """FastAPI application for the standalone uHOME server."""
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
+from uhome_server.config import bootstrap_runtime
 from uhome_server.routes.dashboard import create_dashboard_routes
 from uhome_server.routes.containers import router as containers_router
 from uhome_server.routes.home_assistant import create_ha_routes
@@ -11,8 +14,14 @@ from uhome_server.routes.platform import create_platform_routes
 from uhome_server.routes.runtime import create_runtime_routes
 
 
+@asynccontextmanager
+async def _lifespan(app: FastAPI):
+    app.state.bootstrap = bootstrap_runtime()
+    yield
+
+
 def create_app() -> FastAPI:
-    app = FastAPI(title="uHOME Server", version="0.1.0")
+    app = FastAPI(title="uHOME Server", version="0.1.0", lifespan=_lifespan)
     app.include_router(create_dashboard_routes())
     app.include_router(create_ha_routes())
     app.include_router(create_platform_routes())

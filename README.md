@@ -50,6 +50,10 @@ python3 -m pip install -e '.[dev]'
 python3 -m uvicorn uhome_server.app:app --reload
 ```
 
+The server bootstraps its local runtime directories under `memory/` on startup
+and now uses `memory/config/uhome.json` as the canonical local config file,
+with legacy fallback to `memory/config/wizard.json` during migration.
+
 The API exposes:
 
 - `/api/ha/*` for the Home Assistant bridge

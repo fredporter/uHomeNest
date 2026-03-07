@@ -29,6 +29,19 @@ def _client(monkeypatch) -> TestClient:
     )
     monkeypatch.setattr(
         runtime_routes,
+        "_config_status",
+        lambda: {
+            "config_path": "/tmp/uhome-server/memory/config/uhome.json",
+            "legacy_config_path": "/tmp/uhome-server/memory/config/wizard.json",
+            "active_config_path": "/tmp/uhome-server/memory/config/uhome.json",
+            "active_config_exists": True,
+            "legacy_config_fallback": False,
+            "ha_bridge_enabled_env": False,
+            "hdhomerun_host": "",
+        },
+    )
+    monkeypatch.setattr(
+        runtime_routes,
         "_ha_bridge_status",
         lambda: {"bridge": "uhome-ha", "enabled": False, "status": "disabled"},
     )
@@ -56,6 +69,7 @@ def test_runtime_readiness_reports_required_health(monkeypatch):
     assert body["ok"] is True
     assert body["status"] == "ready"
     assert body["checks"]["repo_layout"]["ok"] is True
+    assert body["checks"]["config"]["ok"] is True
     assert body["checks"]["ha_bridge"]["required"] is False
 
 
@@ -65,6 +79,7 @@ def test_runtime_readiness_degrades_when_required_check_fails(monkeypatch):
         "_repo_layout_status",
         lambda: (_ for _ in ()).throw(RuntimeError("repo layout missing")),
     )
+    monkeypatch.setattr(runtime_routes, "_config_status", lambda: {"active_config_exists": False})
     monkeypatch.setattr(runtime_routes, "_workspace_status", lambda: {"workspace_ref": "@memory/workspace/settings"})
     monkeypatch.setattr(runtime_routes, "_ha_bridge_status", lambda: {"enabled": True, "status": "ok"})
     monkeypatch.setattr(runtime_routes, "_jellyfin_status", lambda: {"jellyfin_configured": True, "jellyfin_reachable": True})
@@ -85,3 +100,4 @@ def test_runtime_info_shape(monkeypatch):
     assert body["app"] == "uHOME Server"
     assert "python_version" in body
     assert "platform" in body
+    assert "settings" in body
