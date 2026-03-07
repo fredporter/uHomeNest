@@ -54,10 +54,17 @@ The API exposes:
 
 - `/api/ha/*` for the Home Assistant bridge
 - `/api/platform/uhome/*` for presentation status/control
+- `/api/runtime/*` for runtime info and startup/readiness checks
 - `/api/library/*` for cloned library repo management
 - `/api/containers/*` for manifest-driven container clone/launch status
 - `/api/network/*` for decentralized node and storage-volume registry state
 - `/api/dashboard/*` for aggregated `uHOME` dashboard health and summary state
+
+Run the current local test suite with:
+
+```bash
+python3 -m pytest
+```
 
 ## License
 

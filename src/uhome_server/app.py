@@ -8,6 +8,7 @@ from uhome_server.routes.home_assistant import create_ha_routes
 from uhome_server.routes.library import router as library_router
 from uhome_server.routes.network import router as network_router
 from uhome_server.routes.platform import create_platform_routes
+from uhome_server.routes.runtime import create_runtime_routes
 
 
 def create_app() -> FastAPI:
@@ -15,6 +16,7 @@ def create_app() -> FastAPI:
     app.include_router(create_dashboard_routes())
     app.include_router(create_ha_routes())
     app.include_router(create_platform_routes())
+    app.include_router(create_runtime_routes())
     app.include_router(library_router)
     app.include_router(containers_router)
     app.include_router(network_router)
