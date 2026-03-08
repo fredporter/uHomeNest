@@ -70,6 +70,15 @@ Run the current local test suite with:
 python3 -m pytest
 ```
 
+Operator CLI entrypoints are also available:
+
+```bash
+uhome launcher status
+uhome-launcher start --presentation thin-gui
+uhome-installer preflight --probe ./probe.json
+uhome-installer plan --bundle-dir ./bundle --probe ./probe.json --output ./install-plan.json
+```
+
 ## License
 
 This project is released under the MIT License. See `LICENSE`.
