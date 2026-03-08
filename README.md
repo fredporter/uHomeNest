@@ -119,17 +119,25 @@ uhome-installer rollback-target --host-root ./host-root
 
 ## Development
 
-Install the package and dev dependencies, then run the API with uvicorn:
+Use Python 3.9 or newer. Create a virtual environment, upgrade the local
+packaging tools, then install the package in editable mode:
 
 ```bash
-python3 -m pip install -e '.[dev]'
-python3 -m uvicorn uhome_server.app:app --reload
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip setuptools wheel
+.venv/bin/python -m pip install -e '.[dev]'
+```
+
+Run the API with uvicorn:
+
+```bash
+.venv/bin/python -m uvicorn uhome_server.app:app --reload
 ```
 
 Run the current local test suite with:
 
 ```bash
-python3 -m pytest
+.venv/bin/python -m pytest
 ```
 
 The installer flow still materializes Linux-oriented target assets and

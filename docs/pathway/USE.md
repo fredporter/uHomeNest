@@ -13,13 +13,15 @@ repository as it exists today.
 
 ## First Steps
 
-1. Install the package and dev dependencies.
-2. Start the API with uvicorn.
+1. Create a local virtualenv and install the package in editable mode.
+2. Start the API with Python 3.9+ and uvicorn.
 3. Use the CLI entrypoints for launcher or installer flows.
 
 ```bash
-python3 -m pip install -e '.[dev]'
-python3 -m uvicorn uhome_server.app:app --reload
+python3 -m venv .venv
+.venv/bin/python -m pip install --upgrade pip setuptools wheel
+.venv/bin/python -m pip install -e '.[dev]'
+.venv/bin/python -m uvicorn uhome_server.app:app --reload
 ```
 
 ## Primary Runtime Surfaces
