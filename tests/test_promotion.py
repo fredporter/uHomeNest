@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from uhome_server.sonic.executor import execute_staged_install
+from uhome_server.sonic.health import run_promoted_health_checks
 from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target, verify_promoted_target
 from uhome_server.sonic.staging import stage_install_artifacts
 from uhome_server.sonic.uhome_bundle import (
@@ -117,3 +118,32 @@ def test_promote_target_root_detects_reapply(tmp_path):
     assert first.mode == "first_apply"
     assert second.mode == "reapply"
     assert second.upgrade_diff["unchanged"] == ["jellyfin"]
+
+
+def test_run_promoted_health_checks(tmp_path):
+    bundle_dir = tmp_path / "bundle"
+    stage_dir = tmp_path / "stage"
+    target_root = tmp_path / "target"
+    host_root = tmp_path / "host"
+    _bundle(bundle_dir)
+    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    execute_staged_install(stage_dir, target_root)
+    promote_target_root(target_root, host_root)
+
+    def _runner(command, shell, text, capture_output):
+        del shell, text, capture_output
+        service = "jellyfin" if "8096" in command else "other"
+        return type(
+            "_Completed",
+            (),
+            {
+                "returncode": 0,
+                "stdout": f"{service} ok",
+                "stderr": "",
+            },
+        )()
+
+    result = run_promoted_health_checks(host_root, runner=_runner)
+    assert result.ok is True
+    assert result.report_path.exists()
+    assert any(item["service"] == "jellyfin" for item in result.checks)

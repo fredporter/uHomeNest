@@ -81,6 +81,7 @@ uhome-installer stage --bundle-dir ./bundle --probe ./probe.json --stage-dir ./s
 uhome-installer execute-stage --stage-dir ./stage --target-root ./target-root
 uhome-installer apply-target --target-root ./target-root --host-root ./host-root
 uhome-installer verify-target --host-root ./host-root
+uhome-installer health-check-target --host-root ./host-root
 uhome-installer rollback-target --host-root ./host-root
 ```
 

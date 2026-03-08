@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from unittest.mock import patch
 
 from uhome_server.cli import installer_main, launcher_main
 from uhome_server.sonic.uhome_bundle import BUNDLE_SCHEMA_VERSION, UHOMEBundleComponent, UHOMEBundleManifest, write_bundle_manifest
@@ -218,3 +219,16 @@ def test_installer_apply_and_rollback_cli(tmp_path):
     assert verify_payload["result"]["checks"]["service_units"]["ok"] is True
     apply_receipt = json.loads(apply_output.read_text(encoding="utf-8"))
     assert apply_receipt["result"]["upgrade_diff"]["added"] == ["jellyfin"]
+
+    health_output = tmp_path / "health-output.json"
+
+    def _runner(command, shell, text, capture_output):
+        del shell, text, capture_output
+        return type("_Completed", (), {"returncode": 0, "stdout": f"ok: {command}", "stderr": ""})()
+
+    with patch("uhome_server.sonic.health.subprocess.run", side_effect=_runner):
+        health_code = installer_main(["health-check-target", "--host-root", str(host_root), "--output", str(health_output)])
+    assert health_code == 0
+    health_payload = json.loads(health_output.read_text(encoding="utf-8"))
+    assert health_payload["success"] is True
+    assert any(item["service"] == "jellyfin" for item in health_payload["result"]["checks"])
