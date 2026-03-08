@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from uhome_server.sonic.executor import execute_staged_install
-from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target
+from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target, verify_promoted_target
 from uhome_server.sonic.staging import stage_install_artifacts
 from uhome_server.sonic.uhome_bundle import (
     BUNDLE_SCHEMA_VERSION,
@@ -72,9 +72,17 @@ def test_promote_and_rollback_target_root(tmp_path):
     assert (host_root / "etc" / "uhome" / "jellyfin.env").exists()
     assert (host_root / "etc" / "systemd" / "system" / "jellyfin.service").exists()
     assert promotion.receipt_path.exists()
+    assert promotion.mode == "first_apply"
+    assert promotion.command_plan_path.exists()
+    assert promotion.verification_path.exists()
 
     promoted_env = (host_root / "etc" / "uhome" / "jellyfin.env").read_text(encoding="utf-8")
     assert "/opt/uhome/var/jellyfin" in promoted_env
+    verification = verify_promoted_target(host_root)
+    assert verification.ok is True
+    command_plan = promotion.command_plan_path.read_text(encoding="utf-8")
+    assert "systemctl daemon-reload" in command_plan
+    assert "systemctl enable" in command_plan
 
     rollback = rollback_promoted_target(host_root)
     restored_env = (host_root / "etc" / "uhome" / "jellyfin.env").read_text(encoding="utf-8")
@@ -89,3 +97,17 @@ def test_promote_target_root_requires_existing_target(tmp_path):
         assert "does not exist" in str(exc)
     else:
         raise AssertionError("Expected promote_target_root to reject missing target root")
+
+
+def test_promote_target_root_detects_reapply(tmp_path):
+    bundle_dir = tmp_path / "bundle"
+    stage_dir = tmp_path / "stage"
+    target_root = tmp_path / "target"
+    host_root = tmp_path / "host"
+    _bundle(bundle_dir)
+    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    execute_staged_install(stage_dir, target_root)
+    first = promote_target_root(target_root, host_root)
+    second = promote_target_root(target_root, host_root)
+    assert first.mode == "first_apply"
+    assert second.mode == "reapply"

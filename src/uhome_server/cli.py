@@ -10,7 +10,7 @@ from typing import Any
 
 from uhome_server.config import get_repo_root
 from uhome_server.sonic.executor import execute_staged_install
-from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target
+from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target, verify_promoted_target
 from uhome_server.services.uhome_presentation_service import get_uhome_presentation_service
 from uhome_server.sonic.staging import stage_install_artifacts
 from uhome_server.sonic.uhome_bundle import read_bundle_manifest, verify_bundle
@@ -126,6 +126,10 @@ def installer_main(argv: list[str] | None = None) -> int:
     rollback_parser.add_argument("--host-root", required=True, help="Host-style root that has a promotion snapshot.")
     rollback_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
+    verify_target_parser = subparsers.add_parser("verify-target", help="Verify promoted host assets under a host-style root.")
+    verify_target_parser.add_argument("--host-root", required=True, help="Host-style root to verify.")
+    verify_target_parser.add_argument("--output", help="Optional path to write the JSON result.")
+
     args = parser.parse_args(argv)
 
     if args.command == "preflight":
@@ -213,6 +217,15 @@ def installer_main(argv: list[str] | None = None) -> int:
             return 1
         _write_output({"success": True, "result": result.to_dict()}, args.output)
         return 0
+
+    if args.command == "verify-target":
+        try:
+            result = verify_promoted_target(Path(args.host_root).expanduser().resolve())
+        except ValueError as exc:
+            _write_output({"success": False, "error": str(exc)}, args.output)
+            return 1
+        _write_output({"success": result.ok, "result": result.to_dict()}, args.output)
+        return 0 if result.ok else 1
 
     parser.error(f"Unsupported installer command: {args.command}")
     return 2

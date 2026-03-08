@@ -208,3 +208,11 @@ def test_installer_apply_and_rollback_cli(tmp_path):
     rollback_payload = json.loads(rollback_output.read_text(encoding="utf-8"))
     assert rollback_payload["success"] is True
     assert 'JELLYFIN_DATA_DIR="/srv/original"' in original_env.read_text(encoding="utf-8")
+
+    verify_output = tmp_path / "verify-output.json"
+    assert installer_main(["apply-target", "--target-root", str(target_root), "--host-root", str(host_root)]) == 0
+    verify_code = installer_main(["verify-target", "--host-root", str(host_root), "--output", str(verify_output)])
+    assert verify_code == 0
+    verify_payload = json.loads(verify_output.read_text(encoding="utf-8"))
+    assert verify_payload["success"] is True
+    assert verify_payload["result"]["checks"]["service_units"]["ok"] is True

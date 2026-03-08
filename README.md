@@ -80,6 +80,7 @@ uhome-installer plan --bundle-dir ./bundle --probe ./probe.json --output ./insta
 uhome-installer stage --bundle-dir ./bundle --probe ./probe.json --stage-dir ./stage
 uhome-installer execute-stage --stage-dir ./stage --target-root ./target-root
 uhome-installer apply-target --target-root ./target-root --host-root ./host-root
+uhome-installer verify-target --host-root ./host-root
 uhome-installer rollback-target --host-root ./host-root
 ```
 
@@ -90,7 +91,8 @@ including environment files under `etc/uhome/`, systemd unit files under
 
 `apply-target` promotes those generated assets into a host-style filesystem
 layout under the chosen host root and snapshots the previous state for
-`rollback-target`.
+`rollback-target`. It also writes a `systemctl` command plan and verification
+report under `var/lib/uhome/`.
 
 Example installer probes and verifiable sample bundles live under
 `examples/installer/`, including standalone Linux and dual-boot reference
