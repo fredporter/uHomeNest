@@ -78,6 +78,7 @@ uhome-launcher start --presentation thin-gui
 uhome-installer preflight --probe ./probe.json
 uhome-installer plan --bundle-dir ./bundle --probe ./probe.json --output ./install-plan.json
 uhome-installer stage --bundle-dir ./bundle --probe ./probe.json --stage-dir ./stage
+uhome-installer execute-stage --stage-dir ./stage --target-root ./target-root
 ```
 
 Example installer probes and verifiable sample bundles live under

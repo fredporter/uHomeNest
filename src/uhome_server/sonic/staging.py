@@ -88,6 +88,14 @@ def _write_config_artifacts(stage_dir: Path, manifest: UHOMEBundleManifest, opts
                 "component_id": "comskip",
             },
         ),
+        _write_json(
+            config_dir / "uhome-dvr.json",
+            {
+                "install_root": opts.install_root,
+                "service_name": "uhome-dvr",
+                "component_id": "udos_uhome",
+            },
+        ),
     ]
     if opts.enable_ha_bridge:
         config_paths.append(
@@ -97,6 +105,18 @@ def _write_config_artifacts(stage_dir: Path, manifest: UHOMEBundleManifest, opts
                     "install_root": opts.install_root,
                     "service_name": "uhome-ha-bridge",
                     "enabled": True,
+                },
+            )
+        )
+    if opts.enable_autologin_kiosk:
+        config_paths.append(
+            _write_json(
+                config_dir / "uhome-kiosk.json",
+                {
+                    "install_root": opts.install_root,
+                    "service_name": "uhome-kiosk",
+                    "component_id": "udos_uhome",
+                    "kiosk_user": opts.kiosk_user,
                 },
             )
         )

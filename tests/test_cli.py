@@ -136,3 +136,42 @@ def test_installer_stage_cli(tmp_path):
     assert (stage_dir / "install-state.json").exists()
     assert (stage_dir / "config" / "uhome.json").exists()
     assert (stage_dir / "components" / "jellyfin" / "payload.tar.gz").exists()
+
+
+def test_installer_execute_stage_cli(tmp_path):
+    probe_path = tmp_path / "probe.json"
+    bundle_dir = tmp_path / "bundle"
+    stage_dir = tmp_path / "stage"
+    target_root = tmp_path / "target"
+    _write_probe(probe_path)
+    _write_bundle(bundle_dir)
+    stage_code = installer_main(
+        [
+            "stage",
+            "--bundle-dir",
+            str(bundle_dir),
+            "--probe",
+            str(probe_path),
+            "--stage-dir",
+            str(stage_dir),
+            "--enable-ha-bridge",
+        ]
+    )
+    assert stage_code == 0
+    output_path = tmp_path / "execute-output.json"
+    code = installer_main(
+        [
+            "execute-stage",
+            "--stage-dir",
+            str(stage_dir),
+            "--target-root",
+            str(target_root),
+            "--output",
+            str(output_path),
+        ]
+    )
+    assert code == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["success"] is True
+    assert (target_root / "receipts" / "install-receipt.json").exists()
+    assert (target_root / "systemd" / "jellyfin.service").exists()

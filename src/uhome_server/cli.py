@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from uhome_server.config import get_repo_root
+from uhome_server.sonic.executor import execute_staged_install
 from uhome_server.services.uhome_presentation_service import get_uhome_presentation_service
 from uhome_server.sonic.staging import stage_install_artifacts
 from uhome_server.sonic.uhome_bundle import read_bundle_manifest, verify_bundle
@@ -110,6 +111,11 @@ def installer_main(argv: list[str] | None = None) -> int:
     stage_parser.add_argument("--dry-run", action="store_true", help="Mark the generated plan as a dry run.")
     stage_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
+    execute_parser = subparsers.add_parser("execute-stage", help="Apply a staged installer directory into a target root.")
+    execute_parser.add_argument("--stage-dir", required=True, help="Staged installer directory produced by the stage command.")
+    execute_parser.add_argument("--target-root", required=True, help="Target root for applied installer artifacts.")
+    execute_parser.add_argument("--output", help="Optional path to write the JSON result.")
+
     args = parser.parse_args(argv)
 
     if args.command == "preflight":
@@ -117,9 +123,8 @@ def installer_main(argv: list[str] | None = None) -> int:
         _write_output(result.to_dict(), args.output)
         return 0 if result.passed else 1
 
-    bundle_dir = Path(args.bundle_dir).expanduser().resolve()
-
     if args.command == "verify-bundle":
+        bundle_dir = Path(args.bundle_dir).expanduser().resolve()
         manifest = read_bundle_manifest(bundle_dir)
         if manifest is None:
             _write_output({"valid": False, "missing": ["uhome-bundle.json"], "corrupt": [], "warnings": []}, args.output)
@@ -132,6 +137,7 @@ def installer_main(argv: list[str] | None = None) -> int:
         return 0 if result.valid else 1
 
     if args.command == "plan":
+        bundle_dir = Path(args.bundle_dir).expanduser().resolve()
         opts = UHOMEInstallOptions(
             install_root=args.install_root,
             enable_autologin_kiosk=not args.disable_autologin_kiosk,
@@ -144,6 +150,7 @@ def installer_main(argv: list[str] | None = None) -> int:
         return 0 if plan.ready else 1
 
     if args.command == "stage":
+        bundle_dir = Path(args.bundle_dir).expanduser().resolve()
         opts = UHOMEInstallOptions(
             install_root=args.install_root,
             enable_autologin_kiosk=not args.disable_autologin_kiosk,
@@ -162,6 +169,18 @@ def installer_main(argv: list[str] | None = None) -> int:
             _write_output({"ready": False, "error": str(exc)}, args.output)
             return 1
         _write_output({"ready": plan.ready, "plan": plan.to_dict(), "staged": staged.to_dict()}, args.output)
+        return 0
+
+    if args.command == "execute-stage":
+        try:
+            result = execute_staged_install(
+                Path(args.stage_dir).expanduser().resolve(),
+                Path(args.target_root).expanduser().resolve(),
+            )
+        except ValueError as exc:
+            _write_output({"success": False, "error": str(exc)}, args.output)
+            return 1
+        _write_output({"success": True, "result": result.to_dict()}, args.output)
         return 0
 
     parser.error(f"Unsupported installer command: {args.command}")
