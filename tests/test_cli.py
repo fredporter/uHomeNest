@@ -176,3 +176,35 @@ def test_installer_execute_stage_cli(tmp_path):
     assert (target_root / "receipts" / "install-receipt.json").exists()
     assert (target_root / "systemd" / "system" / "jellyfin.service").exists()
     assert (target_root / "etc" / "uhome" / "jellyfin.env").exists()
+
+
+def test_installer_apply_and_rollback_cli(tmp_path):
+    probe_path = tmp_path / "probe.json"
+    bundle_dir = tmp_path / "bundle"
+    stage_dir = tmp_path / "stage"
+    target_root = tmp_path / "target"
+    host_root = tmp_path / "host"
+    _write_probe(probe_path)
+    _write_bundle(bundle_dir)
+    assert installer_main(
+        ["stage", "--bundle-dir", str(bundle_dir), "--probe", str(probe_path), "--stage-dir", str(stage_dir)]
+    ) == 0
+    assert installer_main(["execute-stage", "--stage-dir", str(stage_dir), "--target-root", str(target_root)]) == 0
+
+    original_env = host_root / "etc" / "uhome" / "jellyfin.env"
+    original_env.parent.mkdir(parents=True, exist_ok=True)
+    original_env.write_text('JELLYFIN_DATA_DIR="/srv/original"\n', encoding="utf-8")
+
+    apply_output = tmp_path / "apply-output.json"
+    assert installer_main(
+        ["apply-target", "--target-root", str(target_root), "--host-root", str(host_root), "--output", str(apply_output)]
+    ) == 0
+    apply_payload = json.loads(apply_output.read_text(encoding="utf-8"))
+    assert apply_payload["success"] is True
+    assert (host_root / "etc" / "systemd" / "system" / "jellyfin.service").exists()
+
+    rollback_output = tmp_path / "rollback-output.json"
+    assert installer_main(["rollback-target", "--host-root", str(host_root), "--output", str(rollback_output)]) == 0
+    rollback_payload = json.loads(rollback_output.read_text(encoding="utf-8"))
+    assert rollback_payload["success"] is True
+    assert 'JELLYFIN_DATA_DIR="/srv/original"' in original_env.read_text(encoding="utf-8")

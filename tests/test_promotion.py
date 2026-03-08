@@ -1,0 +1,91 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from uhome_server.sonic.executor import execute_staged_install
+from uhome_server.sonic.promotion import promote_target_root, rollback_promoted_target
+from uhome_server.sonic.staging import stage_install_artifacts
+from uhome_server.sonic.uhome_bundle import (
+    BUNDLE_SCHEMA_VERSION,
+    UHOMEBundleComponent,
+    UHOMEBundleManifest,
+    write_bundle_manifest,
+)
+from uhome_server.sonic.uhome_installer import UHOMEInstallOptions
+
+
+def _probe() -> dict:
+    return {
+        "cpu_cores": 6,
+        "ram_gb": 16.0,
+        "storage_gb": 512.0,
+        "media_storage_gb": 4000.0,
+        "has_gigabit": True,
+        "has_hdmi": True,
+        "tuner_count": 2,
+        "has_usb_ports": 4,
+        "has_bluetooth": True,
+    }
+
+
+def _bundle(bundle_dir: Path) -> None:
+    import hashlib
+
+    artifact = bundle_dir / "components" / "jellyfin" / "payload.tar.gz"
+    artifact.parent.mkdir(parents=True, exist_ok=True)
+    artifact.write_bytes(b"promotion-payload")
+    manifest = UHOMEBundleManifest(
+        bundle_id="bundle-promotion-001",
+        uhome_version="1.0.0",
+        sonic_version="1.3.1",
+        schema_version=BUNDLE_SCHEMA_VERSION,
+        created_at="2026-03-08T00:00:00Z",
+        components=[
+            UHOMEBundleComponent(
+                component_id="jellyfin",
+                display_name="Jellyfin",
+                version="10.9.0",
+                artifact_path="components/jellyfin/payload.tar.gz",
+                sha256=hashlib.sha256(b"promotion-payload").hexdigest(),
+                install_target="/opt/uhome/jellyfin",
+            )
+        ],
+    )
+    write_bundle_manifest(bundle_dir, manifest)
+
+
+def test_promote_and_rollback_target_root(tmp_path):
+    bundle_dir = tmp_path / "bundle"
+    stage_dir = tmp_path / "stage"
+    target_root = tmp_path / "target"
+    host_root = tmp_path / "host"
+    _bundle(bundle_dir)
+    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    execute_staged_install(stage_dir, target_root)
+
+    original_host_env = host_root / "etc" / "uhome" / "jellyfin.env"
+    original_host_env.parent.mkdir(parents=True, exist_ok=True)
+    original_host_env.write_text('JELLYFIN_DATA_DIR="/srv/old"\n', encoding="utf-8")
+
+    promotion = promote_target_root(target_root, host_root)
+    assert (host_root / "etc" / "uhome" / "jellyfin.env").exists()
+    assert (host_root / "etc" / "systemd" / "system" / "jellyfin.service").exists()
+    assert promotion.receipt_path.exists()
+
+    promoted_env = (host_root / "etc" / "uhome" / "jellyfin.env").read_text(encoding="utf-8")
+    assert "/opt/uhome/var/jellyfin" in promoted_env
+
+    rollback = rollback_promoted_target(host_root)
+    restored_env = (host_root / "etc" / "uhome" / "jellyfin.env").read_text(encoding="utf-8")
+    assert 'JELLYFIN_DATA_DIR="/srv/old"' in restored_env
+    assert rollback.state_path.exists()
+
+
+def test_promote_target_root_requires_existing_target(tmp_path):
+    try:
+        promote_target_root(tmp_path / "missing-target", tmp_path / "host")
+    except ValueError as exc:
+        assert "does not exist" in str(exc)
+    else:
+        raise AssertionError("Expected promote_target_root to reject missing target root")

@@ -79,12 +79,18 @@ uhome-installer preflight --probe ./probe.json
 uhome-installer plan --bundle-dir ./bundle --probe ./probe.json --output ./install-plan.json
 uhome-installer stage --bundle-dir ./bundle --probe ./probe.json --stage-dir ./stage
 uhome-installer execute-stage --stage-dir ./stage --target-root ./target-root
+uhome-installer apply-target --target-root ./target-root --host-root ./host-root
+uhome-installer rollback-target --host-root ./host-root
 ```
 
 `execute-stage` writes Linux-oriented deployment assets into the target root,
 including environment files under `etc/uhome/`, systemd unit files under
 `systemd/system/`, target wants links, receipts, state, and a
 `bin/systemctl-apply.sh` helper for host-side enable/start orchestration.
+
+`apply-target` promotes those generated assets into a host-style filesystem
+layout under the chosen host root and snapshots the previous state for
+`rollback-target`.
 
 Example installer probes and verifiable sample bundles live under
 `examples/installer/`, including standalone Linux and dual-boot reference
