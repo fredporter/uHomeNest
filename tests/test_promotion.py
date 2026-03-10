@@ -11,6 +11,7 @@ from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
+    UHOMEHostProfileRef,
     write_bundle_manifest,
 )
 from uhome_server.installer.plan import UHOMEInstallOptions
@@ -22,11 +23,15 @@ def _probe() -> dict:
         "ram_gb": 16.0,
         "storage_gb": 512.0,
         "media_storage_gb": 4000.0,
+        "storage_ready": True,
+        "dvr_ready": True,
         "has_gigabit": True,
         "has_hdmi": True,
         "tuner_count": 2,
         "has_usb_ports": 4,
         "has_bluetooth": True,
+        "os_disk_id": "disk-linux-root-promo",
+        "media_volume_ids": ["media-array-promo"],
     }
 
 
@@ -42,6 +47,13 @@ def _bundle(bundle_dir: Path) -> None:
         sonic_version="1.3.1",
         schema_version=BUNDLE_SCHEMA_VERSION,
         created_at="2026-03-08T00:00:00Z",
+        host_profile=UHOMEHostProfileRef(
+            profile_id="standalone-linux",
+            display_name="Standalone Linux Host",
+            boot_mode="standalone",
+            target_roles=["media-server", "dvr", "launcher"],
+        ),
+        rollback_token="rb-promotion-001",
         components=[
             UHOMEBundleComponent(
                 component_id="jellyfin",
@@ -84,6 +96,9 @@ def test_promote_and_rollback_target_root(tmp_path):
     assert "/opt/uhome/var/jellyfin" in promoted_env
     verification = verify_promoted_target(host_root)
     assert verification.ok is True
+    assert verification.checks["host_profile_present"]["ok"] is True
+    assert verification.checks["rollback_evidence_present"]["ok"] is True
+    assert verification.checks["storage_identity_evidence_present"]["ok"] is True
     command_plan = promotion.command_plan_path.read_text(encoding="utf-8")
     assert "systemctl daemon-reload" in command_plan
     assert "systemctl enable" in command_plan
@@ -93,6 +108,10 @@ def test_promote_and_rollback_target_root(tmp_path):
     health_plan = json.loads(promotion.health_check_plan_path.read_text(encoding="utf-8"))
     checks_by_service = {item["service"]: item["health_check"] for item in health_plan["checks"]}
     assert checks_by_service["jellyfin"]["kind"] == "http"
+    promotion_receipt = json.loads(promotion.receipt_path.read_text(encoding="utf-8"))
+    assert promotion_receipt["reinstall_context"]["current_host_profile_id"] == "standalone-linux"
+    assert promotion_receipt["reinstall_context"]["rollback_supported"] is True
+    assert promotion_receipt["reinstall_context"]["storage_identity_complete"] is True
 
     rollback = rollback_promoted_target(host_root)
     restored_env = (host_root / "etc" / "uhome" / "jellyfin.env").read_text(encoding="utf-8")

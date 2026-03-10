@@ -8,6 +8,7 @@ from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
+    UHOMEHostProfileRef,
     UHOMERollbackRecord,
     compute_checksum,
     read_bundle_manifest,
@@ -18,6 +19,7 @@ from uhome_server.installer.bundle import (
     write_rollback_record,
 )
 from uhome_server.installer.plan import UHOMEInstallOptions, build_uhome_install_plan
+from uhome_server.installer.preflight import get_host_profile, preflight_check
 
 
 def _write_artifact(bundle_dir: Path, rel_path: str, content: bytes = b"fake-payload") -> str:
@@ -47,6 +49,12 @@ def _minimal_manifest(bundle_dir: Path) -> UHOMEBundleManifest:
         sonic_version="1.3.1",
         schema_version=BUNDLE_SCHEMA_VERSION,
         created_at="2026-02-23T00:00:00Z",
+        host_profile=UHOMEHostProfileRef(
+            profile_id="standalone-linux",
+            display_name="Standalone Linux Host",
+            boot_mode="standalone",
+            target_roles=["media-server"],
+        ),
         components=[_minimal_component(bundle_dir)],
     )
 
@@ -62,6 +70,10 @@ def _passing_probe() -> dict:
         "tuner_count": 2,
         "has_usb_ports": 4,
         "has_bluetooth": True,
+        "storage_ready": True,
+        "dvr_ready": True,
+        "os_disk_id": "disk-linux-root-test",
+        "media_volume_ids": ["media-array-test"],
     }
 
 
@@ -90,6 +102,8 @@ def test_write_and_read_bundle_manifest(tmp_path):
     loaded = read_bundle_manifest(tmp_path)
     assert loaded is not None
     assert loaded.bundle_id == manifest.bundle_id
+    assert loaded.host_profile is not None
+    assert loaded.host_profile.profile_id == "standalone-linux"
 
 
 def test_write_and_read_rollback_record(tmp_path):
@@ -129,9 +143,17 @@ def test_install_plan_ready(tmp_path):
     plan = build_uhome_install_plan(tmp_path, _passing_probe(), UHOMEInstallOptions(enable_autologin_kiosk=False))
     assert plan.ready is True
     assert plan.verify_result is not None
+    assert plan.host_profile_id == "standalone-linux"
 
 
 def test_install_plan_blocked_by_preflight(tmp_path):
     plan = build_uhome_install_plan(tmp_path, _failing_probe())
     assert plan.ready is False
     assert plan.verify_result is None
+
+
+def test_dual_boot_profile_requires_dual_boot_capabilities():
+    probe = _passing_probe()
+    result = preflight_check(probe, host_profile=get_host_profile("dual-boot-steam-node"))
+    assert result.passed is False
+    assert any("supports_windows_dual_boot" in issue for issue in result.issues)

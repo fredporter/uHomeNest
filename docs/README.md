@@ -40,6 +40,12 @@ documentation tied to the real repo.
   decentralized LAN-model milestone
 - [PHASE-3-LAN-KICKOFF.md](architecture/PHASE-3-LAN-KICKOFF.md) for the
   kickoff and boundary notes for the LAN-model phase
+- [PHASE-4-HOST-PROFILES-KICKOFF.md](architecture/PHASE-4-HOST-PROFILES-KICKOFF.md)
+  for the Phase 4 kickoff and boundary notes
+- [PHASE-4-CHECKLIST.md](architecture/PHASE-4-CHECKLIST.md) for the completed
+  install-profile milestone
+- [PHASE-4-COMPLETION.md](architecture/PHASE-4-COMPLETION.md) for the summary
+  of canonical Phase 4 surfaces
 - [REPO-FAMILY.md](pathway/REPO-FAMILY.md) for family-boundary and companion-repo rules
 - the deprecated `uhome_server.sonic` namespace is compatibility-only; new
   repo-local work should use `uhome_server.installer`

@@ -211,6 +211,28 @@ def _compute_upgrade_diff(previous_receipt: dict[str, Any] | None, install_recei
     }
 
 
+def _compute_reinstall_context(previous_receipt: dict[str, Any] | None, install_receipt: dict[str, Any]) -> dict[str, Any]:
+    previous_install = previous_receipt.get("install_receipt") if isinstance(previous_receipt, dict) else None
+    previous_bundle_id = None if not isinstance(previous_install, dict) else previous_install.get("bundle_id")
+    previous_host_profile_id = None if not isinstance(previous_install, dict) else previous_install.get("host_profile_id")
+    current_bundle_id = install_receipt.get("bundle_id")
+    current_host_profile_id = install_receipt.get("host_profile_id")
+    rollback_evidence = install_receipt.get("rollback_evidence", {})
+    storage_identity_evidence = install_receipt.get("storage_identity_evidence", {})
+    return {
+        "previous_bundle_id": previous_bundle_id,
+        "current_bundle_id": current_bundle_id,
+        "same_bundle_id": previous_bundle_id == current_bundle_id if previous_bundle_id is not None else False,
+        "previous_host_profile_id": previous_host_profile_id,
+        "current_host_profile_id": current_host_profile_id,
+        "same_host_profile_id": previous_host_profile_id == current_host_profile_id if previous_host_profile_id is not None else False,
+        "rollback_supported": bool(isinstance(rollback_evidence, dict) and rollback_evidence.get("rollback_supported")),
+        "storage_identity_complete": bool(
+            isinstance(storage_identity_evidence, dict) and storage_identity_evidence.get("complete")
+        ),
+    }
+
+
 def _read_service_manifest(path: Path) -> StagedServiceManifest:
     return StagedServiceManifest.read(path)
 
@@ -243,6 +265,7 @@ def verify_promoted_target(host_root: Path) -> VerificationResult:
     env_root = host_root / "etc" / "uhome"
     receipt_root = host_root / "var" / "lib" / "uhome" / "receipts"
     state_root = host_root / "var" / "lib" / "uhome" / "state"
+    install_receipt = _read_json(receipt_root / "install-receipt.json") if (receipt_root / "install-receipt.json").exists() else {}
     service_units = sorted(path.name for path in service_root.glob("*.service")) if service_root.exists() else []
     env_files = sorted(path.name for path in env_root.glob("*.env")) if env_root.exists() else []
     checks = {
@@ -250,6 +273,13 @@ def verify_promoted_target(host_root: Path) -> VerificationResult:
         "environment_files": {"ok": bool(env_files), "count": len(env_files), "items": env_files},
         "receipt_present": {"ok": (receipt_root / "install-receipt.json").exists()},
         "state_present": {"ok": (state_root / "install-state.json").exists()},
+        "host_profile_present": {"ok": bool(install_receipt.get("host_profile_id"))},
+        "rollback_evidence_present": {
+            "ok": bool(isinstance(install_receipt.get("rollback_evidence"), dict)),
+        },
+        "storage_identity_evidence_present": {
+            "ok": bool(isinstance(install_receipt.get("storage_identity_evidence"), dict) and install_receipt.get("storage_identity_evidence", {}).get("complete")),
+        },
     }
     ok = all(item.get("ok", False) for item in checks.values())
     report_path = _write_json(
@@ -302,6 +332,7 @@ def promote_target_root(target_root: Path, host_root: Path) -> PromotionResult:
     install_receipt = _read_json(target_install_receipt) if target_install_receipt.exists() else {}
     install_state = _read_json(target_install_state) if target_install_state.exists() else {}
     upgrade_diff = _compute_upgrade_diff(prior_receipt, install_receipt)
+    reinstall_context = _compute_reinstall_context(prior_receipt, install_receipt)
     command_plan_path = _write_command_plan(host_root, service_names)
     ubuntu_apply_plan_path = _write_ubuntu_apply_plan(host_root, service_names)
     health_check_plan_path = _write_health_check_plan(host_root, service_manifest)
@@ -319,6 +350,7 @@ def promote_target_root(target_root: Path, host_root: Path) -> PromotionResult:
             "previous_receipt": prior_receipt,
             "service_names": service_names,
             "upgrade_diff": upgrade_diff,
+            "reinstall_context": reinstall_context,
             "command_plan_path": str(command_plan_path),
             "ubuntu_apply_plan_path": str(ubuntu_apply_plan_path),
             "health_check_plan_path": str(health_check_plan_path),
@@ -338,6 +370,7 @@ def promote_target_root(target_root: Path, host_root: Path) -> PromotionResult:
             "promoted_paths": promoted_paths,
             "service_names": service_names,
             "upgrade_diff": upgrade_diff,
+            "reinstall_context": reinstall_context,
             "verification_ok": verification.ok,
         },
     )

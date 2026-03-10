@@ -16,6 +16,7 @@ from uhome_server.installer.bundle import (
 )
 from uhome_server.installer.preflight import (
     DEFAULT_PROFILE,
+    get_host_profile,
     UHOMEHardwareProfile,
     UHOMEPreflightResult,
     preflight_check,
@@ -46,6 +47,7 @@ class UHOMEInstallPlan:
     dry_run: bool
     preflight_result: UHOMEPreflightResult
     verify_result: BundleVerifyResult | None
+    host_profile_id: str | None = None
     steps: list[UHOMEInstallStep] = field(default_factory=list)
     ready: bool = False
 
@@ -54,6 +56,7 @@ class UHOMEInstallPlan:
             "bundle_dir": self.bundle_dir,
             "dry_run": self.dry_run,
             "ready": self.ready,
+            "host_profile_id": self.host_profile_id,
             "preflight": self.preflight_result.to_dict(),
             "verify": None
             if self.verify_result is None
@@ -97,6 +100,7 @@ def _preflight_steps(result: UHOMEPreflightResult) -> list[UHOMEInstallStep]:
 
 
 def _verify_steps(manifest: UHOMEBundleManifest, result: BundleVerifyResult) -> list[UHOMEInstallStep]:
+    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
     return [
         UHOMEInstallStep(
             phase=InstallPhase.VERIFY,
@@ -107,6 +111,7 @@ def _verify_steps(manifest: UHOMEBundleManifest, result: BundleVerifyResult) -> 
                 "missing": result.missing,
                 "corrupt": result.corrupt,
                 "component_count": len(manifest.components),
+                "host_profile_id": host_profile_id,
             },
         )
     ]
@@ -131,24 +136,30 @@ def _stage_steps(manifest: UHOMEBundleManifest, bundle_dir: Path) -> list[UHOMEI
 
 
 def _configure_steps(manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions) -> list[UHOMEInstallStep]:
+    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
     steps = [
         UHOMEInstallStep(
             phase=InstallPhase.CONFIGURE,
             action="write_uhome_config",
             description="Write uHOME service configuration files.",
-            params={"install_root": opts.install_root, "uhome_version": manifest.uhome_version, "ha_bridge_enabled": opts.enable_ha_bridge},
+            params={
+                "install_root": opts.install_root,
+                "uhome_version": manifest.uhome_version,
+                "ha_bridge_enabled": opts.enable_ha_bridge,
+                "host_profile_id": host_profile_id,
+            },
         ),
         UHOMEInstallStep(
             phase=InstallPhase.CONFIGURE,
             action="write_jellyfin_config",
             description="Write Jellyfin media server initial configuration.",
-            params={"install_root": opts.install_root},
+            params={"install_root": opts.install_root, "host_profile_id": host_profile_id},
         ),
         UHOMEInstallStep(
             phase=InstallPhase.CONFIGURE,
             action="write_comskip_config",
             description="Write Comskip ad-detection configuration.",
-            params={"install_root": opts.install_root},
+            params={"install_root": opts.install_root, "host_profile_id": host_profile_id},
         ),
     ]
     if opts.enable_ha_bridge:
@@ -157,34 +168,44 @@ def _configure_steps(manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions) -
                 phase=InstallPhase.CONFIGURE,
                 action="write_ha_bridge_config",
                 description="Write Home Assistant bridge configuration.",
-                params={"install_root": opts.install_root},
+                params={"install_root": opts.install_root, "host_profile_id": host_profile_id},
             )
         )
     return steps
 
 
-def _enable_steps(opts: UHOMEInstallOptions) -> list[UHOMEInstallStep]:
+def _enable_steps(opts: UHOMEInstallOptions, manifest: UHOMEBundleManifest) -> list[UHOMEInstallStep]:
+    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
     steps = [
         UHOMEInstallStep(
             phase=InstallPhase.ENABLE,
             action="enable_jellyfin_service",
             description="Enable and start jellyfin.service via systemd.",
-            params={"service": "jellyfin"},
+            params={"service": "jellyfin", "host_profile_id": host_profile_id},
         ),
         UHOMEInstallStep(
             phase=InstallPhase.ENABLE,
             action="enable_uhome_dvr_service",
             description="Enable uhome-dvr.service for recording integration.",
-            params={"service": "uhome-dvr"},
+            params={"service": "uhome-dvr", "host_profile_id": host_profile_id},
         ),
     ]
+    if host_profile_id == "dual-boot-steam-node":
+        steps.append(
+            UHOMEInstallStep(
+                phase=InstallPhase.ENABLE,
+                action="enable_steam_console_mode",
+                description="Prepare dual-boot Steam console launch and host integration.",
+                params={"service": "uhome-steam-console", "host_profile_id": host_profile_id},
+            )
+        )
     if opts.enable_autologin_kiosk:
         steps.append(
             UHOMEInstallStep(
                 phase=InstallPhase.ENABLE,
                 action="enable_kiosk_autologin",
                 description=f"Configure autologin for user '{opts.kiosk_user}' and enable uhome-kiosk.service.",
-                params={"kiosk_user": opts.kiosk_user, "service": "uhome-kiosk"},
+                params={"kiosk_user": opts.kiosk_user, "service": "uhome-kiosk", "host_profile_id": host_profile_id},
             )
         )
     return steps
@@ -219,7 +240,9 @@ def build_uhome_install_plan(
     rollback: UHOMERollbackRecord | None = None,
 ) -> UHOMEInstallPlan:
     opts = opts or UHOMEInstallOptions()
-    preflight_result = preflight_check(probe, profile=profile)
+    manifest = read_bundle_manifest(bundle_dir)
+    host_profile = None if manifest is None or manifest.host_profile is None else get_host_profile(manifest.host_profile.profile_id)
+    preflight_result = preflight_check(probe, profile=profile, host_profile=host_profile)
     steps: list[UHOMEInstallStep] = []
     steps.extend(_preflight_steps(preflight_result))
     if not preflight_result.passed:
@@ -228,11 +251,11 @@ def build_uhome_install_plan(
             dry_run=opts.dry_run,
             preflight_result=preflight_result,
             verify_result=None,
+            host_profile_id=None if manifest is None or manifest.host_profile is None else manifest.host_profile.profile_id,
             steps=steps,
             ready=False,
         )
 
-    manifest = read_bundle_manifest(bundle_dir)
     if manifest is None:
         steps.append(
             UHOMEInstallStep(
@@ -247,6 +270,7 @@ def build_uhome_install_plan(
             dry_run=opts.dry_run,
             preflight_result=preflight_result,
             verify_result=BundleVerifyResult(valid=False, missing=["uhome-bundle.json"]),
+            host_profile_id=None,
             steps=steps,
             ready=False,
         )
@@ -259,19 +283,21 @@ def build_uhome_install_plan(
             dry_run=opts.dry_run,
             preflight_result=preflight_result,
             verify_result=verify_result,
+            host_profile_id=manifest.host_profile.profile_id if manifest.host_profile is not None else None,
             steps=steps,
             ready=False,
         )
 
     steps.extend(_stage_steps(manifest, bundle_dir))
     steps.extend(_configure_steps(manifest, opts))
-    steps.extend(_enable_steps(opts))
+    steps.extend(_enable_steps(opts, manifest))
     steps.extend(_finalize_steps(manifest, rollback))
     return UHOMEInstallPlan(
         bundle_dir=str(bundle_dir),
         dry_run=opts.dry_run,
         preflight_result=preflight_result,
         verify_result=verify_result,
+        host_profile_id=manifest.host_profile.profile_id if manifest.host_profile is not None else None,
         steps=steps,
         ready=True,
     )

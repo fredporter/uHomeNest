@@ -13,7 +13,10 @@ on the cross-repo family model.
 6. `docs/pathway/REPO-FAMILY.md`
 7. `docs/architecture/PHASE-3-LAN-KICKOFF.md`
 8. `docs/architecture/PHASE-3-CHECKLIST.md`
-9. `src/uhome_server/`
+9. `docs/architecture/PHASE-4-HOST-PROFILES-KICKOFF.md`
+10. `docs/architecture/PHASE-4-CHECKLIST.md`
+11. `docs/howto/UHOME-INSTALL-LANES.md`
+12. `src/uhome_server/`
 
 ## Active Build Rules
 

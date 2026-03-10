@@ -15,6 +15,15 @@ UHOME_COMPONENT_IDS = ["jellyfin", "comskip", "hdhomerun_config", "udos_uhome"]
 
 
 @dataclass
+class UHOMEHostProfileRef:
+    profile_id: str
+    display_name: str
+    boot_mode: str
+    target_roles: list[str] = field(default_factory=list)
+    notes: str = ""
+
+
+@dataclass
 class UHOMEBundleComponent:
     component_id: str
     display_name: str
@@ -52,6 +61,7 @@ class UHOMEBundleManifest:
     sonic_version: str
     schema_version: str
     created_at: str
+    host_profile: UHOMEHostProfileRef | None = None
     components: list[UHOMEBundleComponent] = field(default_factory=list)
     rollback_token: str = ""
     notes: str = ""
@@ -62,12 +72,14 @@ class UHOMEBundleManifest:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "UHOMEBundleManifest":
         components = [UHOMEBundleComponent(**component) for component in data.get("components", [])]
+        host_profile_data = data.get("host_profile")
         return cls(
             bundle_id=data["bundle_id"],
             uhome_version=data["uhome_version"],
             sonic_version=data["sonic_version"],
             schema_version=data.get("schema_version", BUNDLE_SCHEMA_VERSION),
             created_at=data["created_at"],
+            host_profile=None if not isinstance(host_profile_data, dict) else UHOMEHostProfileRef(**host_profile_data),
             components=components,
             rollback_token=data.get("rollback_token", ""),
             notes=data.get("notes", ""),
@@ -135,6 +147,8 @@ def verify_bundle(manifest: UHOMEBundleManifest, bundle_dir: Path) -> BundleVeri
     missing: list[str] = []
     corrupt: list[str] = []
     warnings: list[str] = []
+    if manifest.host_profile is None:
+        warnings.append("Bundle manifest does not declare a host_profile; default profile resolution will be used.")
     for component in manifest.components:
         artifact = bundle_dir / component.artifact_path
         if not artifact.exists():

@@ -86,7 +86,22 @@ Outcome:
   library-availability contracts are now explicit in the repo-local network
   surface
 
-### Phase 4+: Runtime And Product Work
+### Phase 4: Install And Host Profiles
+
+Status: complete
+
+Anchor docs:
+
+- `docs/architecture/PHASE-4-HOST-PROFILES-KICKOFF.md`
+- `docs/architecture/PHASE-4-CHECKLIST.md`
+- `docs/architecture/PHASE-4-COMPLETION.md`
+
+Outcome:
+
+- standalone and dual-boot example lanes now act as canonical host-profile
+  references for the installer surface
+
+### Phase 5+: Runtime And Product Work
 
 Status: active backlog
 
@@ -97,9 +112,8 @@ Anchor doc:
 This is the active delivery track after the repo-structure work:
 
 1. Media and job core
-2. Install and host profiles
-3. Living-room and client integration
-4. Operational maturity
+2. Living-room and client integration
+3. Operational maturity
 
 ## Working Rules
 

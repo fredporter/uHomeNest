@@ -7,5 +7,11 @@
   "has_hdmi": true,
   "tuner_count": 2,
   "has_usb_ports": 6,
-  "has_bluetooth": true
+  "has_bluetooth": true,
+  "supports_windows_dual_boot": true,
+  "steam_console_ready": true,
+  "game_storage_gb": 2000,
+  "os_disk_id": "disk-linux-root-002",
+  "windows_disk_id": "disk-windows-root-002",
+  "media_volume_ids": ["media-array-main", "media-array-archive"]
 }

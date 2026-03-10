@@ -9,6 +9,7 @@ from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
+    UHOMEHostProfileRef,
     write_bundle_manifest,
     write_rollback_record,
     UHOMERollbackRecord,
@@ -22,11 +23,15 @@ def _probe() -> dict:
         "ram_gb": 16.0,
         "storage_gb": 512.0,
         "media_storage_gb": 4000.0,
+        "storage_ready": True,
+        "dvr_ready": True,
         "has_gigabit": True,
         "has_hdmi": True,
         "tuner_count": 2,
         "has_usb_ports": 4,
         "has_bluetooth": True,
+        "os_disk_id": "disk-linux-root-stage",
+        "media_volume_ids": ["media-array-stage"],
     }
 
 
@@ -40,6 +45,12 @@ def _bundle(bundle_dir: Path) -> None:
         sonic_version="1.3.1",
         schema_version=BUNDLE_SCHEMA_VERSION,
         created_at="2026-03-08T00:00:00Z",
+        host_profile=UHOMEHostProfileRef(
+            profile_id="standalone-linux",
+            display_name="Standalone Linux Host",
+            boot_mode="standalone",
+            target_roles=["media-server", "dvr", "launcher"],
+        ),
         components=[
             UHOMEBundleComponent(
                 component_id="jellyfin",
@@ -77,6 +88,10 @@ def test_stage_install_artifacts_writes_expected_outputs(tmp_path):
     assert (stage_dir / "rollback" / "rollback.json").exists()
     receipt = json.loads(staged.receipt_path.read_text(encoding="utf-8"))
     assert receipt["bundle_id"] == "bundle-stage-001"
+    assert receipt["host_profile_id"] == "standalone-linux"
+    assert receipt["rollback_evidence"]["rollback_supported"] is True
+    assert receipt["storage_identity_evidence"]["complete"] is True
+    assert receipt["preflight"]["capability_checks"]["storage_ready"]["passed"] is True
 
 
 def test_stage_install_artifacts_rejects_unready_plan(tmp_path):

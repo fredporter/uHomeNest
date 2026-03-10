@@ -5,7 +5,13 @@ from pathlib import Path
 from unittest.mock import patch
 
 from uhome_server.cli import installer_main, launcher_main
-from uhome_server.installer.bundle import BUNDLE_SCHEMA_VERSION, UHOMEBundleComponent, UHOMEBundleManifest, write_bundle_manifest
+from uhome_server.installer.bundle import (
+    BUNDLE_SCHEMA_VERSION,
+    UHOMEBundleComponent,
+    UHOMEBundleManifest,
+    UHOMEHostProfileRef,
+    write_bundle_manifest,
+)
 
 
 def _write_probe(path: Path) -> None:
@@ -21,6 +27,9 @@ def _write_probe(path: Path) -> None:
                 "tuner_count": 2,
                 "has_usb_ports": 4,
                 "has_bluetooth": True,
+                "game_storage_gb": 0,
+                "os_disk_id": "disk-linux-root-test",
+                "media_volume_ids": ["media-array-test"],
             }
         ),
         encoding="utf-8",
@@ -39,6 +48,12 @@ def _write_bundle(bundle_dir: Path) -> None:
         sonic_version="1.3.1",
         schema_version=BUNDLE_SCHEMA_VERSION,
         created_at="2026-03-08T00:00:00Z",
+        host_profile=UHOMEHostProfileRef(
+            profile_id="standalone-linux",
+            display_name="Standalone Linux Host",
+            boot_mode="standalone",
+            target_roles=["media-server"],
+        ),
         components=[
             UHOMEBundleComponent(
                 component_id="jellyfin",
@@ -74,6 +89,18 @@ def test_installer_preflight_cli(tmp_path):
     assert code == 0
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["passed"] is True
+
+
+def test_installer_preflight_cli_with_host_profile(tmp_path):
+    probe_path = tmp_path / "probe.json"
+    _write_probe(probe_path)
+    output_path = tmp_path / "preflight.json"
+    code = installer_main(
+        ["preflight", "--probe", str(probe_path), "--host-profile", "standalone-linux", "--output", str(output_path)]
+    )
+    assert code == 0
+    payload = json.loads(output_path.read_text(encoding="utf-8"))
+    assert payload["profile_id"] == "standalone-linux"
 
 
 def test_installer_plan_cli(tmp_path):

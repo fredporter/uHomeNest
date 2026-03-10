@@ -6,6 +6,7 @@ from uhome_server.installer.bundle import (
     ROLLBACK_FILENAME,
     UHOME_COMPONENT_IDS,
     BundleVerifyResult,
+    UHOMEHostProfileRef,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
     UHOMERollbackRecord,
@@ -21,7 +22,17 @@ from uhome_server.installer.executor import ExecutionResult, execute_staged_inst
 from uhome_server.installer.health import HealthCheckRunResult, run_promoted_health_checks
 from uhome_server.installer.live_apply import LiveApplyResult, run_ubuntu_apply_plan
 from uhome_server.installer.plan import InstallPhase, UHOMEInstallOptions, UHOMEInstallPlan, UHOMEInstallStep, build_uhome_install_plan
-from uhome_server.installer.preflight import DEFAULT_PROFILE, UHOMEHardwareProfile, UHOMEPreflightResult, preflight_check
+from uhome_server.installer.preflight import (
+    DEFAULT_PROFILE,
+    DUAL_BOOT_STEAM_NODE_PROFILE,
+    HOST_PROFILES,
+    STANDALONE_LINUX_PROFILE,
+    UHOMEHardwareProfile,
+    UHOMEHostProfileDefinition,
+    UHOMEPreflightResult,
+    get_host_profile,
+    preflight_check,
+)
 from uhome_server.installer.promotion import PromotionResult, RollbackResult, VerificationResult, promote_target_root, rollback_promoted_target, verify_promoted_target
 from uhome_server.installer.service_manifest import StagedServiceManifest, StagedServiceRecord
 from uhome_server.installer.staging import UHOMEStagedArtifacts, stage_install_artifacts
@@ -32,6 +43,7 @@ __all__ = [
     "ROLLBACK_FILENAME",
     "UHOME_COMPONENT_IDS",
     "BundleVerifyResult",
+    "UHOMEHostProfileRef",
     "UHOMEBundleComponent",
     "UHOMEBundleManifest",
     "UHOMERollbackRecord",
@@ -56,8 +68,13 @@ __all__ = [
     "UHOMEInstallStep",
     "build_uhome_install_plan",
     "DEFAULT_PROFILE",
+    "STANDALONE_LINUX_PROFILE",
+    "DUAL_BOOT_STEAM_NODE_PROFILE",
+    "HOST_PROFILES",
     "UHOMEHardwareProfile",
+    "UHOMEHostProfileDefinition",
     "UHOMEPreflightResult",
+    "get_host_profile",
     "preflight_check",
     "PromotionResult",
     "RollbackResult",

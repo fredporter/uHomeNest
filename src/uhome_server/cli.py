@@ -17,7 +17,7 @@ from uhome_server.services.uhome_presentation_service import get_uhome_presentat
 from uhome_server.installer.staging import stage_install_artifacts
 from uhome_server.installer.bundle import read_bundle_manifest, verify_bundle
 from uhome_server.installer.plan import UHOMEInstallOptions, build_uhome_install_plan
-from uhome_server.installer.preflight import preflight_check
+from uhome_server.installer.preflight import get_host_profile, preflight_check
 
 
 def _read_json(path: str) -> dict[str, Any]:
@@ -79,6 +79,11 @@ def installer_main(argv: list[str] | None = None) -> int:
 
     preflight_parser = subparsers.add_parser("preflight", help="Run hardware preflight against a JSON probe.")
     preflight_parser.add_argument("--probe", required=True, help="Path to a hardware probe JSON object.")
+    preflight_parser.add_argument(
+        "--host-profile",
+        choices=["standalone-linux", "dual-boot-steam-node"],
+        help="Optional named host profile to validate against.",
+    )
     preflight_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
     verify_parser = subparsers.add_parser("verify-bundle", help="Verify bundle artifacts against the manifest.")
@@ -144,7 +149,7 @@ def installer_main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "preflight":
-        result = preflight_check(_read_json(args.probe))
+        result = preflight_check(_read_json(args.probe), host_profile=get_host_profile(args.host_profile))
         _write_output(result.to_dict(), args.output)
         return 0 if result.passed else 1
 

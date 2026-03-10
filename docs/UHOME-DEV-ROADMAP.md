@@ -116,6 +116,8 @@ Exit criteria:
 
 Goal: make server deployment first-class for standalone and dual-boot installs.
 
+Status: complete
+
 Deliverables:
 - production-ready `uhome-bundle.json` contract examples
 - explicit Linux standalone install profile
@@ -174,4 +176,3 @@ Exit criteria:
 - define storage volume identity rules beyond mount paths
 - add Jellyfin integration tests and configuration docs
 - define API contract for downstream TV/mobile clients
-- add example manifests for Sonic standalone and dual-boot installs
