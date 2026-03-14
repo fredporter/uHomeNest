@@ -57,3 +57,13 @@ curl http://localhost:8000/api/health
 ```
 
 For machine setup and operational details, see `QUICKSTART.md`, `FIRST-TIME-INSTALL.md`, and the legacy documentation preserved under `docs/`.
+
+## Activation
+
+The v2 repo activation path is documented in `docs/activation.md`.
+
+Run the current repo validation entrypoint with:
+
+```bash
+scripts/run-uhome-server-checks.sh
+```

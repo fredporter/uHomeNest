@@ -11,6 +11,7 @@ Current example lanes:
 
 - `installer/bundles/` for standalone and dual-boot reference bundles
 - `installer/probes/` for sample hardware probe input
+- `basic-uhome-server-session.md` for the smallest local runtime walkthrough
 
 Phase 1 rule:
 
