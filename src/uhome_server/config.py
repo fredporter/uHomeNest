@@ -33,6 +33,11 @@ def get_uhome_empire_root(workspace_root: Path | None = None) -> Path:
     return root / "uHOME-empire"
 
 
+def get_udos_wizard_root(workspace_root: Path | None = None) -> Path:
+    root = workspace_root or get_workspace_root()
+    return root / "uDOS-wizard"
+
+
 def utc_now_iso_z() -> str:
     from datetime import datetime, timezone
 
@@ -203,6 +208,30 @@ def get_home_assistant_bridge_definition_path(workspace_root: Path | None = None
 
 def load_home_assistant_bridge_definition(workspace_root: Path | None = None) -> dict[str, Any]:
     path = get_home_assistant_bridge_definition_path(workspace_root)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"Expected JSON object in {path}")
+    return data
+
+
+def get_uhome_network_policy_contract_path(workspace_root: Path | None = None) -> Path:
+    return get_udos_wizard_root(workspace_root) / "contracts" / "uhome-network-policy-contract.json"
+
+
+def get_uhome_network_policy_schema_path(workspace_root: Path | None = None) -> Path:
+    return get_udos_wizard_root(workspace_root) / "contracts" / "uhome-network-policy.schema.json"
+
+
+def load_uhome_network_policy_contract(workspace_root: Path | None = None) -> dict[str, Any]:
+    path = get_uhome_network_policy_contract_path(workspace_root)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"Expected JSON object in {path}")
+    return data
+
+
+def load_uhome_network_policy_schema(workspace_root: Path | None = None) -> dict[str, Any]:
+    path = get_uhome_network_policy_schema_path(workspace_root)
     data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError(f"Expected JSON object in {path}")

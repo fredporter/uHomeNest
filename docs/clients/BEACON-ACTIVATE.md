@@ -48,7 +48,7 @@ The Beacon host user chooses what information is compiled and presented.
 
 ## Recommended Surface Split
 
-### Beacon Activate
+### Beacon Portal
 
 Use for:
 
@@ -107,3 +107,12 @@ As `uHOME-server` implementation hardens, this doc should grow into:
 - local access policy
 - household-safe content projection rules
 - host-curated offline library packaging guidance
+
+The first server-side consumer route for Wizard household networking policy is
+now exposed through:
+
+- `GET /api/runtime/contracts/uhome-network-policy`
+- `POST /api/runtime/contracts/uhome-network-policy/validate`
+
+This keeps `uHOME-server` in the runtime-consumer role while `uDOS-wizard`
+remains the policy owner for `Beacon`, `Crypt`, `Tomb`, and `Home`.

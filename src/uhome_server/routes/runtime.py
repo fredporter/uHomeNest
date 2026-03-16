@@ -16,9 +16,13 @@ from uhome_server.config import (
     get_runtime_settings,
     get_sync_record_contract_path,
     get_sync_record_schema_path,
+    get_uhome_network_policy_contract_path,
+    get_uhome_network_policy_schema_path,
     load_empire_container_job_catalog,
     load_sync_record_contract,
     load_sync_record_schema,
+    load_uhome_network_policy_contract,
+    load_uhome_network_policy_schema,
     utc_now_iso_z,
 )
 from uhome_server.automation_store import get_automation_store
@@ -27,6 +31,10 @@ from uhome_server.sync_records import (
     validation_error_payload,
 )
 from uhome_server.sync_store import get_sync_record_store
+from uhome_server.wizard_policy import (
+    uhome_network_policy_validation_error,
+    validate_uhome_network_policy_payload,
+)
 from pydantic import ValidationError
 from uhome_server.services.home_assistant_service import get_ha_service
 from uhome_server.services.uhome_command_handlers import playback_status
@@ -172,6 +180,46 @@ def workflow_automation_contract_info() -> dict[str, Any]:
         "workflow_owner": "uDOS-wizard",
         "automation_fulfillment_owner": "uHOME-server",
     }
+
+
+def uhome_network_policy_contract_info() -> dict[str, Any]:
+    contract_path = get_uhome_network_policy_contract_path()
+    schema_path = get_uhome_network_policy_schema_path()
+    contract = load_uhome_network_policy_contract()
+    schema = load_uhome_network_policy_schema()
+    profiles = contract.get("profiles", {})
+    return {
+        "contract_path": str(contract_path),
+        "schema_path": str(schema_path),
+        "version": contract.get("version"),
+        "owner": contract.get("owner"),
+        "package": contract.get("package"),
+        "schema_title": schema.get("title"),
+        "profiles": sorted(profiles.keys()),
+        "runtime_owners": sorted({str(item.get("runtime_owner")) for item in profiles.values()}),
+        "policy_owners": sorted({str(item.get("policy_owner")) for item in profiles.values()}),
+        "wizard_routes": contract.get("routes", {}),
+    }
+
+
+def uhome_network_policy_validation_result(payload: dict[str, Any]) -> tuple[dict[str, Any], int]:
+    try:
+        validated = validate_uhome_network_policy_payload(payload)
+    except ValidationError as exc:
+        return uhome_network_policy_validation_error(exc), 400
+    except ValueError as exc:
+        return uhome_network_policy_validation_error(exc), 400
+    return (
+        {
+            "ok": True,
+            "contract_version": validated["contract_version"],
+            "profile_id": validated["profile_id"],
+            "runtime_owner": validated["runtime_owner"],
+            "policy_owner": validated["policy_owner"],
+            "consumer_repos": validated["consumer_repos"],
+        },
+        200,
+    )
 
 
 def thin_automation_status_html() -> str:
@@ -335,6 +383,15 @@ def create_runtime_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
     @router.get("/contracts/workflow-automation", dependencies=dependencies)
     async def workflow_automation_contract():
         return workflow_automation_contract_info()
+
+    @router.get("/contracts/uhome-network-policy", dependencies=dependencies)
+    async def uhome_network_policy_contract():
+        return uhome_network_policy_contract_info()
+
+    @router.post("/contracts/uhome-network-policy/validate", dependencies=dependencies)
+    async def validate_uhome_network_policy(payload: dict[str, Any] = Body(...)):
+        body, status_code = uhome_network_policy_validation_result(payload)
+        return JSONResponse(content=body, status_code=status_code)
 
     @router.get("/automation/status", dependencies=dependencies)
     async def automation_status():

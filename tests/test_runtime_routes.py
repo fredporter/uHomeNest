@@ -215,6 +215,78 @@ def test_workflow_automation_contract_route_reports_shared_boundary(monkeypatch)
     assert body["automation_fulfillment_owner"] == "uHOME-server"
 
 
+def test_uhome_network_policy_contract_route_reports_wizard_boundary(monkeypatch):
+    monkeypatch.setattr(
+        runtime_routes,
+        "uhome_network_policy_contract_info",
+        lambda: {
+            "contract_path": "/tmp/uDOS-wizard/contracts/uhome-network-policy-contract.json",
+            "schema_path": "/tmp/uDOS-wizard/contracts/uhome-network-policy.schema.json",
+            "version": "v2.0.4",
+            "owner": "uDOS-wizard",
+            "package": "wizard-uhome-network-policy-contract",
+            "schema_title": "WizardToUHomeNetworkPolicy",
+            "profiles": ["beacon", "crypt", "home", "tomb"],
+            "runtime_owners": ["uHOME-server"],
+            "policy_owners": ["uDOS-wizard"],
+            "wizard_routes": {"contract": {"path": "/contracts/uhome/network-policy"}},
+        },
+    )
+    app = FastAPI()
+    app.include_router(runtime_routes.create_runtime_routes())
+    client = TestClient(app)
+    response = client.get("/api/runtime/contracts/uhome-network-policy")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["owner"] == "uDOS-wizard"
+    assert "beacon" in body["profiles"]
+    assert body["runtime_owners"] == ["uHOME-server"]
+
+
+def test_uhome_network_policy_validation_route_accepts_and_rejects_payloads(monkeypatch):
+    monkeypatch.setattr(
+        runtime_routes,
+        "uhome_network_policy_validation_result",
+        lambda payload: (
+            {
+                "ok": payload["profile_id"] == "beacon",
+                "contract_version": payload.get("contract_version", "v2.0.4"),
+                "profile_id": payload.get("profile_id"),
+                "runtime_owner": "uHOME-server",
+                "policy_owner": "uDOS-wizard",
+                "consumer_repos": payload.get("consumer_repos", []),
+                "error": None if payload["profile_id"] == "beacon" else "uhome-network-policy-validation-failed",
+            },
+            200 if payload["profile_id"] == "beacon" else 400,
+        ),
+    )
+    app = FastAPI()
+    app.include_router(runtime_routes.create_runtime_routes())
+    client = TestClient(app)
+
+    valid = client.post(
+        "/api/runtime/contracts/uhome-network-policy/validate",
+        json={
+            "contract_version": "v2.0.4",
+            "profile_id": "beacon",
+            "consumer_repos": ["uHOME-server"],
+        },
+    )
+    assert valid.status_code == 200
+    assert valid.json()["ok"] is True
+
+    invalid = client.post(
+        "/api/runtime/contracts/uhome-network-policy/validate",
+        json={
+            "contract_version": "v2.0.4",
+            "profile_id": "tomb",
+            "consumer_repos": ["uHOME-server"],
+        },
+    )
+    assert invalid.status_code == 400
+    assert invalid.json()["error"] == "uhome-network-policy-validation-failed"
+
+
 def test_automation_routes_queue_and_record_results(monkeypatch):
     class _Store:
         def status(self):

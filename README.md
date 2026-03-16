@@ -109,3 +109,10 @@ POST /api/runtime/sync-records/ingest
 GET /api/runtime/sync-records/latest
 GET /api/runtime/sync-records
 ```
+
+Wizard-owned household networking policy consumption surfaces are available at:
+
+```bash
+GET /api/runtime/contracts/uhome-network-policy
+POST /api/runtime/contracts/uhome-network-policy/validate
+```
