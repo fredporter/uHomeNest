@@ -6,18 +6,38 @@ Updated: 2026-03-03
 ## Purpose
 
 uHOME defines the home-media and home-operations lane for uDOS:
+
 - local broadcast/media ingestion
 - DVR and post-processing workflows
 - LAN-served playback and household access
 - Sonic-installed packaging for home deployments
 
 This is an active decision doc for the home profile direction, not a full
-implementation manual. The canonical implementation-facing contract lives in
+implementation manual. Historical implementation detail remains in
 `docs/specs/UHOME-v1.5.md`.
+
+## v2 Alignment Note
+
+uHOME v2 master architecture direction is now integrated into active repo docs.
+Canonical v2 runtime entrypoint:
+
+- `docs/architecture.md`
+
+That v2 architecture surface now captures:
+
+- always-on local household runtime ownership
+- controller-first kiosk and launcher model
+- Jellyfin media lane and Steam-side game surfaces
+- networking profile split (`Beacon`, `Crypt`, `Tomb`, `Home`)
+- extension split across `uHOME-matter` and `uHOME-empire`
+
+This decision file remains useful for historical lane context, while v2 runtime
+shape should be read from `docs/architecture.md` first.
 
 ## Decision
 
 uHOME remains:
+
 - local-first
 - LAN-oriented
 - Sonic-installed
@@ -50,6 +70,7 @@ The home profile should favor readable configuration, deterministic local proces
 ### Processing model
 
 uHOME supports:
+
 - scheduled recording
 - rule-based capture
 - post-processing jobs
@@ -65,6 +86,7 @@ uHOME supports:
 ## v1.5 Release Direction
 
 For v1.5, uHOME work is focused on:
+
 - packaging and profile clarity
 - DVR and post-processing lane definition
 - Sonic-installed home profile behavior
