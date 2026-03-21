@@ -25,6 +25,11 @@ This directory contains operational guides, runbooks, and troubleshooting proced
   - Tests system requirements, service status, API endpoints
   - Run after deployment or when troubleshooting
 
+### For Console Launch
+- **uHOME Console Launch Path**: Read [UHOME-CONSOLE-LAUNCH-PATH.md](UHOME-CONSOLE-LAUNCH-PATH.md)
+  - End-to-end local runtime launch and console surface checks
+  - Includes API route probes and CLI status commands
+
 ## Operational Runbooks
 
 The following runbooks provide step-by-step recovery procedures for common failure modes. **Read the runbook matching your problem**, follow the numbered steps in order.
