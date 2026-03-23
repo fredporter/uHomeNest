@@ -22,7 +22,7 @@ surfaces.
 - canonical runtime semantics
 - shell ownership
 - provider bridge ownership
-- Google or HubSpot sync orchestration owned by `uHOME-empire`
+- Google or HubSpot sync orchestration owned by `uDOS-empire`
 - Apple or iCloud sync ownership owned by the macOS desktop app
 
 ## Spine
@@ -45,7 +45,7 @@ Use `QUICKSTART.md` for the first runnable path and use
 
 `uHOME-server` provides the always-on local runtime. It complements
 `uDOS-core`, pairs with `uDOS-wizard` for workflow handoff and local execution,
-and leaves Google or HubSpot sync workflows to `uHOME-empire`.
+and leaves Google or HubSpot sync workflows to `uDOS-empire`.
 
 The v2 split is explicit:
 

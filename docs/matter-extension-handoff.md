@@ -27,6 +27,6 @@ integration at runtime, it belongs in `uHOME-server`.
 
 ## Empire Preparation
 
-This split leaves `uHOME-empire` free to own remote webhook-style flows,
+This split leaves `uDOS-empire` free to own remote webhook-style flows,
 queueable automation packages, and zapier-like container or job definitions
 without also absorbing local household bridge ownership.

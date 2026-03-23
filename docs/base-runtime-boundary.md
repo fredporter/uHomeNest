@@ -22,5 +22,5 @@ runtime support owned by the server until it is intentionally migrated.
 - platform UI ownership
 - optional cloud sync or publishing workflows
 
-Those surfaces belong in `uHOME-matter`, app repos, and `uHOME-empire`
+Those surfaces belong in `uHOME-matter`, app repos, and `uDOS-empire`
 respectively.

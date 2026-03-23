@@ -7,7 +7,7 @@ and Empire handoff seams.
 
 - Python 3.9+
 - Git
-- optional sibling repos for the paired flow: `../uDOS-wizard` and `../uHOME-empire`
+- optional sibling repos for the paired flow: `../uDOS-wizard` and `../uDOS-empire`
 
 ## 1. Bootstrap And Validate
 
@@ -78,7 +78,7 @@ If both repos are checked out side by side, `udos-wizard-demo` from
 
 ## 5. Dispatch An Empire Pack Into The Live Runtime
 
-From the sibling `uHOME-empire` repo:
+From the sibling `uDOS-empire` repo:
 
 ```bash
 bash scripts/run-empire-checks.sh
@@ -86,7 +86,7 @@ python3 scripts/smoke/pack_preview.py --json --pack quickstart --execution-brief
 python3 scripts/smoke/pack_run.py --json --pack quickstart --uhome-url http://127.0.0.1:8000 --write-default-report
 ```
 
-Use `uHOME-empire/docs/quickstart.md` for the live Wizard and automation
+Use `uDOS-empire/docs/quickstart.md` for the live Wizard and automation
 bridge probes after the local runtime is up.
 
 ## 6. Useful CLI Commands

@@ -10,7 +10,7 @@ The pathway framing should stay consistent with sibling repos:
 - `sonic-screwdriver` = deployment and hardware bootstrap
 - `uHOME-server` = home infrastructure runtime and household service model
 - `uHOME-matter` = local automation and bridge extension lane
-- `uHOME-empire` = remote sync, webhook, and container-style workflow lane
+- `uDOS-empire` = remote sync, webhook, and container-style workflow lane
 
 This repo should not read like a second core and should not absorb generic
 deployment ownership that belongs in `sonic-screwdriver`.

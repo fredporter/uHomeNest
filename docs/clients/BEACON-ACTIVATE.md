@@ -94,7 +94,7 @@ These Beacon Activate surfaces are separate from:
 
 - Home Assistant bridges
 - Matter or device-control automation
-- `uHOME-empire` online webhook or API automation
+- `uDOS-empire` online webhook or API automation
 
 Those systems may appear behind the portal, but they are not the same contract.
 

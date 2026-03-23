@@ -123,7 +123,7 @@ See `uDOS-wizard/docs/v2.0.4-sibling-route-set.md` for Wizard networking contrac
 | Extension | Responsibility |
 | --- | --- |
 | `uHOME-matter` | Home Assistant integration, Matter device support, device graph, room/zone logic, scenes and automations |
-| `uHOME-empire` | Vault mirroring, Google API integration, HubSpot API integration, webhook listeners, scheduled jobs, binder-aware routing |
+| `uDOS-empire` | Vault mirroring, Google API integration, HubSpot API integration, webhook listeners, scheduled jobs, binder-aware routing |
 
 Extensions layer on top of uHOME-server without replacing base runtime ownership.
 
@@ -138,7 +138,7 @@ Extensions layer on top of uHOME-server without replacing base runtime ownership
   local-network runtime and local Beacon Activate content surfaces.
 - `uHOME-matter` layers on top for Matter and Home Assistant extension
   contracts without replacing the base runtime owner.
-- `uHOME-empire` layers on top for Google and HubSpot sync plus console CRM and
+- `uDOS-empire` layers on top for Google and HubSpot sync plus console CRM and
   workflow management.
 
 ---

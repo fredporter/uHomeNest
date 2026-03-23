@@ -30,7 +30,7 @@ def get_uhome_matter_root(workspace_root: Path | None = None) -> Path:
 
 def get_uhome_empire_root(workspace_root: Path | None = None) -> Path:
     root = workspace_root or get_workspace_root()
-    return root / "uHOME-empire"
+    return root / "uDOS-empire"
 
 
 def get_udos_wizard_root(workspace_root: Path | None = None) -> Path:

@@ -52,7 +52,7 @@ Owns:
 - local automation clone catalogs and target maps
 - bridge-facing adapter definitions consumed by the server runtime
 
-### `uHOME-empire`
+### `uDOS-empire`
 
 Owns:
 

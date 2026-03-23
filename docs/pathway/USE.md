@@ -45,4 +45,4 @@ or hardware-first, it should move toward `sonic-screwdriver`.
 
 Matter, Home Assistant, and local automation contracts should move through
 `uHOME-matter`. Remote webhook-style and container-style job workflows should
-move through `uHOME-empire`.
+move through `uDOS-empire`.

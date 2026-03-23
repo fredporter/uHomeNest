@@ -22,7 +22,7 @@ bash scripts/check-prereqs.sh --storage-path /media/library --workspace-path ~/.
 ```
 
 1. Use `uDOS-wizard/docs/first-launch-quickstart.md` when validating workflow handoff into a running `uHOME-server`.
-1. Use `uHOME-empire/docs/quickstart.md` when validating pack or sync handoff into the local runtime.
+1. Use `uDOS-empire/docs/quickstart.md` when validating pack or sync handoff into the local runtime.
 1. Keep service code under `services/` and `modules/`.
 1. Route scheduling behavior through `scheduling/`.
 1. Put new Matter or Home Assistant extension contracts in `uHOME-matter`.

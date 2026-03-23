@@ -7,7 +7,7 @@
   - `uDOS-dev`
   - `uHOME-server`
   - `uHOME-client`
-  - `uHOME-empire`
+  - `uDOS-empire`
 - status: `triaged`
 
 ## Summary
@@ -19,7 +19,7 @@ household platform with Matter and platform-specific kiosk clients.
 ## Findings
 
 - the direction is compatible with the current family boundary model
-- `uHOME-server` and `uHOME-empire` already align with major parts of the brief
+- `uHOME-server` and `uDOS-empire` already align with major parts of the brief
 - `uHOME-client` currently carries the shared runtime role that the brief wants
   to project through the active Android and iOS app repos
 - `uHOME-app-android` and `uHOME-app-ios` are now the active v2 mobile app

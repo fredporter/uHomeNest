@@ -24,7 +24,7 @@ The system is composed of:
 
 - uHOME-server (core)
 - uHOME-matter extension
-- uHOME-empire extension
+- uDOS-empire extension
 - optional Android / iOS / tablet kiosk and portal clients
 
 ---
@@ -53,7 +53,7 @@ Repositories:
 
 - uHOME-server
 - uHOME-matter
-- uHOME-empire
+- uDOS-empire
 - uHOME-app-android
 - uHOME-app-ios
 
@@ -327,7 +327,7 @@ Device automation remains separate from Empire.
 
 ---
 
-# uHOME-empire Extension
+# uDOS-empire Extension
 
 Empire provides **server automation and cloud sync**.
 

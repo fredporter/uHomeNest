@@ -2,7 +2,7 @@
 
 Purpose:
 
-- explain how `uHOME-empire` handles online API calls, webhooks, and cron-type
+- explain how `uDOS-empire` handles online API calls, webhooks, and cron-type
   sync jobs
 - keep online service integrations separate from local household automation in
   `uHOME-server`
@@ -17,16 +17,16 @@ Topics:
 
 Repo anchors:
 
-- sibling repo: `uHOME-empire/src/webhooks/`
-- sibling repo: `uHOME-empire/examples/configurable-webhook-server.json`
-- sibling repo: `uHOME-empire/docs/architecture.md`
+- sibling repo: `uDOS-empire/src/webhooks/`
+- sibling repo: `uDOS-empire/examples/configurable-webhook-server.json`
+- sibling repo: `uDOS-empire/docs/architecture.md`
 - `../../docs/pathway/REPO-FAMILY.md`
 
 Boundary note:
 
 - `uHOME-server` owns the base runtime and local execution surfaces
 - `uHOME-matter` owns local automation and bridge contracts
-- `uHOME-empire` owns custom online APIs, webhooks, and always-on sync jobs
+- `uDOS-empire` owns custom online APIs, webhooks, and always-on sync jobs
 
 First project:
 

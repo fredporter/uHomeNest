@@ -29,7 +29,7 @@ That v2 architecture surface now captures:
 - controller-first kiosk and launcher model
 - Jellyfin media lane and Steam-side game surfaces
 - networking profile split (`Beacon`, `Crypt`, `Tomb`, `Home`)
-- extension split across `uHOME-matter` and `uHOME-empire`
+- extension split across `uHOME-matter` and `uDOS-empire`
 
 This decision file remains useful for historical lane context, while v2 runtime
 shape should be read from `docs/architecture.md` first.

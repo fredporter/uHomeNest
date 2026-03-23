@@ -15,4 +15,8 @@ if [ ! -x "$PYTHON_BIN" ]; then
   "$PYTHON_BIN" -m pip install -e '.[dev]'
 fi
 
+if ! "$PYTHON_BIN" -c 'import uhome_server' >/dev/null 2>&1; then
+  "$PYTHON_BIN" -m pip install -e '.[dev]'
+fi
+
 "$PYTHON_BIN" -m pytest tests

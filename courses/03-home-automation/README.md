@@ -11,7 +11,7 @@ Topics:
 - scheduling
 - smart device control
 - bridge boundaries
-- local-first automation distinct from `uHOME-empire` online webhooks
+- local-first automation distinct from `uDOS-empire` online webhooks
 
 Repo anchors:
 
@@ -31,4 +31,4 @@ Boundary note:
 - `uHOME-server` owns local execution, scheduling, and host runtime support
 - `uHOME-matter` owns Home Assistant, Matter, and local device automation
   contracts or clone definitions
-- custom online APIs and webhook jobs belong in `uHOME-empire`
+- custom online APIs and webhook jobs belong in `uDOS-empire`
