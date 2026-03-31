@@ -418,6 +418,28 @@ def test_thin_automation_route_serves_html(monkeypatch):
     assert response.status_code == 200
     assert "text/html" in response.headers["content-type"]
     assert "Automation Status" in response.text
+    assert "/static/thin/prose.css" in response.text
+    assert "/api/runtime/thin/read" in response.text
+
+
+def test_thin_read_route_uses_prose_shell():
+    from uhome_server.app import app as full_app
+
+    client = TestClient(full_app)
+    response = client.get("/api/runtime/thin/read")
+    assert response.status_code == 200
+    assert "text/html" in response.headers["content-type"]
+    assert "prose" in response.text
+    assert "/static/thin/prose.css" in response.text
+
+
+def test_thin_browse_docs_under_pathway():
+    from uhome_server.app import app as full_app
+
+    client = TestClient(full_app)
+    response = client.get("/api/runtime/thin/browse", params={"rel": "pathway/README.md"})
+    assert response.status_code == 200
+    assert "prose" in response.text
 
 
 def test_sync_record_ingest_and_latest_routes(monkeypatch):

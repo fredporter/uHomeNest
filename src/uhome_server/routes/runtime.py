@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from typing import Any, Callable, Optional
 
-from fastapi import APIRouter, Body, Depends, Request
+from fastapi import APIRouter, Body, Depends, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 
 from uhome_server.config import (
@@ -37,6 +37,11 @@ from pydantic import ValidationError
 from uhome_server.services.home_assistant_service import get_ha_service
 from uhome_server.services.uhome_command_handlers import playback_status
 from uhome_server.workspace import get_template_workspace_service
+from uhome_server.thin_pages import (
+    thin_automation_status_html,
+    thin_read_mode_from_path,
+    thin_read_mode_html,
+)
 
 
 def _probe(fn: Callable[[], dict[str, Any]], label: str, required: bool = True) -> dict[str, Any]:
@@ -228,124 +233,6 @@ def uhome_network_policy_validation_result(payload: dict[str, Any]) -> tuple[dic
     )
 
 
-def thin_automation_status_html() -> str:
-    store = get_automation_store()
-    status = store.status()
-    jobs = store.list_jobs().get("items", [])
-    results = store.list_results().get("items", [])
-    latest_result = results[-1] if results else None
-    latest_job = jobs[-1] if jobs else None
-    return f"""<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>uHOME Thin Automation</title>
-    <style>
-      :root {{
-        --bg: #1c1713;
-        --panel: #2a221c;
-        --panel-alt: #f5ead9;
-        --ink: #201914;
-        --text: #f7efe4;
-        --muted: #ccb8a2;
-        --accent: #d39a55;
-      }}
-      body {{
-        margin: 0;
-        min-height: 100vh;
-        background: radial-gradient(circle at top, #3a2f26 0%, var(--bg) 56%);
-        color: var(--text);
-        font-family: "IBM Plex Sans", sans-serif;
-      }}
-      main {{
-        width: min(920px, calc(100vw - 32px));
-        margin: 0 auto;
-        padding: 24px 0 40px;
-      }}
-      .hero {{
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }}
-      .card {{
-        background: rgba(42, 34, 28, 0.86);
-        border: 1px solid rgba(211, 154, 85, 0.28);
-        border-radius: 20px;
-        padding: 18px;
-      }}
-      .surface {{
-        margin-top: 18px;
-        background: var(--panel-alt);
-        color: var(--ink);
-        border-radius: 24px;
-        padding: 20px;
-      }}
-      .eyebrow {{
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--accent);
-      }}
-      h1, h2 {{
-        margin: 8px 0 0;
-        font-family: "Fraunces", serif;
-      }}
-      p {{
-        color: var(--muted);
-      }}
-      .surface p {{
-        color: #5d4b3d;
-      }}
-      .list {{
-        display: grid;
-        gap: 12px;
-        margin-top: 14px;
-      }}
-      .item {{
-        border: 1px solid rgba(93, 75, 61, 0.18);
-        border-radius: 16px;
-        padding: 14px;
-        background: rgba(255,255,255,0.62);
-      }}
-    </style>
-  </head>
-  <body>
-    <main>
-      <section class="hero">
-        <article class="card">
-          <div class="eyebrow">uHOME Thin</div>
-          <h1>Automation Status</h1>
-          <p>Always-on runtime view for queued work and latest completion state.</p>
-        </article>
-        <article class="card">
-          <div class="eyebrow">Queued Jobs</div>
-          <h2>{status.get("queued_jobs", 0)}</h2>
-        </article>
-        <article class="card">
-          <div class="eyebrow">Recorded Results</div>
-          <h2>{status.get("recorded_results", 0)}</h2>
-        </article>
-      </section>
-      <section class="surface">
-        <div class="eyebrow">Latest Activity</div>
-        <div class="list">
-          <article class="item">
-            <strong>Latest queued job</strong>
-            <p>{latest_job.get("job_id", "No queued jobs yet.") if latest_job else "No queued jobs yet."}</p>
-          </article>
-          <article class="item">
-            <strong>Latest result</strong>
-            <p>{latest_result.get("job_id", "No recorded results yet.") if latest_result else "No recorded results yet."}</p>
-            <p>{latest_result.get("status", "") if latest_result else ""}</p>
-          </article>
-        </div>
-      </section>
-    </main>
-  </body>
-</html>"""
-
-
 def sync_record_validation_result(payload: dict[str, Any]) -> tuple[dict[str, Any], int]:
     try:
         envelope = validate_sync_record_envelope(payload)
@@ -438,6 +325,24 @@ def create_runtime_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
     @router.get("/thin/automation", response_class=HTMLResponse)
     async def thin_automation():
         return HTMLResponse(thin_automation_status_html())
+
+    @router.get("/thin/read", response_class=HTMLResponse)
+    async def thin_read():
+        return HTMLResponse(thin_read_mode_html())
+
+    @router.get("/thin/browse", response_class=HTMLResponse)
+    async def thin_browse(rel: str = Query(..., min_length=1, description="Path under repo docs/, e.g. pathway/README.md")):
+        docs_root = get_repo_root() / "docs"
+        raw = rel.replace("\\", "/").lstrip("/")
+        if ".." in raw.split("/"):
+            return HTMLResponse("Invalid path", status_code=400)
+        target = (docs_root / raw).resolve()
+        try:
+            target.relative_to(docs_root.resolve())
+        except ValueError:
+            return HTMLResponse("Forbidden", status_code=403)
+        page, status_code = thin_read_mode_from_path(target)
+        return HTMLResponse(page, status_code=status_code)
 
     @router.post("/sync-records/validate", dependencies=dependencies)
     async def validate_sync_records(payload: dict[str, Any] = Body(...)):

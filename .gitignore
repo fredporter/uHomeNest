@@ -20,3 +20,4 @@ DerivedData/
 memory/
 docs/.compost/
 src/uhome_server.egg-info/
+thin-prose-build/node_modules/

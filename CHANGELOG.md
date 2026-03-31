@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Thin **Tailwind Typography** bundle (`static/thin/prose.css`, built from `thin-prose-build/`)
+  and HTML surfaces: `GET /api/runtime/thin/read` (default markdown intro), `GET /api/runtime/thin/browse`
+  (markdown under `docs/` via `rel=` query), cross-links with `/api/runtime/thin/automation`.
+- **`markdown`** dependency for server-side markdown rendering in thin read/browse mode.
 - `uhome migrate wizard-to-kiosk`: copies `memory/wizard/uhome/presentation.json` to
   `memory/kiosk/uhome/`, rewrites `wizard_mode_active` → `kiosk_local_session` in that
   JSON, and updates `library/**/container.json` (`wizard_only` → `thin_kiosk_only`,

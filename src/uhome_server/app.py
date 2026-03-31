@@ -1,8 +1,10 @@
 """FastAPI application for the standalone uHOME server."""
 
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from uhome_server.config import bootstrap_runtime
 from uhome_server.routes.containers import router as containers_router
@@ -28,6 +30,9 @@ async def _lifespan(app: FastAPI):
 
 def create_app() -> FastAPI:
     app = FastAPI(title="uHOME Server", version="0.1.0", lifespan=_lifespan)
+    thin_static = Path(__file__).resolve().parent / "static" / "thin"
+    if thin_static.is_dir():
+        app.mount("/static/thin", StaticFiles(directory=str(thin_static)), name="thin_static")
     app.include_router(health_router)
     app.include_router(create_dashboard_routes())
     app.include_router(create_ha_routes())
