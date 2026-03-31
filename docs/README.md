@@ -1,10 +1,18 @@
 # Docs
 
-`docs/` is the reference-first documentation root for `uHOME-server`.
+`docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
+uDOS family split:
 
-Tutorial and student-facing step-through material belongs in `courses/`. This
-root is for architecture, pathway, client, operational, and implementation
-documentation tied to the real repo.
+| Lane | Location | Role |
+| --- | --- | --- |
+| Reference | [`docs/`](README.md) (here) | Architecture, clients, ops, specs |
+| Wiki | [`../wiki/`](../wiki/README.md) | Short units and quick orientation |
+| Learning | [`../learning/`](../learning/README.md) | Study order, courses pointers, uDOS Library links |
+
+Tutorial and student-facing step-through material also lives under
+[`courses/`](../courses/README.md) (repo root) with maintainer notes in
+`docs/courses/`. This tree is for architecture, pathway, client, operational,
+and implementation documentation tied to the real repo.
 
 ## Entry Points
 
@@ -30,8 +38,10 @@ documentation tied to the real repo.
 
 - [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) for the
   active repo-local development plan
-- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) for the repo workflow
-  and binder-alignment brief
+- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) for contributor workflow
+  (optional `@dev` / `#binder` parity; uHOME defaults to roadmap + issues)
+- [thin-ui-feature-completion.md](thin-ui-feature-completion.md) for thin UI and
+  product feature checklists
 - [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md)
   for the education-structure brief
 - [PHASE-1-IA-MAP.md](architecture/PHASE-1-IA-MAP.md) for current-to-target mapping
@@ -53,6 +63,13 @@ documentation tied to the real repo.
 - [REPO-FAMILY.md](pathway/REPO-FAMILY.md) for family-boundary and companion-repo rules
 - the deprecated `uhome_server.sonic` namespace is compatibility-only; new
   repo-local work should use `uhome_server.installer`
+
+## Family library (GitHub Pages)
+
+The **uDOS Library** indexes uHOME repos (Docs / Wiki / Learning links) from
+[`uDOS-docs` `site/data/family-source.json`](https://github.com/fredporter/uDOS-docs/blob/main/site/data/family-source.json).
+The public **Learning hub** is `https://fredporter.github.io/uDOS-docs/learning.html`
+when Pages is deployed.
 
 ## Sections
 

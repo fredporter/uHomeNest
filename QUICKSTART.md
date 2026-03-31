@@ -31,12 +31,17 @@ That starts the server and opens the local console/kiosk GUI automatically.
 
 ## 2. Run The API
 
+From the repo root (after `.venv` exists):
+
 ```bash
+cd /path/to/uHOME-server
 source .venv/bin/activate
 python -m uvicorn uhome_server.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Default URL:
+Use any free port you like (`--port 7890`, etc.). **All URLs below assume the port you chose** — here **`8000`**.
+
+Base URL:
 
 - `http://127.0.0.1:8000`
 
@@ -52,9 +57,13 @@ curl http://127.0.0.1:8000/api/household/status
 curl http://127.0.0.1:8000/api/launcher/status
 ```
 
-Open the thin automation status view in a browser:
+**Thin UI (browser proof for Cursor workspace 03):** open these on the same host/port:
 
-- `http://127.0.0.1:8000/api/runtime/thin/automation`
+- `http://127.0.0.1:8000/api/runtime/thin/automation` — automation status HTML
+- `http://127.0.0.1:8000/api/runtime/thin/read` — default **prose** reading page
+- `http://127.0.0.1:8000/api/runtime/thin/browse?rel=pathway/README.md` — sample `docs/` file
+
+Confirm **`/static/thin/prose.css`** loads (Network tab or view source). If CSS is missing, build it under `thin-prose-build/` per `CHANGELOG.md`.
 
 ## 4. Pair Wizard To The Running Server
 

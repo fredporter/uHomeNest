@@ -1,42 +1,42 @@
-uHOME-server repo — @dev workspace and #binder workflow note
+uHOME-server repo — contributor workflow (optional @dev / #binder parity)
 
-This note defines how the uHOME-server repo should align with the same @dev workspace and development workflow used by the uDOS core repo, while maintaining a disciplined separation between local development activity and the distributable server repo.
+**Scope (2026-03):** uHOME is **not** a uDOS **Workspace / binder-compile** product. Operators and public planning use **`docs/UHOME-DEV-ROADMAP.md`**, **`docs/thin-ui-feature-completion.md`**, issues, and family round notes (`uDOS-dev`). **Thin browser surfaces** are **server-rendered Markdown + Tailwind Typography (`prose`)** only — no binder-backed doc shell, no Wizard workspace dependency.
 
-The uHOME-server project should operate as a governed development stream within the uDOS ecosystem, using #binders to track milestones, objectives, and pending development work, and using the @dev workspace as the primary active development surface.
+**Sync records:** fields such as `binder_project` / `binders` in `sync_records` stay as **optional JSON compatibility** for **`integrated-udos`** clients sharing family envelope shapes. That is **not** “uHOME ships binder UX.”
+
+The material below describes **optional** alignment if a contributor already uses the uDOS **`@dev`** tree and **#binder** language. Treat it as **reference**, not a requirement for uHOME-only or standalone-household work.
 
 ⸻
 
 Purpose
 
 The uHOME-server repo should:
-	•	follow the same @dev workspace conventions as the uDOS core repo
-	•	track development milestones and objectives using #binders
-	•	allow local development scaffolding and experimental work within a local extension layer
+	•	keep a clear split between local experiments and what ships in the public tree
+	•	use **roadmap + checklists + issues** as the default planning spine
+	•	allow local development scaffolding in private or `@dev` extension layers where useful
 	•	prevent dev-mode artifacts from leaking into the distributable repo
 	•	restrict public repo contributions to approved contributors only
 
-The uHOME-server repo therefore represents a curated output surface, while active development occurs in the @dev workspace and local extension environment.
+Optional uDOS-style habits (below) may still be used when coordinating with the wider family; they are **not** the authoritative uHOME process.
 
 ⸻
 
-Core alignment with uDOS core
+Optional alignment with uDOS core (reference)
 
-uHOME-server development should mirror the same high-level workflow used by uDOS core.
+Some contributors mirror uDOS habits:
 
-Shared development model
-	•	@dev workspace = active development environment
-	•	#binder = mission, milestone, or objective container
-	•	local extension supports development scaffolding and background advancement
-	•	compiled binder outcomes are reviewed before repo promotion
-	•	repo commits are milestone-driven and contributor-governed
+	•	`@dev` workspace = optional active development environment
+	•	`#binder` = optional mission/milestone container **in uDOS-dev workflows**
+	•	local extension supports scaffolding and background advancement
+	•	review before promoting large changes into the public server repo
 
-This ensures the uHOME-server repo remains clean, stable, and distributable, while allowing flexible development locally.
+This does **not** imply uHOME-server commits are binder-gated or that operators ever see binder semantics in product UI.
 
 ⸻
 
-Shared lifecycle
+## Optional shared lifecycle (when using #binders)
 
-All uHOME-server development should follow the same binder lifecycle used in uDOS core.
+If you **choose** to track work with `#binders`, you may mirror the uDOS core lifecycle language below. **Skip this section** if you use issues + roadmap only.
 
 Open
 Hand off
@@ -121,11 +121,11 @@ Deprecated experiments, stale drafts, or abandoned exploratory work.
 
 ⸻
 
-#binder usage for uHOME-server
+## Optional: #binder usage (uDOS-family parity only)
 
-All meaningful development work should be tracked using #binders.
+If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHOME-server: use GitHub issues and `docs/UHOME-DEV-ROADMAP.md` / `docs/thin-ui-feature-completion.md` first.
 
-Binders represent:
+Where used, binders may represent:
 	•	milestones
 	•	feature work
 	•	infrastructure updates

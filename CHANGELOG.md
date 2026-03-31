@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `docs/thin-ui-feature-completion.md` — living checklist for thin UI lanes and product backlog.
 - Thin **Tailwind Typography** bundle (`static/thin/prose.css`, built from `thin-prose-build/`)
   and HTML surfaces: `GET /api/runtime/thin/read` (default markdown intro), `GET /api/runtime/thin/browse`
   (markdown under `docs/` via `rel=` query), cross-links with `/api/runtime/thin/automation`.
@@ -33,6 +34,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Operations README as central navigation hub for all operational documentation
 
 ### Changed
+- **Planning:** uHOME **does not** ship uDOS **#binder / Workspace** as operator UX;
+  thin surfaces stay **Markdown + Tailwind Prose** (`docs/uHOME-server-dev-brief.md`,
+  `docs/UHOME-DEV-ROADMAP.md`). **`sync_records`** `binder_*` fields remain for optional
+  **`integrated-udos`** JSON only (`sync_records` module docstring).
+- **`QUICKSTART.md`:** thin UI URLs and default **`8000`** port called out for browser proof.
 - **Code decoupling:** sync-record contract + schema ship under `uhome_server/contracts/`
   (no `uDOS-core` path); optional overrides `UHOME_SYNC_RECORD_CONTRACT_PATH` /
   `UHOME_SYNC_RECORD_SCHEMA_PATH`. Removed `get_udos_family_root` from server config.

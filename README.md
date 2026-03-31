@@ -36,7 +36,9 @@ owning bridge contracts and adapter assets).
 - `services/`
 - `scheduling/`
 - `modules/`
-- `docs/`
+- `docs/` — stable reference (aligned with uDOS `docs/`)
+- `wiki/` — short units and orientation (aligned with family `wiki/`)
+- `learning/` — study order and Library links (repo-local counterpart to Pages “learning” hub)
 - `tests/`
 - `scripts/`
 - `config/`

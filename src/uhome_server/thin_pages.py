@@ -68,8 +68,8 @@ Tailwind **Typography** (`prose`) is enabled for long-form reading and light bro
 ## What this is
 
 - Server-rendered HTML with a compiled `@tailwindcss/typography` stylesheet.
-- A stepping stone toward family **logs / feeds / spool** browsing (see uDOS-dev candidate note).
-- Not a replacement for ThinUI or full markdown pipelines.
+- **Plain markdown** reading only — not a uDOS Workspace or **#binder** document shell.
+- Optional future: family **logs / feeds / spool** (see uDOS-dev candidate note); not committed in stable `docs/` yet.
 
 ## Links
 

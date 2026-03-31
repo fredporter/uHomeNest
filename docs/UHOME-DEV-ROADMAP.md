@@ -1,15 +1,26 @@
 # uHOME Dev Roadmap
 
-Status: active
-Updated: 2026-03-10
-Lead: AI Roadmap Manager
+Status: active  
+Updated: 2026-03-31  
+Lead: AI Roadmap Manager  
 Scope: standalone `uHOME Server` repository
 
 This roadmap is governed by:
 
-- `docs/uHOME-server-dev-brief.md`
+- `docs/uHOME-server-dev-brief.md` (optional `@dev` / `#binder` parity only)
 - `docs/uHOME-server-education-dev-brief.md`
 - `docs/architecture/UHOME-SERVER-DEV-PLAN.md`
+- `docs/thin-ui-feature-completion.md` — **checklist** of thin UI + product features still to build
+
+## Planning model (2026)
+
+- **Default:** roadmap + issues + family round notes (`uDOS-dev`); **no** uDOS binder
+  or Workspace compile path as a uHOME **product** requirement.
+- **Thin operator reading:** server **Markdown** + **Tailwind Typography** at
+  `/api/runtime/thin/read`, `/api/runtime/thin/browse`, `/api/runtime/thin/automation`
+  (see `QUICKSTART.md` for run and port).
+- **Sync JSON:** `binder_*` fields in sync records remain for optional
+  **`integrated-udos`** envelope compatibility, not for operator binder UX.
 
 ## Goal
 
@@ -181,12 +192,13 @@ Deferred to future:
 - degrade gracefully when nodes or storage disappear
 - keep client apps downstream of server contracts rather than embedding them in
   this repo
+- keep **thin HTML** as **prose markdown** unless a future phase explicitly scopes
+  a richer UI
 
-##~~add dependency lockfiles~~ ✓ completed 2026-03-10
-- ~~add Jellyfin integration tests and configuration docs~~ ✓ completed 2026-03-10
+## Near-term engineering backlog (see also thin-ui checklist)
+
 - extract playback routes from Home Assistant command-handler scaffolding
 - broaden node authority states and transitions beyond current primary handoff
-- define storage volume identity rules beyond mount path current primary handoff
 - define storage volume identity rules beyond mount paths
-- add Jellyfin integration tests and configuration docs
+- Jellyfin integration tests and configuration docs (deepen beyond baseline)
 - define API contract for downstream TV/mobile clients

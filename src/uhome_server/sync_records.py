@@ -1,4 +1,9 @@
-"""Typed sync-record models aligned to the uHOME-bundled sync-record contract."""
+"""Typed sync-record models aligned to the uHOME-bundled sync-record contract.
+
+`binder` / `binder_project` / `binders` mirror optional family JSON shapes for
+`integrated-udos` clients. uHOME does not expose binder workflows in product UI;
+see `docs/uHOME-server-dev-brief.md` and `docs/UHOME-DEV-ROADMAP.md`.
+"""
 
 from __future__ import annotations
 
