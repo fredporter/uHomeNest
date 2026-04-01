@@ -124,10 +124,10 @@ if [ -n "${UDOS_SHARED_PYTHON_BIN:-}" ] && [ -x "${UDOS_SHARED_PYTHON_BIN}" ]; t
   pass "Shared Python available at ${UDOS_SHARED_PYTHON_BIN}"
 elif [ -x "$HOME/.udos/envs/family-py311/bin/python" ]; then
   pass "Shared Python available at $HOME/.udos/envs/family-py311/bin/python"
-elif [ -d .venv ] && [ -f .venv/bin/activate ]; then
-  pass "Python virtualenv exists at .venv (standalone mode)"
+elif [ -d "$HOME/.udos/venv/uhome-server" ] && [ -f "$HOME/.udos/venv/uhome-server/bin/activate" ]; then
+  pass "Python virtualenv exists at $HOME/.udos/venv/uhome-server"
 else
-  warn "No explicit Python environment detected (.venv absent and shared lane not found)"
+  warn "No explicit Python environment detected (~/.udos/venv/uhome-server absent and shared lane not found)"
 fi
 
 echo ""

@@ -18,10 +18,10 @@ repository as it exists today.
 3. Use the CLI entrypoints for launcher or installer flows.
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade pip setuptools wheel
-.venv/bin/python -m pip install -e '.[dev]'
-.venv/bin/python -m uvicorn uhome_server.app:app --reload
+python3 -m venv ~/.udos/venv/uhome-server
+~/.udos/venv/uhome-server/bin/python -m pip install --upgrade pip setuptools wheel
+~/.udos/venv/uhome-server/bin/python -m pip install -e '.[dev]'
+~/.udos/venv/uhome-server/bin/python -m uvicorn uhome_server.app:app --reload
 ```
 
 ## Primary Runtime Surfaces

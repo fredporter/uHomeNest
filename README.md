@@ -82,7 +82,7 @@ For runtime vs Sonic vs `uHOME-matter` boundaries, see `docs/base-runtime-bounda
 
 ```bash
 bash scripts/run-uhome-server-checks.sh
-.venv/bin/python -m uvicorn uhome_server.app:app --host 127.0.0.1 --port 8000 --reload
+~/.udos/venv/uhome-server/bin/python -m uvicorn uhome_server.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 For the direct local console/kiosk launch path, use:

@@ -20,8 +20,8 @@ When updating dependencies:
 
 ```bash
 # 1. Clean install from pyproject.toml
-python -m venv .venv
-source .venv/bin/activate
+python -m venv ~/.udos/venv/uhome-server
+source ~/.udos/venv/uhome-server/bin/activate
 pip install -e '.[dev]'
 
 # 2. Generate lockfile

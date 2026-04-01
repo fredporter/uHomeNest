@@ -31,7 +31,7 @@ scripts/run-uhome-server-checks.sh
 
 This command:
 
-- bootstraps a local `.venv` only when needed
+- bootstraps a local `~/.udos/venv/uhome-server` runtime only when needed
 - installs the editable dev dependencies
 - runs the current `pytest` suite for the active server package
 

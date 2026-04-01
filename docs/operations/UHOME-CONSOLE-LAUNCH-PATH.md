@@ -13,7 +13,7 @@ From repo root:
 
 ```bash
 bash scripts/run-uhome-server-checks.sh
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 ```
 
 One-command local console launch:
@@ -46,7 +46,7 @@ curl http://127.0.0.1:8000/api/launcher/menu
 ## 5. Validate CLI Console Lane
 
 ```bash
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 uhome launcher status
 uhome contracts sync-record
 ```

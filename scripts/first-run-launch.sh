@@ -7,7 +7,7 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 RUN_DIR="${REPO_ROOT}/.run"
 SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
 USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
-VENV_DIR="${REPO_ROOT}/.venv"
+VENV_DIR="${UDOS_VENV_DIR:-$HOME/.udos/venv/uhome-server}"
 PYTHON_BIN="${VENV_DIR}/bin/python"
 PORT="${UHOME_PORT:-8000}"
 HOST="${UHOME_HOST:-127.0.0.1}"
@@ -72,6 +72,7 @@ require_cmd python3
 require_cmd bash
 
 mkdir -p "${RUN_DIR}"
+mkdir -p "${VENV_DIR}"
 cd "${REPO_ROOT}"
 
 echo "Bootstrapping uHOME-server..."

@@ -32,8 +32,8 @@ cd uHOME-server
 ## 3. Create Virtual Environment And Install
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv ~/.udos/venv/uhome-server
+source ~/.udos/venv/uhome-server/bin/activate
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -e '.[dev]'
 ```
@@ -41,14 +41,14 @@ python -m pip install -e '.[dev]'
 ## 4. Verify Installation
 
 ```bash
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 python -m pytest tests/
 ```
 
 ## 5. Start The Server
 
 ```bash
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 python -m uvicorn uhome_server.app:app --host 0.0.0.0 --port 8000
 ```
 
@@ -77,7 +77,7 @@ curl http://localhost:8000/api/debug/registries
 ## 7. Optional: Use CLI Tools
 
 ```bash
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 uhome launcher status
 uhome backup create
 uhome backup list

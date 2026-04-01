@@ -15,10 +15,10 @@ From the repo root:
 
 ```bash
 bash scripts/run-uhome-server-checks.sh
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 ```
 
-The check script creates `.venv` when needed, installs the editable dev
+The check script creates `~/.udos/venv/uhome-server` when needed, installs the editable dev
 dependencies, and runs the current `pytest` suite.
 
 Direct launch path:
@@ -31,11 +31,11 @@ That starts the server and opens the local console/kiosk GUI automatically.
 
 ## 2. Run The API
 
-From the repo root (after `.venv` exists):
+From the repo root (after `~/.udos/venv/uhome-server` exists):
 
 ```bash
 cd /path/to/uHOME-server
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 python -m uvicorn uhome_server.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
@@ -101,7 +101,7 @@ bridge probes after the local runtime is up.
 ## 6. Useful CLI Commands
 
 ```bash
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 uhome launcher status
 uhome contracts sync-record
 uhome backup list

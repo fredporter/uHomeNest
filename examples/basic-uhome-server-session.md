@@ -12,7 +12,7 @@ scripts/run-uhome-server-checks.sh
 ## Start The App
 
 ```bash
-.venv/bin/python -m uvicorn uhome_server.app:app --reload
+~/.udos/venv/uhome-server/bin/python -m uvicorn uhome_server.app:app --reload
 ```
 
 ## Verify Health

@@ -55,7 +55,7 @@ Reference the environment file from the service unit:
 [Service]
 EnvironmentFile=/etc/uhome/uhome-server.env
 WorkingDirectory=/opt/uhome-server
-ExecStart=/opt/uhome-server/.venv/bin/python -m uvicorn uhome_server.app:app --host 0.0.0.0 --port 7890
+ExecStart=/home/uhome/.udos/venv/uhome-server/bin/python -m uvicorn uhome_server.app:app --host 0.0.0.0 --port 7890
 ```
 
 After editing the service or environment file:

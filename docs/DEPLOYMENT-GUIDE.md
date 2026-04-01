@@ -17,8 +17,8 @@ cd uhome-server
 sudo apt-get update && sudo apt-get install -y python3.9 python3-venv
 
 # Create Python virtualenv
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv ~/.udos/venv/uhome-server
+source ~/.udos/venv/uhome-server/bin/activate
 
 # Install uHOME with dev dependencies
 pip install -e '.[dev]'
@@ -119,13 +119,13 @@ ls -la
 
 ```bash
 # Create virtualenv
-python3 -m venv .venv
+python3 -m venv ~/.udos/venv/uhome-server
 
 # Activate virtualenv
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 
-# Verify activation (prompt should show (.venv))
-which python  # Should point to .venv/bin/python
+# Verify activation
+which python  # Should point to ~/.udos/venv/uhome-server/bin/python
 ```
 
 ### Phase 4: Install uHOME Server and Dependencies (10 minutes)
@@ -134,7 +134,7 @@ which python  # Should point to .venv/bin/python
 
 ```bash
 # Ensure virtualenv is active
-source /opt/uhome-server/.venv/bin/activate
+source /home/uhome/.udos/venv/uhome-server/bin/activate
 
 # Install uHOME Server with dependencies
 cd /opt/uhome-server
@@ -179,7 +179,7 @@ ls -ld /media/library /media/dvr-storage
 cd /opt/uhome-server
 
 # This creates ~/.workspace with initial registries
-source .venv/bin/activate
+source ~/.udos/venv/uhome-server/bin/activate
 uhome init
 
 # Verify workspace created
@@ -263,7 +263,7 @@ Type=simple
 User=uhome
 Group=uhome
 WorkingDirectory=/opt/uhome-server
-ExecStart=/opt/uhome-server/.venv/bin/uhome
+ExecStart=/home/uhome/.udos/venv/uhome-server/bin/uhome
 
 # Auto-restart if process crashes
 Restart=on-failure
@@ -466,7 +466,7 @@ chmod +x /opt/uhome-server/backup-workspace.sh
 sudo journalctl -u uhome-server -n 50
 
 # Check Python virtualenv
-source /opt/uhome-server/.venv/bin/activate
+source /home/uhome/.udos/venv/uhome-server/bin/activate
 python3 -c "import uhome_server; print('Import OK')"
 
 # Check workspace permissions
@@ -474,7 +474,7 @@ ls -la ~/.workspace/
 # Should be readable/writable by uhome user
 
 # Test manual startup
-/opt/uhome-server/.venv/bin/uhome --debug
+/home/uhome/.udos/venv/uhome-server/bin/uhome --debug
 ```
 
 ### Port 7890 in Use

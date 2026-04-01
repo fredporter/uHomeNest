@@ -333,7 +333,7 @@ watch -n 5 'ps aux | grep uhome | grep -v grep'
 sudo journalctl -u uhome-server -n 50
 
 # Try manual startup to see error
-source /opt/uhome-server/.venv/bin/activate
+source /home/uhome/.udos/venv/uhome-server/bin/activate
 uhome --debug
 
 # Common fixes:
