@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# Local scratch (if used at monorepo root)
+.local/
+.compost/
+
+# Common artifacts in subtrees
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/node_modules/
+**/.build/
+**/dist/
+*.egg-info/
