@@ -4,8 +4,7 @@ Phase-based planning documents and binder-era **`@dev/`** trees were **removed f
 
 ## Canonical sources
 
-- [`../ROADMAP-V4.md`](../ROADMAP-V4.md) — uHomeNest **v4** product line
-- [`../UHOME-DEV-ROADMAP.md`](../UHOME-DEV-ROADMAP.md) — delivery narrative and phases (product, not doc milestones)
+- [`../ROADMAP-V4.md`](../ROADMAP-V4.md) — **v4 plan** (single source; [`../UHOME-DEV-ROADMAP.md`](../UHOME-DEV-ROADMAP.md) redirects here)
 - [`../thin-ui-feature-completion.md`](../thin-ui-feature-completion.md) — thin UI checklist
 - [`../ui/UHOME-DASHBOARD.md`](../ui/UHOME-DASHBOARD.md) — dashboard / client API contract
 - [UniversalSurfaceXD — uHOME handoff](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/uhome/README.md) — surface interchange (`?sample=uhomeThin`)

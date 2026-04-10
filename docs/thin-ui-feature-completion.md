@@ -1,7 +1,7 @@
 # uHOME thin UI and product feature completion
 
 **Purpose:** single checklist of **remaining or in-flight** capabilities. Use with
-`docs/UHOME-DEV-ROADMAP.md` for phasing. **Thin browser lane** is intentionally
+[`docs/ROADMAP-V4.md`](ROADMAP-V4.md) for phasing. **Thin browser lane** is intentionally
 **Markdown → HTML + Tailwind Typography (`prose`)** only — no uDOS Workspace /
 binder-backed reading shell.
 

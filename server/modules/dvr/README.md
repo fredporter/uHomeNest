@@ -10,7 +10,7 @@ Current runtime anchors:
 
 - file-backed DVR scheduling and playback settings described in `README.md`
 - installer and runtime examples under `examples/installer/`
-- roadmap targets in `docs/UHOME-DEV-ROADMAP.md`
+- roadmap targets in `docs/ROADMAP-V4.md`
 
 Notes:
 

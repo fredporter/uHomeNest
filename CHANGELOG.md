@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- Add new notes here; cut a dated section when releasing. -->
 
+## [3.9.2] — 2026-04-10
+
+### Changed
+
+- **Planning:** consolidated the **v4** product plan into a single canonical **[`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md)**. **[`docs/UHOME-DEV-ROADMAP.md`](docs/UHOME-DEV-ROADMAP.md)** is now a short redirect for bookmarks; cross-links and module docstrings updated.
+
 ## [3.9.1] — 2026-04-10
 
 ### Removed

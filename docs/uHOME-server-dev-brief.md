@@ -1,6 +1,6 @@
 uHOME-server repo — contributor workflow (optional @dev / #binder parity)
 
-**Scope (2026-03):** uHOME is **not** a uDOS **Workspace / binder-compile** product. Operators and public planning use **`docs/UHOME-DEV-ROADMAP.md`**, **`docs/thin-ui-feature-completion.md`**, issues, and family round notes (`uDOS-dev`). **Thin browser surfaces** are **server-rendered Markdown + Tailwind Typography (`prose`)** only — no binder-backed doc shell, no Wizard workspace dependency.
+**Scope (2026-03):** uHOME is **not** a uDOS **Workspace / binder-compile** product. Operators and public planning use **`docs/ROADMAP-V4.md`** (v4 plan), **`docs/thin-ui-feature-completion.md`**, issues, and family round notes (`uDOS-dev`). **Thin browser surfaces** are **server-rendered Markdown + Tailwind Typography (`prose`)** only — no binder-backed doc shell, no Wizard workspace dependency.
 
 **Sync records:** fields such as `binder_project` / `binders` in `sync_records` stay as **optional JSON compatibility** for **`integrated-udos`** clients sharing family envelope shapes. That is **not** “uHOME ships binder UX.”
 
@@ -125,7 +125,7 @@ Deprecated experiments, stale drafts, or abandoned exploratory work.
 
 ## Optional: #binder usage (uDOS-family parity only)
 
-If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHOME-server: use GitHub issues and `docs/UHOME-DEV-ROADMAP.md` / `docs/thin-ui-feature-completion.md` first.
+If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHOME-server: use GitHub issues and `docs/ROADMAP-V4.md` / `docs/thin-ui-feature-completion.md` first.
 
 Where used, binders may represent:
 	•	milestones

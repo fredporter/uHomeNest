@@ -2,7 +2,7 @@
 
 `binder` / `binder_project` / `binders` mirror optional family JSON shapes for
 `integrated-udos` clients. uHOME does not expose binder workflows in product UI;
-see `docs/uHOME-server-dev-brief.md` and `docs/UHOME-DEV-ROADMAP.md`.
+see `docs/uHOME-server-dev-brief.md` and `docs/ROADMAP-V4.md`.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
 # Docs (`server/docs`)
 
-Monorepo-wide **v4** indexes live at repo root [`../../docs/README.md`](../../docs/README.md) ([`ROADMAP-V4.md`](../../docs/ROADMAP-V4.md), [`MONOREPO.md`](../../docs/MONOREPO.md)).
+Monorepo-wide **v4** plan: [`../../docs/ROADMAP-V4.md`](../../docs/ROADMAP-V4.md). Full doc index: [`../../docs/README.md`](../../docs/README.md) ([`MONOREPO.md`](../../docs/MONOREPO.md)).
 
 `docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
 uDOS family split:

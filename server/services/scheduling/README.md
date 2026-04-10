@@ -8,7 +8,7 @@ Purpose:
 
 Current runtime anchors:
 
-- roadmap targets in `docs/UHOME-DEV-ROADMAP.md`
+- roadmap targets in `docs/ROADMAP-V4.md`
 - file-backed installer and runtime examples under `examples/installer/`
 
 Planned next step:

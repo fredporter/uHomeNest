@@ -14,7 +14,7 @@ Use this path to extend the **uHomeNest** runtime. Historical phase milestones a
 
 ## Rules
 
-- Treat the two local briefs as governing inputs alongside [`../../../docs/UHOME-DEV-ROADMAP.md`](../../../docs/UHOME-DEV-ROADMAP.md).
+- Treat the two local briefs as governing inputs alongside [`../../../docs/ROADMAP-V4.md`](../../../docs/ROADMAP-V4.md).
 - Keep runtime ownership in **`src/uhome_server/`** unless a subtree policy says otherwise.
 - Prefer **Markdown + Tailwind Prose** for operator reading; USXD for interchange handoff ([`../../../dev/UNIVERSAL-DEV.md`](../../../dev/UNIVERSAL-DEV.md)).
 
@@ -22,4 +22,4 @@ Use this path to extend the **uHomeNest** runtime. Historical phase milestones a
 
 - Remove remaining references to the deprecated `uhome_server.sonic` namespace where safe.
 - Grow vault-backed examples under [`../../../vault/`](../../../vault/).
-- Harden file-backed registries per [`../../../docs/UHOME-DEV-ROADMAP.md`](../../../docs/UHOME-DEV-ROADMAP.md).
+- Harden file-backed registries per [`../../../docs/ROADMAP-V4.md`](../../../docs/ROADMAP-V4.md).
