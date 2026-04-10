@@ -3,7 +3,7 @@
 Status: active  
 Updated: 2026-03-31  
 Lead: AI Roadmap Manager  
-Scope: standalone `uHOME Server` repository
+Scope: **uHomeNest** monorepo (primary server tree: `server/`, `src/uhome_server/`). Surface handoff: sibling **UniversalSurfaceXD** — see [`ROADMAP-V4.md`](ROADMAP-V4.md).
 
 This roadmap is governed by:
 

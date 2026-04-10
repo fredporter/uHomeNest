@@ -1,5 +1,7 @@
 # uHomeNest
 
+**Version:** **3.9.x** (see root [`VERSION`](VERSION); Python **`uhome-server`** package versions follow `pyproject.toml`).
+
 **uHomeNest** is the **monorepo** for the **uHOME** product line: household media, kiosk/thin UI, LAN server, Matter/Home Assistant bridges, and the lightweight client runtime.
 
 ## What uHOME is
@@ -27,6 +29,8 @@ cd uHomeNest
 
 ## Development
 
+- **Universal dev (uHomeNest + USXD):** [`dev/UNIVERSAL-DEV.md`](dev/UNIVERSAL-DEV.md)
+- **v4 roadmap (product line):** [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md)
 - **UDN / tasks:** [`DEV.md`](DEV.md), [`dev/WORKFLOW.md`](dev/WORKFLOW.md), [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md), **[`TASKS.md`](TASKS.md)**
 - **Python server:** `server/README.md`, `QUICKSTART.md`, `FIRST-TIME-INSTALL.md`, `docs/`
 - **Matter:** `matter/README.md`

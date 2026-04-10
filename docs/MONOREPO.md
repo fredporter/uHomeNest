@@ -1,8 +1,16 @@
 # uHomeNest monorepo migration
 
+## Name and structure (assessment)
+
+**Name:** **uHomeNest** clearly signals a single **nest** for uHOME packages (`server/`, `matter/`, `host/`) without overloading the **uHOME** product trademark in the repo id.
+
+**Structure:** One clone replaces the old **`uHOME-family/`** three-repo layout. Legacy paths (`src/uhome_server/`, `apps/`, `docs/` at repo root) remain alongside **`server/`**, **`matter/`**, and **`host/`** so operators can migrate gradually; boundaries are documented in **`docs/base-runtime-boundary.md`**.
+
+**Thin UX handoff:** Author kiosk-oriented **surface JSON** in sibling **UniversalSurfaceXD** (`interchange/examples/surface-uhome-thin-kiosk.json`, composer **`?sample=uhomeThin`**); implement API-backed UIs in this repo per **`docs/ui/UHOME-DASHBOARD.md`**.
+
 ## Engineering (UDN)
 
-Tracked workflow lives under **`dev/`** (`WORKFLOW.md`, `TASK_FORGE.md`), with **`DEV.md`** and **`TASKS.md`** at repo root. Open **`uHomeNest.code-workspace`** to pair this monorepo with sibling **UniversalSurfaceXD** (USXD).
+Tracked workflow lives under **`dev/`** (`WORKFLOW.md`, `TASK_FORGE.md`, **`UNIVERSAL-DEV.md`**), with **`DEV.md`** and **`TASKS.md`** at repo root. Open **`uHomeNest.code-workspace`** to pair this monorepo with sibling **UniversalSurfaceXD** (USXD).
 
 ## Mapping (standalone → monorepo path)
 

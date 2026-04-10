@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+**Product line:** the monorepo release is tracked in the repo-root **`VERSION`** file (uHomeNest **3.9.x**). The installable Python package **`uhome-server`** keeps its own version in `pyproject.toml`.
+
 ## [Unreleased]
 
+<!-- Add new notes here; cut a dated section when releasing. -->
+
+## [3.9.0] — 2026-04-10
+
+Monorepo **uHomeNest** product release **3.9.0**: canonical **`VERSION`**, consolidated universal-dev and v4 roadmap docs, USXD interchange scaffold for uHOME thin/kiosk handoff, and compost guidance for legacy material.
+
 ### Added
+- Root **`VERSION`** file (**3.9.0**).
+- **`dev/UNIVERSAL-DEV.md`** — UDN map for uHomeNest + UniversalSurfaceXD, workspace files, commands.
+- **`dev/COMPOST-LEGACY.md`** — when and how to use **`.compost/`** for superseded local copies.
+- **`docs/ROADMAP-V4.md`** — uHOME v4 narrative vs USXD v4 lab line (cross-links).
 - `docs/thin-ui-feature-completion.md` — living checklist for thin UI lanes and product backlog.
 - Thin **Tailwind Typography** bundle (`static/thin/prose.css`, built from `thin-prose-build/`)
   and HTML surfaces: `GET /api/runtime/thin/read` (default markdown intro), `GET /api/runtime/thin/browse`

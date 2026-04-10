@@ -1,5 +1,18 @@
 # Docs
 
+## Consolidated map (uHomeNest)
+
+| Topic | Where |
+| --- | --- |
+| **Product version** | Repo root [`../VERSION`](../VERSION) (**3.9.x**); changelog [`../CHANGELOG.md`](../CHANGELOG.md) |
+| **v4 roadmap (uHOME)** | [`ROADMAP-V4.md`](ROADMAP-V4.md) · current delivery detail in [`UHOME-DEV-ROADMAP.md`](UHOME-DEV-ROADMAP.md) |
+| **Monorepo** | [`MONOREPO.md`](MONOREPO.md) |
+| **Universal dev + USXD** | [`../dev/UNIVERSAL-DEV.md`](../dev/UNIVERSAL-DEV.md) |
+| **Retiring old files locally** | [`../dev/COMPOST-LEGACY.md`](../dev/COMPOST-LEGACY.md) |
+| **USXD uHOME surfaces (interchange)** | Sibling repo [`UniversalSurfaceXD/docs/uhome/README.md`](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/uhome/README.md) |
+
+---
+
 `docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
 uDOS family split:
 

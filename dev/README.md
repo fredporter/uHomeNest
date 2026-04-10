@@ -8,6 +8,8 @@ This folder holds **tracked** dev-standard docs for the monorepo. Scratch stays 
 | --- | --- |
 | [WORKFLOW.md](WORKFLOW.md) | Universal Dev Notes (UDN) — zones, flow, uHomeNest roots |
 | [TASK_FORGE.md](TASK_FORGE.md) | Task Forge v1 — checkbox syntax for **`TASKS.md`** |
+| [UNIVERSAL-DEV.md](UNIVERSAL-DEV.md) | uHomeNest + UniversalSurfaceXD — workspaces, commands, cross-links |
+| [COMPOST-LEGACY.md](COMPOST-LEGACY.md) | Using **`.compost/`** for superseded local copies |
 
 **Related (repo root):**
 
