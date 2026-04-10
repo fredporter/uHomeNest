@@ -1,5 +1,9 @@
 # uHomeNest monorepo migration
 
+## Engineering (UDN)
+
+Tracked workflow lives under **`dev/`** (`WORKFLOW.md`, `TASK_FORGE.md`), with **`DEV.md`** and **`TASKS.md`** at repo root. Open **`uHomeNest.code-workspace`** to pair this monorepo with sibling **UniversalSurfaceXD** (USXD).
+
 ## Mapping (standalone → monorepo path)
 
 | Old repo (GitHub) | New path | Notes |
