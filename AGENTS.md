@@ -11,8 +11,10 @@
 ## How to work
 
 1. Prefer **path-scoped** edits inside `server/`, `matter/`, or `host/` unless changing monorepo-wide policy.
-2. Each subtree may retain its own **`TASKS.md`**, **`README.md`**, and tooling; read the subtree’s root before large changes.
-3. Scratch: **`.local/`** / **`.compost/`** remain per-family conventions where those repos already used them (see subtree `README` / `.gitignore`).
+2. **Tracked intent** → root **`TASKS.md`** (Task Forge: **`dev/TASK_FORGE.md`**). **Method** → **`DEV.md`**, **`dev/WORKFLOW.md`**.
+3. **Thinking** → **`.local/`** (gitignored). **Replaced material** → **`.compost/`** (gitignored).
+4. Each subtree may retain its own **`README.md`** and scripts; read the subtree’s root before large changes.
+5. **Multi-root editor:** **`uHomeNest.code-workspace`** adds sibling **UniversalSurfaceXD** for USXD / interchange work next to uHOME packages.
 
 ## Non-goals
 

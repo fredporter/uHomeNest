@@ -21,9 +21,11 @@ cd uHomeNest
 
 ## Development
 
+- **UDN / tasks:** [`DEV.md`](DEV.md), [`dev/WORKFLOW.md`](dev/WORKFLOW.md), [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md), **[`TASKS.md`](TASKS.md)**
 - **Python server:** see `server/README.md`, `server/QUICKSTART.md`
 - **Matter:** see `matter/README.md`
 - **Client / host runtime:** see `host/README.md`
+- **Workspace:** open **`uHomeNest.code-workspace`** in Cursor/VS Code to include sibling **UniversalSurfaceXD** (USXD lab + interchange) alongside this repo.
 
 ## Naming
 
