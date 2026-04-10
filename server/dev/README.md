@@ -1,10 +1,5 @@
-# `dev/` — local engineering notes
+# `server/dev/`
 
-This folder holds **archival / tombstone notes** for sibling repos or experiments that are no longer kept as local checkouts under `~/Code/uHOME-family/`.
+This subtree mirrors monorepo workflow notes. **Canonical** UDN docs live at repo root: [`../../dev/README.md`](../../dev/README.md), [`../../dev/COMPOST-LEGACY.md`](../../dev/COMPOST-LEGACY.md).
 
-See:
-
-- [`archive-uHOME-app-android.md`](archive-uHOME-app-android.md)
-- [`archive-uHOME-app-ios.md`](archive-uHOME-app-ios.md)
-
-**GitHub:** deleting a local folder does **not** delete the remote. If these repositories should be removed from GitHub as well, do that in each repo’s settings (or archive them) after confirming backups.
+Tombstone notes for removed app checkouts were retired from Git in **2026-04** (local archive: **`.compost/cleanup-2026-04-10/`** alongside the root [`../../dev/COMPOST-LEGACY.md`](../../dev/COMPOST-LEGACY.md) manifest).

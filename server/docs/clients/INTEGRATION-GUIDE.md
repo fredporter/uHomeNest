@@ -572,8 +572,8 @@ instead of reusing raw subsystem payloads.
 - [Launcher API Documentation](LAUNCHER-API.md) - Complete API reference for sessions
 - [Household API Documentation](HOUSEHOLD-API.md) - Living-room-safe status and browsing
 - [Client Capability Model](CLIENT-CAPABILITIES.md) - Capability profiles and detection
-- [uHOME Server Roadmap](../architecture/UHOME-SERVER-DEV-PLAN.md) - Development plan and phases
-- [Phase 5 Checklist](../architecture/PHASE-5-CHECKLIST.md) - Current development status
+- [uHOME development entry (v4)](../architecture/UHOME-SERVER-DEV-PLAN.md) — roadmaps and thin UI handoff
+- [uHOME v4 roadmap](../../../docs/ROADMAP-V4.md) — product line (monorepo `docs/`)
 
 ## Support & Contributing
 

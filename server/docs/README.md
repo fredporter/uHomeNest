@@ -1,4 +1,6 @@
-# Docs
+# Docs (`server/docs`)
+
+Monorepo-wide **v4** indexes live at repo root [`../../docs/README.md`](../../docs/README.md) ([`ROADMAP-V4.md`](../../docs/ROADMAP-V4.md), [`MONOREPO.md`](../../docs/MONOREPO.md)).
 
 `docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
 uDOS family split:
@@ -34,35 +36,15 @@ and implementation documentation tied to the real repo.
   for the local pathway brief
 - [UHOME-v1.5.md](specs/UHOME-v1.5.md) for the current canonical spec
 
-### Build
+### Build (v4)
 
-- [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) for the
-  active repo-local development plan
-- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) for contributor workflow
-  (optional `@dev` / `#binder` parity; uHOME defaults to roadmap + issues)
-- [thin-ui-feature-completion.md](thin-ui-feature-completion.md) for thin UI and
-  product feature checklists
-- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md)
-  for the education-structure brief
-- [PHASE-1-IA-MAP.md](architecture/PHASE-1-IA-MAP.md) for current-to-target mapping
-- [ROOT-POLICY.md](architecture/ROOT-POLICY.md) for canonical vs transitional roots
-- [PHASE-1-CHECKLIST.md](architecture/PHASE-1-CHECKLIST.md) for the completed
-  Information Architecture deliverables
-- [PHASE-2-CHECKLIST.md](architecture/PHASE-2-CHECKLIST.md) for the completed
-  installer-boundary cleanup inside `uHOME-server`
-- [PHASE-3-CHECKLIST.md](architecture/PHASE-3-CHECKLIST.md) for the completed
-  decentralized LAN-model milestone
-- [PHASE-3-LAN-KICKOFF.md](architecture/PHASE-3-LAN-KICKOFF.md) for the
-  kickoff and boundary notes for the LAN-model phase
-- [PHASE-4-HOST-PROFILES-KICKOFF.md](architecture/PHASE-4-HOST-PROFILES-KICKOFF.md)
-  for the Phase 4 kickoff and boundary notes
-- [PHASE-4-CHECKLIST.md](architecture/PHASE-4-CHECKLIST.md) for the completed
-  install-profile milestone
-- [PHASE-4-COMPLETION.md](architecture/PHASE-4-COMPLETION.md) for the summary
-  of canonical Phase 4 surfaces
-- [REPO-FAMILY.md](pathway/REPO-FAMILY.md) for family-boundary and companion-repo rules
-- the deprecated `uhome_server.sonic` namespace is compatibility-only; new
-  repo-local work should use `uhome_server.installer`
+- [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) — **v4** dev entry (links to monorepo `docs/`)
+- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) — contributor workflow
+- [thin-ui-feature-completion.md](thin-ui-feature-completion.md) — thin UI checklists
+- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md) — education-structure brief
+- [pathway/BUILD.md](pathway/BUILD.md) — extend the runtime
+- [REPO-FAMILY.md](pathway/REPO-FAMILY.md) — family-boundary rules
+- The deprecated `uhome_server.sonic` namespace is compatibility-only; new work should use `uhome_server.installer`
 
 ## Family library (GitHub Pages)
 

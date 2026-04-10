@@ -16,5 +16,6 @@ Active work surface (UDN / Task Forge v1). **Syntax:** [`dev/TASK_FORGE.md`](dev
 
 ## Done
 
+- [x] [UHN-META-003] Retire pre-v4 phase/`@dev` docs and unused `uhome/` scaffold; v4-only dev entry + compost manifest #docs
 - [x] [UHN-META-002] uHomeNest **v3.9.0**: `VERSION`, universal dev + v4 roadmap docs, USXD uHOME surface scaffold, compost guidance #docs
 - [x] [UHN-META-000] Add `dev/` workflow docs, `DEV.md`, root `TASKS.md`, and `uHomeNest.code-workspace` (USXD sibling) #docs

@@ -27,3 +27,7 @@ v4 **does not** require uDOS **#binder / Workspace** as operator UX; thin readin
 
 - **uHomeNest product line:** root **`VERSION`** (e.g. **3.9.0**).
 - **Python `uhome-server` package:** `pyproject.toml` / `server/pyproject.toml` (independent semver).
+
+## Retired material
+
+Pre-v4 **phase milestone** Markdown, **migration status** snapshots, and tracked **`@dev/`** binder trees were removed from Git in **2026-04** (optional local archive: **`.compost/cleanup-2026-04-10/`**). See [`../dev/COMPOST-LEGACY.md`](../dev/COMPOST-LEGACY.md).

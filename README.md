@@ -1,6 +1,6 @@
 # uHomeNest
 
-**Version:** **3.9.x** (see root [`VERSION`](VERSION); Python **`uhome-server`** package versions follow `pyproject.toml`).
+**Version:** **3.9.x** (see root [`VERSION`](VERSION); Python **`uhome-server`** package versions follow `pyproject.toml`). **v4** planning: [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md).
 
 **uHomeNest** is the **monorepo** for the **uHOME** product line: household media, kiosk/thin UI, LAN server, Matter/Home Assistant bridges, and the lightweight client runtime.
 

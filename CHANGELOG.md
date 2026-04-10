@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- Add new notes here; cut a dated section when releasing. -->
 
+## [3.9.1] — 2026-04-10
+
+### Removed
+
+- Retired pre-v4 **phase milestone** docs (`docs/architecture/PHASE-*.md` and `server/docs/` mirrors), **migration / roadmap status** snapshots, tracked **`@dev/`** binder trees (root, `server/`, `matter/`, `host/`), duplicate **`dev/archive-uHOME-app-*.md`** and **`server/dev/`** copies, root **`structure-uhome.txt`**, and unused root **`uhome/`** FastAPI scaffold. Optional local copies under **`.compost/cleanup-2026-04-10/`** (see [`dev/COMPOST-LEGACY.md`](dev/COMPOST-LEGACY.md)).
+
+### Changed
+
+- **`docs/architecture/UHOME-SERVER-DEV-PLAN.md`** and **`server/docs/`** mirror — slim **v4** dev entry only; [`docs/pathway/BUILD.md`](docs/pathway/BUILD.md) and doc indexes updated to match.
+
 ## [3.9.0] — 2026-04-10
 
 Monorepo **uHomeNest** product release **3.9.0**: canonical **`VERSION`**, consolidated universal-dev and v4 roadmap docs, USXD interchange scaffold for uHOME thin/kiosk handoff, and compost guidance for legacy material.

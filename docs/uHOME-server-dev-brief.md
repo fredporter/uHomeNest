@@ -79,7 +79,9 @@ local completion does not imply repo contribution.
 
 ⸻
 
-uHOME-server inside @dev
+uHOME-server inside @dev (**historical — uDOS workspace**)
+
+**uHomeNest (2026-04+):** use repo-root **`TASKS.md`**, **`.local/`**, and **`.compost/`** (UDN). Tracked **`@dev/`** binder trees were **removed** from this monorepo in favour of **v4** entry points in [`ROADMAP-V4.md`](ROADMAP-V4.md) and [`architecture/UHOME-SERVER-DEV-PLAN.md`](architecture/UHOME-SERVER-DEV-PLAN.md).
 
 The uHOME-server project should have a defined space inside the shared development workspace.
 

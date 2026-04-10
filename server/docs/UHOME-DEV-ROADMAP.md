@@ -9,7 +9,7 @@ This roadmap is governed by:
 
 - `docs/uHOME-server-dev-brief.md` (optional `@dev` / `#binder` parity only)
 - `docs/uHOME-server-education-dev-brief.md`
-- `docs/architecture/UHOME-SERVER-DEV-PLAN.md`
+- `docs/architecture/UHOME-SERVER-DEV-PLAN.md` — **v4** dev entry (replaces retired phase docs)
 - `docs/thin-ui-feature-completion.md` — **checklist** of thin UI + product features still to build
 
 ## Planning model (2026)

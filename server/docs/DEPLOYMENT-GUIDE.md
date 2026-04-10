@@ -536,7 +536,7 @@ ps aux | grep uhome
 - [Docker Deployment](../docker-compose.yml) — Container-based deployment
 - [Operational Runbooks](operations/) — Troubleshooting and recovery
 - [Client Integration Guide](clients/INTEGRATION-GUIDE.md) — API usage
-- [Architecture Overview](UHOME-SERVER-DEV-PLAN.md) — System design
+- [Architecture / dev entry (v4)](architecture/UHOME-SERVER-DEV-PLAN.md) — System design
 
 ## Support
 
