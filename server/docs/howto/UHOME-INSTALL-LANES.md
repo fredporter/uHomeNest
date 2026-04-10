@@ -1,7 +1,7 @@
 # uHOME Install Lanes
 
 This document is the operator-facing Phase 4 reference for the two supported
-example install lanes in `uHOME-server`.
+example install lanes in **uHomeNest**.
 
 ## Lane 1: Standalone Linux Host
 

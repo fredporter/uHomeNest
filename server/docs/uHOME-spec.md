@@ -85,7 +85,7 @@ uHOME supports:
 
 ### Runtime ownership
 
-- **`uHOME-server`** owns the household Linux runtime: media, kiosk/thin UX,
+- **uHomeNest** (this monorepo) owns the household Linux runtime: media, kiosk/thin UX,
   LAN services, local scheduling, and thin automation fulfilment on the box.
 - **`uHOME-matter`** owns Home Assistant / Matter **contracts** fed into that UX.
 - **`sonic-screwdriver`** owns **install, recovery, Ventoy/USB, and dual-boot**

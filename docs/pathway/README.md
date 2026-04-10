@@ -1,8 +1,8 @@
 # Pathway
 
-`uHOME-server` is the **uHOME product** pathway: **media + controller-first
+**uHomeNest** (**v3.9.x**) carries the **uHOME product** pathway: **media + controller-first
 kiosk + decentralised LAN server + Steam/Linux gaming + curated library**, with
-**Home Assistant** surfaced through the **thin UX** (`uHOME-matter` owns bridge
+**Home Assistant** surfaced through the **thin UX** (`matter/` owns bridge
 contracts).
 
 Framing alongside siblings:

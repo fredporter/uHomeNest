@@ -2,7 +2,7 @@
 
 This monorepo follows **Universal Dev Notes (UDN)** shared across `github.com/fredporter/`.
 
-- **Product version:** root [`VERSION`](VERSION) (**uHomeNest 3.9.x**); Python packages use `pyproject.toml`.
+- **Product version:** **uHomeNest v3.9** — root [`VERSION`](VERSION) (**3.9.x**); Python package **`uhome-server`** uses `pyproject.toml`.
 - **Universal dev + USXD:** [`dev/UNIVERSAL-DEV.md`](dev/UNIVERSAL-DEV.md)
 - **Workflow:** [`dev/WORKFLOW.md`](dev/WORKFLOW.md)
 - **Task format:** [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md)

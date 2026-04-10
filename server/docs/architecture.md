@@ -1,6 +1,6 @@
-# uHOME-server Architecture
+# uHomeNest — uHOME architecture
 
-**uHOME-server** is the **household media, console, and LAN server** product: a
+**uHomeNest** (**v3.9.x**) is the Git repository for the **uHOME** **household media, console, and LAN server** product: a
 **decentralised** node on the home network that runs **Jellyfin**, a
 **controller-first** kiosk/thin UI, **Steam/Linux** gaming surfaces, a **curated
 library** of games and apps, and **Home Assistant** integration **through the
@@ -39,7 +39,7 @@ and bootstrap—not Wizard/Empire.
 
 Linux host typically runs:
 
-- **uHOME-server** (this repo) — API, thin UI, scheduling, library surfaces
+- **uHomeNest** / **uHOME** server — API, thin UI, scheduling, library surfaces
 - **Jellyfin** — household media library and playback metadata
 - **Home Assistant** (optional) — automation brain; **kiosk surfaces** consume
   bridge/metadata from `uHOME-matter` contracts
@@ -53,7 +53,7 @@ Windows side (optional dual-boot):
 
 ## Kiosk Environment
 
-uHOME-server provides a **Steam-console-style launcher interface** designed
+uHomeNest provides a **Steam-console-style launcher interface** designed
 for TVs, tablets, and living-room displays.
 
 Primary design principle: **controller-first navigation**.
@@ -95,7 +95,7 @@ Jellyfin is the primary media server:
 
 ### Steam / Game Services
 
-uHOME-server supports Steam presence and gaming launch surfaces:
+uHomeNest supports Steam presence and gaming launch surfaces:
 
 - Steam library access
 - remote play support
@@ -110,7 +110,7 @@ uHOME-server supports Steam presence and gaming launch surfaces:
 
 Ship and run uHOME on a **normal** home or office network: Wi‑Fi or Ethernet,
 consumer or small-business router, private addresses, DNS as provided by the
-LAN. Policy contracts and JSON schema ship **inside** `uHOME-server`
+LAN. Policy contracts and JSON schema ship **inside** `uHomeNest`
 (`src/uhome_server/contracts/`); no `uDOS-wizard` checkout is required.
 
 The bundled **`lan`** profile matches typical router-backed operation. Optional
@@ -131,7 +131,7 @@ the current regular-LAN baseline.
 | --- | --- |
 | `uHOME-matter` | Home Assistant and Matter **contracts**, bridge definitions, clone/target maps—so the **kiosk thin UX** can show **real home state** (rooms, scenes, entities) without reimplementing HA inside the server repo |
 
-`uHOME-server` **hosts** the thin presentation; `uHOME-matter` **defines** what
+`uHomeNest` **hosts** the thin presentation; `uHOME-matter` **defines** what
 the runtime is allowed to know about devices and bridges.
 
 ---
@@ -143,7 +143,7 @@ Family-level sequencing and Wizard/core boundaries: **`uDOS-dev/docs/uhome-strea
 
 - **`sonic-screwdriver`** — **first-class** for getting uHOME onto metal: USB,
   Ventoy, dual-boot layout, recovery; not an afterthought.
-- **`uHOME-server`** bundles household **network policy** for regular LANs
+- **`uHomeNest`** bundles household **network policy** for regular LANs
   (`src/uhome_server/contracts/`).
 - **`uHOME-matter`** — HA/Matter extension contracts consumed by this runtime.
 - **`uDOS-core`** (when present on disk) — optional **shared** sync-record and

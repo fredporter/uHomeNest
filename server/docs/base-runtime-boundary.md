@@ -1,6 +1,6 @@
-# uHOME-server Base Runtime Boundary
+# uHomeNest — base runtime boundary
 
-`uHOME-server` is the **runtime repo for the uHOME product**: media player,
+`uHomeNest` is the **runtime repo for the uHOME product**: media player,
 controller-first kiosk/thin UI, decentralised LAN server, Steam/Linux gaming
 surfaces, and **presentation** of home automation (fed by `uHOME-matter`). It is
 **not** the generic Sonic/Ventoy installer product—that stays in

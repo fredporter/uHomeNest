@@ -2,14 +2,14 @@
 
 ## Purpose
 
-Describe the active v2 role of Beacon-facing local access in `uHOME-server`.
+Describe the active v2 role of Beacon-facing local access in `uHomeNest`.
 
 This document promotes the useful Beacon concept from the archive without
 bringing forward the old repo ownership model unchanged.
 
 ## Current Ownership
 
-`uHOME-server` owns:
+`uHomeNest` owns:
 
 - local-network access surfaces
 - living-room or tablet-safe portal entry points
@@ -30,7 +30,7 @@ bringing forward the old repo ownership model unchanged.
 Beacon is an access and handoff surface, not a data store.
 
 `Beacon Activate` is the local Wi-Fi connection and portal experience offered
-by Wizard. It introduces the user to `uHOME-server` surfaces that can:
+by Wizard. It introduces the user to `uHomeNest` surfaces that can:
 
 - show approved vault content on a TV or tablet
 - present a host-curated offline information library
@@ -100,7 +100,7 @@ Those systems may appear behind the portal, but they are not the same contract.
 
 ## Near-Term Documentation Goal
 
-As `uHOME-server` implementation hardens, this doc should grow into:
+As `uHomeNest` implementation hardens, this doc should grow into:
 
 - portal URL and Beacon Activate guidance
 - approved client modes
@@ -114,5 +114,5 @@ Household networking policy for **regular LAN** operation is exposed through:
 - `GET /api/runtime/contracts/uhome-network-policy/schema`
 - `POST /api/runtime/contracts/uhome-network-policy/validate`
 
-`uHOME-server` ships the contract and schema; the default profile is **`lan`**.
+`uHomeNest` ships the contract and schema; the default profile is **`lan`**.
 Future work may link profiles to **uDOS-ubuntu** command-centre networking.

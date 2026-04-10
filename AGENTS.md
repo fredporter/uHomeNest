@@ -1,5 +1,7 @@
 # Agent notes — uHomeNest
 
+**Repository name:** **uHomeNest** (**v3.9.x**, see root `VERSION`). **Product:** **uHOME**. Prefer **uHomeNest** when referring to this Git repo; reserve **`uHOME-server`** for legacy JSON wire strings only.
+
 ## What this is
 
 **uHomeNest** is a **monorepo** replacing separate clones under `uHOME-family/`:

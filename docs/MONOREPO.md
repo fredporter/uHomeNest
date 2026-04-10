@@ -1,5 +1,14 @@
 # uHomeNest monorepo migration
 
+## Canonical names (uHomeNest **v3.9**)
+
+| Name | Meaning |
+| --- | --- |
+| **uHomeNest** | This **Git repository** and monorepo (**v3.9.x** in root [`VERSION`](../VERSION)). |
+| **uHOME** | **Product** name (household media + LAN server + thin UX). |
+| **`uhome-server`** | **Python distribution** / CLI package ([`pyproject.toml`](../pyproject.toml)); installable name stays hyphenated for tooling. |
+| **`uHOME-server` (string)** | **Legacy wire / contract** identifiers in some JSON payloads (e.g. `policy_owner`); do not rename without a contract version bump. |
+
 ## Name and structure (assessment)
 
 **Name:** **uHomeNest** clearly signals a single **nest** for uHOME packages (`server/`, `matter/`, `host/`) without overloading the **uHOME** product trademark in the repo id.

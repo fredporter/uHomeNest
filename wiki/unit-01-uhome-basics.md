@@ -1,6 +1,6 @@
 # Unit 01 — uHOME basics
 
-A short orientation for the **uHOME-server** repo and how it sits next to the
+A short orientation for the **uHomeNest** monorepo (**v3.9.x**) and how **uHOME** sits next to the
 uDOS family.
 
 ## What uHOME is

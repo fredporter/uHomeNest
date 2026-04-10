@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- Add new notes here; cut a dated section when releasing. -->
 
+## [3.9.3] — 2026-04-10
+
+### Changed
+
+- **Naming:** completed **uHomeNest v3.9** positioning across README, `docs/MONOREPO.md`, pathway docs, wiki, scripts/learning READMEs, integration guide paths, `pyproject.toml` descriptions, and contributor briefs. **Wire / JSON** `policy_owner` values such as `uHOME-server` are unchanged (see MONOREPO naming table).
+
 ## [3.9.2] — 2026-04-10
 
 ### Changed

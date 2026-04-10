@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "uhome-server"
 version = "0.2.0"
-description = "uHOME server runtime and v2 scaffold"
+description = "uHomeNest — uHOME server Python package (uhome-server CLI)"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [

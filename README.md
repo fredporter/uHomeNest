@@ -1,6 +1,6 @@
 # uHomeNest
 
-**Version:** **3.9.x** (see root [`VERSION`](VERSION); Python **`uhome-server`** package versions follow `pyproject.toml`). **v4** planning: [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md).
+**uHomeNest v3.9** — product line **3.9.x** (see root [`VERSION`](VERSION)); Python package **`uhome-server`** follows `pyproject.toml`. **v4** plan: [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md).
 
 **uHomeNest** is the **monorepo** for the **uHOME** product line: household media, kiosk/thin UI, LAN server, Matter/Home Assistant bridges, and the lightweight client runtime.
 
@@ -14,7 +14,7 @@
 
 | Directory | Former standalone repo | Role |
 | --- | --- | --- |
-| **`server/`** | `uHOME-server` | LAN-first server, thin UI, services, docs, wiki |
+| **`server/`** | was **`uHOME-server`** | LAN-first server, thin UI, services, docs, wiki |
 | **`matter/`** | `uHOME-matter` | Matter / Home Assistant contracts and bridge assets |
 | **`host/`** | `uHOME-client` | Lightweight client runtime and contract consumption (local network) |
 
@@ -50,10 +50,11 @@ Activation and validation: see `docs/activation.md` and `bash scripts/run-uhome-
 
 ## Naming
 
-- **uHomeNest** — this repository (nest of uHOME packages).
-- **uHOME** — product name (unchanged in docs inside each package).
+- **uHomeNest** — this repository (**v3.9.x**); clone **`fredporter/uHomeNest`**.
+- **uHOME** — product name (media + LAN + thin UX).
+- **`uhome-server`** — Python package / CLI inside the monorepo (not the repo name).
 
-See **`docs/MONOREPO.md`** for migration notes from `uHOME-family/` sibling checkouts.
+See **`docs/MONOREPO.md`** for canonical names, migration from **`uHOME-family/`**, and old standalone repos.
 
 ## Family relation
 

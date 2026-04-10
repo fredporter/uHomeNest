@@ -453,7 +453,7 @@ Use the example installer artifacts to populate test data:
 
 ```bash
 # On uHOME server
-cd /path/to/uHOME-server
+cd /path/to/uHomeNest
 pytest tests/test_example_installer_artifacts.py -v
 ```
 

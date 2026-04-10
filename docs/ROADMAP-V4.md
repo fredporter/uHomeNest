@@ -1,6 +1,6 @@
 # uHOME / uHomeNest — v4 plan (canonical)
 
-**Single planning surface** for the uHOME product line inside this monorepo. Execution detail lives in **issues** and **[`TASKS.md`](../TASKS.md)**; thin UI line items live in **[`thin-ui-feature-completion.md`](thin-ui-feature-completion.md)**. **UniversalSurfaceXD** owns **[USXD v4 — lab + interchange](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/roadmap-v4.md)** (surface JSON, not server runtime).
+**Repository:** **uHomeNest v3.9** (**3.9.x** in [`VERSION`](../VERSION)). **Single planning surface** for the uHOME product line inside this monorepo. Execution detail lives in **issues** and **[`TASKS.md`](../TASKS.md)**; thin UI line items live in **[`thin-ui-feature-completion.md`](thin-ui-feature-completion.md)**. **UniversalSurfaceXD** owns **[USXD v4 — lab + interchange](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/roadmap-v4.md)** (surface JSON, not server runtime).
 
 **Legacy filename:** [`UHOME-DEV-ROADMAP.md`](UHOME-DEV-ROADMAP.md) redirects here for bookmarks.
 

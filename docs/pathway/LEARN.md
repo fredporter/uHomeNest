@@ -1,7 +1,7 @@
 # Learn uHOME Server
 
-Use this path if you want to understand `uHOME-server` as the local-network
-home infrastructure pathway in the wider `uDOS` family.
+Use this path if you want to understand **uHomeNest** as the local-network
+home infrastructure pathway (**uHOME** product) in the wider `uDOS` family.
 
 ## Start With
 

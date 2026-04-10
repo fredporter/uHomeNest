@@ -1,4 +1,4 @@
-# uHOME-server Examples
+# uHomeNest examples
 
 Useful examples:
 

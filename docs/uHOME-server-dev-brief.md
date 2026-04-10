@@ -1,4 +1,4 @@
-uHOME-server repo — contributor workflow (optional @dev / #binder parity)
+uHomeNest monorepo — contributor workflow (optional @dev / #binder parity)
 
 **Scope (2026-03):** uHOME is **not** a uDOS **Workspace / binder-compile** product. Operators and public planning use **`docs/ROADMAP-V4.md`** (v4 plan), **`docs/thin-ui-feature-completion.md`**, issues, and family round notes (`uDOS-dev`). **Thin browser surfaces** are **server-rendered Markdown + Tailwind Typography (`prose`)** only — no binder-backed doc shell, no Wizard workspace dependency.
 
@@ -10,7 +10,7 @@ The material below describes **optional** alignment if a contributor already use
 
 Purpose
 
-The uHOME-server repo should:
+The uHomeNest monorepo should:
 	•	keep a clear split between local experiments and what ships in the public tree
 	•	use **roadmap + checklists + issues** as the default planning spine
 	•	allow local development scaffolding in private or `@dev` extension layers where useful
@@ -30,7 +30,7 @@ Some contributors mirror uDOS habits:
 	•	local extension supports scaffolding and background advancement
 	•	review before promoting large changes into the public server repo
 
-This does **not** imply uHOME-server commits are binder-gated or that operators ever see binder semantics in product UI.
+This does **not** imply uHomeNest commits are binder-gated or that operators ever see binder semantics in product UI.
 
 ⸻
 
@@ -79,11 +79,11 @@ local completion does not imply repo contribution.
 
 ⸻
 
-uHOME-server inside @dev (**historical — uDOS workspace**)
+uHomeNest (legacy uHOME-server naming) inside @dev (**historical — uDOS workspace**)
 
 **uHomeNest (2026-04+):** use repo-root **`TASKS.md`**, **`.local/`**, and **`.compost/`** (UDN). Tracked **`@dev/`** binder trees were **removed** from this monorepo in favour of **v4** entry points in [`ROADMAP-V4.md`](ROADMAP-V4.md) and [`architecture/UHOME-SERVER-DEV-PLAN.md`](architecture/UHOME-SERVER-DEV-PLAN.md).
 
-The uHOME-server project should have a defined space inside the shared development workspace.
+The uHomeNest project should have a defined space inside the shared development workspace.
 
 Example conceptual structure:
 
@@ -95,7 +95,7 @@ Example conceptual structure:
     review/
     compost/
 
-This allows uHOME-server development to remain consistent with uDOS core workflow patterns.
+This allows uHomeNest development to remain consistent with uDOS core workflow patterns.
 
 ⸻
 
@@ -125,7 +125,7 @@ Deprecated experiments, stale drafts, or abandoned exploratory work.
 
 ## Optional: #binder usage (uDOS-family parity only)
 
-If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHOME-server: use GitHub issues and `docs/ROADMAP-V4.md` / `docs/thin-ui-feature-completion.md` first.
+If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHomeNest: use GitHub issues and `docs/ROADMAP-V4.md` / `docs/thin-ui-feature-completion.md` first.
 
 Where used, binders may represent:
 	•	milestones
@@ -168,7 +168,7 @@ This ensures server development progress is structured and inspectable.
 
 Advancing pending development tasks
 
-Pending uHOME-server development should be progressed within the @dev workspace.
+Pending uHomeNest development should be progressed within the @dev workspace.
 
 Advancement should:
 	•	occur locally first
@@ -197,7 +197,7 @@ public repo
 
 Milestones and objectives
 
-uHOME-server development should organize work into milestones and objectives.
+uHomeNest development should organize work into milestones and objectives.
 
 Milestones
 
@@ -243,7 +243,7 @@ for larger development streams.
 
 Local extension model
 
-uHOME-server development requires a local extension layer that supports experimentation and development tooling.
+uHomeNest development requires a local extension layer that supports experimentation and development tooling.
 
 This layer should remain outside the distributable repo.
 
@@ -268,7 +268,7 @@ local extension is flexible and experimental; the distributable repo is curated 
 
 Contribution boundary
 
-The uHOME-server repo must enforce a clear contribution boundary.
+The uHomeNest monorepo must enforce a clear contribution boundary.
 
 Rule
 
@@ -304,7 +304,7 @@ This ensures that the repo reflects intentional, curated development outcomes.
 
 Gitignore scaffold for local development
 
-The uHOME-server repo should include gitignore patterns that exclude local development artifacts.
+The uHomeNest monorepo should include gitignore patterns that exclude local development artifacts.
 
 Example categories
 
@@ -353,7 +353,7 @@ This prevents development artifacts from entering the repo unintentionally.
 
 ⸻
 
-Recommended uHOME-server workflow
+Recommended uHomeNest workflow
 
 1. Open a binder
 
@@ -370,7 +370,7 @@ Example:
 
 2. Work inside @dev
 
-All experimentation, notes, and development should occur within the uHOME-server area of the @dev workspace.
+All experimentation, notes, and development should occur within the historical uHOME-server area of the @dev workspace.
 
 ⸻
 
@@ -402,7 +402,7 @@ An approved contributor moves selected outcomes into the distributable repo.
 
 ⸻
 
-Binder metadata for uHOME-server
+Binder metadata for uHomeNest
 
 Example binder metadata:
 
@@ -434,7 +434,7 @@ completion_criteria:
 
 Compile and promotion behavior
 
-For uHOME-server, compile prepares a binder outcome for review and possible promotion.
+For uHomeNest, compile prepares a binder outcome for review and possible promotion.
 
 Compile should:
 	•	clean dev artifacts
@@ -449,7 +449,7 @@ Promotion then moves approved artifacts only into the repo.
 
 Governance rule
 
-uHOME-server should follow the same governance philosophy as uDOS core.
+uHomeNest should follow the same governance philosophy as uDOS core.
 
 The @dev workspace is the active mission development surface, #binders track development progress and objectives, local extension supports experimental work, and the distributable repo remains a curated output surface governed by approved contributors.
 
@@ -459,7 +459,7 @@ Short policy block for repo documentation
 
 You may include the following summary directly in the repo documentation.
 
-uHOME-server development follows the same @dev workspace and binder-driven workflow used by the uDOS core repo. Development objectives, milestones, and pending work are tracked as #binders within the uHOME-server area of the @dev workspace. Local extension scaffolding supports active development while remaining excluded from the distributable repo through gitignore and workspace separation. Contribution to the public uHOME-server repo is restricted to approved contributors, with changes promoted only after binder compile, review, and approval.
+uHomeNest development follows the same @dev workspace and binder-driven workflow used by the uDOS core repo. Development objectives, milestones, and pending work are tracked as #binders within the historical uHOME-server area of the @dev workspace. Local extension scaffolding supports active development while remaining excluded from the distributable repo through gitignore and workspace separation. Contribution to the public uHomeNest monorepo is restricted to approved contributors, with changes promoted only after binder compile, review, and approval.
 
 ⸻
 
@@ -479,11 +479,11 @@ binder promote #uhome-server-device-discovery
 
 Final intent
 
-The uHOME-server repo should remain:
+The uHomeNest monorepo should remain:
 	•	developed locally within @dev
 	•	organized through #binders
 	•	structured by milestones and objectives
 	•	supported by a flexible local extension layer
 	•	promoted into the distributable repo only through approved contributor governance
 
-This keeps uHOME-server aligned with the uDOS development model while maintaining a clean and stable public repo.
+This keeps uHomeNest aligned with the uDOS development model while maintaining a clean and stable public repo.

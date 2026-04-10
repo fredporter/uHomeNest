@@ -43,4 +43,4 @@ binder-backed reading shell.
 ## Explicit non-goals (near term)
 
 - uDOS **#binder** or **Workspace compile** as **operator-facing** uHOME features
-- Replacing thin prose with a full SPA or binder document tree inside `uHOME-server`
+- Replacing thin prose with a full SPA or binder document tree inside **uHomeNest** (off roadmap unless explicitly scoped)

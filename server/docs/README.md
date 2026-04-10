@@ -2,7 +2,7 @@
 
 Monorepo-wide **v4** plan: [`../../docs/ROADMAP-V4.md`](../../docs/ROADMAP-V4.md). Full doc index: [`../../docs/README.md`](../../docs/README.md) ([`MONOREPO.md`](../../docs/MONOREPO.md)).
 
-`docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
+`docs/` is the **stable reference** lane for the **uHomeNest** monorepo (**v3.9.x**) and **uHOME** product docs, aligned with the
 uDOS family split:
 
 | Lane | Location | Role |

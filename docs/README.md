@@ -4,7 +4,7 @@
 
 | Topic | Where |
 | --- | --- |
-| **Product version** | Repo root [`../VERSION`](../VERSION) (**3.9.x**); changelog [`../CHANGELOG.md`](../CHANGELOG.md) |
+| **Product version** | **uHomeNest v3.9** — repo root [`../VERSION`](../VERSION) (**3.9.x**); changelog [`../CHANGELOG.md`](../CHANGELOG.md) |
 | **v4 plan (canonical)** | [`ROADMAP-V4.md`](ROADMAP-V4.md) · [`UHOME-DEV-ROADMAP.md`](UHOME-DEV-ROADMAP.md) redirects here |
 | **Monorepo** | [`MONOREPO.md`](MONOREPO.md) |
 | **Universal dev + USXD** | [`../dev/UNIVERSAL-DEV.md`](../dev/UNIVERSAL-DEV.md) |
@@ -13,7 +13,7 @@
 
 ---
 
-`docs/` is the **stable reference** lane for `uHOME-server`, aligned with the
+`docs/` is the **stable reference** lane for the **uHomeNest** monorepo (**v3.9.x**) and **uHOME** product docs, aligned with the
 uDOS family split:
 
 | Lane | Location | Role |

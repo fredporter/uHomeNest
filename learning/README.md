@@ -5,7 +5,7 @@ Pages): ordered entry points, pathway, and links into courses — without
 duplicating all reference material under `docs/`.
 
 In **`uDOS-docs`**, the published **Learning hub** is a generated page
-(`learning.html`), not a top-level folder. In **uHOME-server** this directory
+(`learning.html`), not a top-level folder. In **uHomeNest** this directory
 is the repo-local **learning spine**: what to read, in what order, and where
 courses live.
 

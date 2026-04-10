@@ -5,7 +5,7 @@
 | Concern | uHomeNest | UniversalSurfaceXD |
 | --- | --- | --- |
 | **v4 product plan** | **[`docs/ROADMAP-V4.md`](../docs/ROADMAP-V4.md)** (canonical) | **[USXD v4 roadmap](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/roadmap-v4.md)** |
-| Product version | Root **`VERSION`** (line **3.9.x**); Python packages use their own semver in `pyproject.toml` | Root `package.json` **4.4.x** |
+| Product version | **uHomeNest v3.9** — root **`VERSION`** (**3.9.x**); Python **`uhome-server`** uses `pyproject.toml` | Root `package.json` **4.4.x** |
 | Thin / kiosk UX implementation | `server/`, `src/uhome_server/`, `docs/ui/` | Lab + interchange only (not production runtime) |
 | Surface JSON for UX handoff | Consume or reference USXD examples; see **`../UniversalSurfaceXD/docs/uhome/README.md`** | **`interchange/examples/surface-uhome-thin-kiosk.json`**, composer **`?sample=uhomeThin`** |
 

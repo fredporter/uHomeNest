@@ -148,7 +148,7 @@ git push origin v1.1.0
 ### 4. Create GitHub Release
 
 **Via GitHub Web Interface**:
-1. Navigate to: `https://github.com/[org]/uHOME-server/releases/new`
+1. Navigate to: `https://github.com/fredporter/uHomeNest/releases/new`
 2. Select tag: `v1.1.0`
 3. Release title: `uHOME Server v1.1.0`
 4. Description: Copy from CHANGELOG.md + git tag message

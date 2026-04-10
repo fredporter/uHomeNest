@@ -5,7 +5,7 @@ Updated: 2026-03-10
 
 ## Overview
 
-`uHOME-server` uses `pyproject.toml` for dependency declarations and
+**uHomeNest** uses `pyproject.toml` for dependency declarations and
 `requirements.lock` for reproducible builds.
 
 ## Lockfile Policy

@@ -1,6 +1,6 @@
-# uHOME-server Getting Started
+# Getting started (uHomeNest v3.9)
 
-1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside `uHOME-server`.
+1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside **uHomeNest**.
 2. Run `QUICKSTART.md` for the first runnable API and route checks (regular LAN baseline).
 3. Review `examples/basic-uhome-server-session.md` for the smallest standalone operator smoke.
 4. Run the repo validation entrypoint before and after runtime changes:

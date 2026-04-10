@@ -2,7 +2,7 @@
 
 Status: active
 
-This document defines how `uHOME-server` sits **next to** other repos: **uHOME
+This document defines how **uHomeNest** (monorepo, **v3.9.x**) sits **next to** other repos: **uHOME
 is its own product** (media, kiosk, LAN server, dual-boot-friendly, HA in thin
 UX). Shared uDOS repos are **compatibility and education** neighbours, not the
 definition of uHOME.
@@ -19,7 +19,7 @@ Every repo should still answer:
 
 ## Family Roles (uHOME-centric)
 
-### `uHOME-server`
+### uHomeNest — server runtime (was standalone `uHOME-server`)
 
 Owns:
 
@@ -57,7 +57,7 @@ Own:
 
 ## Boundary Rules
 
-- `uHOME-server` is **not** `sonic-screwdriver` and does not own the USB installer product.
+- **uHomeNest** is **not** `sonic-screwdriver` and does not own the USB installer product.
 - `sonic-screwdriver` does not redefine uHOME’s media/kiosk/automation architecture.
 - Automation **contract** ownership stays in `uHOME-matter` even when transitional bridge code still lives in the server repo.
 - uHOME is **not** a subordinate “service of uDOS”; cross-repo docs and contracts are **adjacent**, not hierarchical.

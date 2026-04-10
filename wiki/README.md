@@ -1,4 +1,4 @@
-# uHOME-server Wiki
+# uHomeNest Wiki
 
 `/wiki` is the **beginner-friendly** lane for this repo, aligned with
 [`uDOS-docs` `/wiki`](https://github.com/fredporter/uDOS-docs/tree/main/wiki).
