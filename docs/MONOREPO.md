@@ -8,6 +8,7 @@
 | **uHOME** | **Product** name (household media + LAN server + thin UX). |
 | **`uhome-server`** | **Python distribution** / CLI package ([`pyproject.toml`](../pyproject.toml)); installable name stays hyphenated for tooling. |
 | **`uHOME-server` (string)** | **Legacy wire / contract** identifiers in some JSON payloads (e.g. `policy_owner`); do not rename without a contract version bump. |
+| **Contributor / education briefs** | Canonical files: [`contributor-dev-brief.md`](contributor-dev-brief.md), [`education-dev-brief.md`](education-dev-brief.md). Stubs at `uHOME-server-*-dev-brief.md` redirect for old links. |
 
 ## Name and structure (assessment)
 

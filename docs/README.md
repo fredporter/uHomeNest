@@ -43,16 +43,16 @@ and implementation documentation tied to the real repo.
 ### Learn
 
 - [README.md](pathway/README.md) in `docs/pathway/` for repo positioning
-- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md)
+- [education-dev-brief.md](education-dev-brief.md)
   for the local pathway brief
 - [UHOME-v1.5.md](specs/UHOME-v1.5.md) for the current canonical spec
 
 ### Build (v4)
 
 - [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) — **v4** dev entry (roadmaps + thin UI + USXD handoff)
-- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) — contributor workflow (optional `#binder` parity)
+- [contributor-dev-brief.md](contributor-dev-brief.md) — contributor workflow (optional `#binder` parity)
 - [thin-ui-feature-completion.md](thin-ui-feature-completion.md) — thin UI and product checklists
-- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md) — education-structure brief
+- [education-dev-brief.md](education-dev-brief.md) — education-structure brief
 - [pathway/BUILD.md](pathway/BUILD.md) — extend the runtime (v4 path)
 - [REPO-FAMILY.md](pathway/REPO-FAMILY.md) — family-boundary and companion-repo rules
 - The deprecated `uhome_server.sonic` namespace is compatibility-only; new work should use `uhome_server.installer`

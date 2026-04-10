@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- Add new notes here; cut a dated section when releasing. -->
 
+## [3.9.4] — 2026-04-10
+
+### Changed
+
+- **Docs:** renamed **`uHOME-server-dev-brief.md`** → **`contributor-dev-brief.md`** and **`uHOME-server-education-dev-brief.md`** → **`education-dev-brief.md`** (including `server/docs/` mirrors). Added short **stub** pages at the old paths for bookmarks. Updated cross-links, `sync_records` module docstring, and structure snapshot.
+
 ## [3.9.3] — 2026-04-10
 
 ### Changed
@@ -69,7 +75,7 @@ Monorepo **uHomeNest** product release **3.9.0**: canonical **`VERSION`**, conso
 
 ### Changed
 - **Planning:** uHOME **does not** ship uDOS **#binder / Workspace** as operator UX;
-  thin surfaces stay **Markdown + Tailwind Prose** (`docs/uHOME-server-dev-brief.md`,
+  thin surfaces stay **Markdown + Tailwind Prose** (`docs/contributor-dev-brief.md`,
   `docs/UHOME-DEV-ROADMAP.md`). **`sync_records`** `binder_*` fields remain for optional
   **`integrated-udos`** JSON only (`sync_records` module docstring).
 - **`QUICKSTART.md`:** thin UI URLs and default **`8000`** port called out for browser proof.

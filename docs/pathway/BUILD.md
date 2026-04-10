@@ -6,8 +6,8 @@ Use this path to extend the **uHomeNest** runtime and thin surfaces. Historical 
 
 1. [`../ROADMAP-V4.md`](../ROADMAP-V4.md) — product **v4** line
 2. [`../architecture/UHOME-SERVER-DEV-PLAN.md`](../architecture/UHOME-SERVER-DEV-PLAN.md) — dev entry and links
-3. [`../uHOME-server-dev-brief.md`](../uHOME-server-dev-brief.md)
-4. [`../uHOME-server-education-dev-brief.md`](../uHOME-server-education-dev-brief.md)
+3. [`../contributor-dev-brief.md`](../contributor-dev-brief.md)
+4. [`../education-dev-brief.md`](../education-dev-brief.md)
 5. [`../pathway/REPO-FAMILY.md`](../pathway/REPO-FAMILY.md)
 6. [`../howto/UHOME-INSTALL-LANES.md`](../howto/UHOME-INSTALL-LANES.md)
 7. [`../../src/uhome_server/`](../../src/uhome_server/) — Python package

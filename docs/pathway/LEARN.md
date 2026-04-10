@@ -21,7 +21,7 @@ home infrastructure pathway (**uHOME** product) in the wider `uDOS` family.
 
 ## Reference Docs
 
-- `docs/uHOME-server-education-dev-brief.md`
+- `docs/education-dev-brief.md`
 - `docs/specs/UHOME-v1.5.md`
 - `docs/pathway/REPO-FAMILY.md`
 

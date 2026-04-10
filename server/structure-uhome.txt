@@ -92,8 +92,8 @@ fredbook@FredBookAir uHOME-server % tree
 │   │   └── UHOME-v1.5.md
 │   ├── STATUS.md
 │   ├── UHOME-DEV-ROADMAP.md
-│   ├── uHOME-server-dev-brief.md
-│   ├── uHOME-server-education-dev-brief.md
+│   ├── contributor-dev-brief.md
+│   ├── education-dev-brief.md
 │   ├── uHOME-spec.md
 │   ├── ui
 │   │   └── UHOME-DASHBOARD.md

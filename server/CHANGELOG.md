@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Planning:** uHOME **does not** ship uDOS **#binder / Workspace** as operator UX;
-  thin surfaces stay **Markdown + Tailwind Prose** (`docs/uHOME-server-dev-brief.md`,
+  thin surfaces stay **Markdown + Tailwind Prose** (`docs/contributor-dev-brief.md`,
   `docs/UHOME-DEV-ROADMAP.md`). **`sync_records`** `binder_*` fields remain for optional
   **`integrated-udos`** JSON only (`sync_records` module docstring).
 - **`QUICKSTART.md`:** thin UI URLs and default **`8000`** port called out for browser proof.

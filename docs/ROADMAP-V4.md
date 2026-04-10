@@ -13,7 +13,7 @@
 | **Runtime** (LAN server, thin UI, Matter, host) | **uHomeNest** | Household media, kiosk/thin surfaces, contracts |
 | **Surface language + UX lab** | **UniversalSurfaceXD** | JSON interchange, browser mockup — **not** production uHOME |
 
-v4 **does not** use uDOS **#binder / Workspace** as operator UX. Thin reading is **Markdown + Tailwind Prose** (see [`uHOME-server-dev-brief.md`](uHOME-server-dev-brief.md)). **`sync_records`** `binder_*` fields remain for optional **`integrated-udos`** envelopes only.
+v4 **does not** use uDOS **#binder / Workspace** as operator UX. Thin reading is **Markdown + Tailwind Prose** (see [`contributor-dev-brief.md`](contributor-dev-brief.md)). **`sync_records`** `binder_*` fields remain for optional **`integrated-udos`** envelopes only.
 
 ---
 
@@ -89,8 +89,8 @@ Historical “Phase 1–6” milestones are folded into these **tracks** for v4 
 
 | Doc | Role |
 | --- | --- |
-| [`uHOME-server-dev-brief.md`](uHOME-server-dev-brief.md) | Contributor workflow (optional `#binder` parity) |
-| [`uHOME-server-education-dev-brief.md`](uHOME-server-education-dev-brief.md) | Education / course structure |
+| [`contributor-dev-brief.md`](contributor-dev-brief.md) | Contributor workflow (optional `#binder` parity) |
+| [`education-dev-brief.md`](education-dev-brief.md) | Education / course structure |
 | [`architecture/UHOME-SERVER-DEV-PLAN.md`](architecture/UHOME-SERVER-DEV-PLAN.md) | Short v4 dev entry + links |
 | [`thin-ui-feature-completion.md`](thin-ui-feature-completion.md) | Thin UI + product checklist |
 | [`ui/UHOME-DASHBOARD.md`](ui/UHOME-DASHBOARD.md) | Dashboard / client API expectations |
