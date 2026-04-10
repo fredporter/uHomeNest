@@ -1,16 +1,47 @@
+# OS / editors
 .DS_Store
 **/.DS_Store
+.idea/
+.vscode/
+DerivedData/
+.gradle/
 
-# Local scratch (if used at monorepo root)
+# Local scratch (monorepo root)
 .local/
 .compost/
 
-# Common artifacts in subtrees
+# Secrets / env
+.env
+.env.*
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+src/uhome_server.egg-info/
+
+# Virtualenvs
+.venv/
+venv/
 **/.venv/
 **/venv/
-**/__pycache__/
-**/.pytest_cache/
+
+# JS / build
+node_modules/
 **/node_modules/
+thin-prose-build/node_modules/
 **/.build/
+dist/
+build/
+coverage/
 **/dist/
-*.egg-info/
+
+# Repo-specific generated / local-only trees
+memory/
+docs/.compost/

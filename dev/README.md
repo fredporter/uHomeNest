@@ -2,6 +2,8 @@
 
 This folder holds **tracked** dev-standard docs for the monorepo. Scratch stays **`.local/`** / **`.compost/`** (gitignored at repo root).
 
+## Workflow (UDN)
+
 | File | Purpose |
 | --- | --- |
 | [WORKFLOW.md](WORKFLOW.md) | Universal Dev Notes (UDN) — zones, flow, uHomeNest roots |
@@ -14,3 +16,12 @@ This folder holds **tracked** dev-standard docs for the monorepo. Scratch stays 
 - **[`../AGENTS.md`](../AGENTS.md)** — agent / Cursor guidance
 
 **Family reference (optional):** [UniversalSurfaceXD `docs/dev/WORKFLOW.md`](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/dev/WORKFLOW.md) — same UDN pattern, different product roots.
+
+## Archive: removed sibling checkouts
+
+**Archival / tombstone notes** for sibling repos or experiments no longer kept under `~/Code/uHOME-family/`:
+
+- [`archive-uHOME-app-android.md`](archive-uHOME-app-android.md)
+- [`archive-uHOME-app-ios.md`](archive-uHOME-app-ios.md)
+
+**GitHub:** deleting a local folder does **not** delete the remote. Remove or archive remotes in each repo’s settings after confirming backups.
