@@ -37,3 +37,29 @@ This plan operationalizes the v1.0.0 brief into near-term rounds.
 - Exit criteria:
   - Fresh Ubuntu 22.04/24.04 install passes quickstart flow
   - `curl /api/health` returns `{\"status\":\"ok\"}` post-install
+
+## Round 5 - Sonic Home Express foundation (3-5 days)
+
+- Scaffold `sonic-home-express/` module with `cmd/`, `pkg/`, `scripts/`, and `docs/`
+- Define `.she` bundle header/manifest contracts and signing interface
+- Add initial pack command skeleton (`pack`, `sign`) with manifest generation
+- Exit criteria:
+  - `sonic-home-express pack` builds a dev bundle artifact
+  - Manifest and signature verification contracts are documented
+
+## Round 6 - Sonic Home Express install/distribution lane (4-6 days)
+
+- Add install flow skeleton (`install`, `verify`) with dry-run support
+- Add LAN channel serve skeleton (`serve`) and channel manifest contract
+- Add USB auto-install scripts and preseed config template
+- Exit criteria:
+  - Install dry-run reports actionable component plan
+  - Local update server exposes stable/beta/edge metadata
+
+## Round 7 - Sonic compatibility and hardening (3-4 days)
+
+- Add compatibility adapter for future full Sonic-family tool detection
+- Add smoke tests for pack -> verify -> install (dry-run) flow
+- Document operator workflow and upgrade-to-full-Sonic guidance
+- Exit criteria:
+  - Lite-to-full Sonic upgrade path is documented and test-covered at contract level

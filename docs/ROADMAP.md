@@ -10,6 +10,18 @@ Deliver a Linux-first decentralized home stream server with Jellyfin backbone, `
 2. Media vault scanning and search indexing
 3. Playback orchestration and UI control loop
 4. Ubuntu deployment hardening and release readiness
+5. Sonic Home Express lite packager/installer lane (`sonic-home-express`)
+
+## Future lane: Sonic Home Express
+
+`sonic-home-express` is planned as an optional lite Sonic-family on-ramp for uHomeNest:
+
+- Build and sign portable `.she` bundles
+- Install from file, USB, or channel URL
+- Serve local LAN update channels (`stable`, `beta`, `edge`)
+- Keep full Sonic-family integration as an upgrade path, not a hard dependency
+
+Tracked brief: `docs/UDN-SONIC-001.md`.
 
 ## Execution
 

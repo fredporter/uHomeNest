@@ -16,3 +16,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added planning assets for next execution cycles: `docs/ROADMAP.md`, `dev/ROADMAP-ROUNDS.md`, and refreshed `DEV.md`/`TASKS.md`.
 - Modularized API routing into handler modules under `server/api/handlers/` with a dedicated `server/api/router.py`.
 - Added deterministic media vault fixture structure under `media-vault/example/` and a validation test script `tests/media_vault_validate_test.sh`.
+- Added Sonic Home Express future lane planning to roadmap docs and tracked brief `docs/UDN-SONIC-001.md`.

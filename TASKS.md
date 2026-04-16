@@ -6,10 +6,15 @@
 - [ ] [UHN-R2-004] Add media index persistence and incremental update logic #feature
 - [ ] [UHN-R3-004] Implement `/api/playback/start` target selection #feature
 - [ ] [UHN-R4-003] Add service install units for Ubuntu 22.04/24.04 #infra
+- [ ] [UHN-R5-001] Scaffold `sonic-home-express/` module and command tree #feature
+- [ ] [UHN-R5-002] Define `.she` bundle and manifest contracts in docs + schema stubs #core
+- [ ] [UHN-R6-001] Add install/verify dry-run command skeleton for Sonic Home Express #infra
+- [ ] [UHN-R6-002] Add channel serve manifest and local distribution skeleton #infra
+- [ ] [UHN-R7-001] Add Sonic compatibility adapter contract for future full-stack upgrade #core
 
 ## In Progress
 
-- [ ] [UHN-R1-003] Wire API placeholder handlers to modular router flow #core
+- [ ] [UHN-R1-004] Add route registry + API contract tests for modular router #core
 
 ## Blocked
 
@@ -22,3 +27,4 @@
 - [x] [UHN-R0-002] Scaffold v1 top-level server/ui/media-vault/scripts/docs/tests
 - [x] [UHN-R1-001] Stabilize fresh v1 repository structure and docs #meta
 - [x] [UHN-R1-002] Add deterministic media-vault fixture coverage #core
+- [x] [UHN-R1-003] Wire API placeholder handlers to modular router flow #core
