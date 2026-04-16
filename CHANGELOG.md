@@ -20,3 +20,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added route-registry style API dispatch with contract test coverage and upgraded Jellyfin orchestration to real runtime control paths (docker compose, docker container, or systemd fallback).
 - Added persistent media indexing with incremental change stats (`added`, `changed`, `removed`) and watcher-driven index refresh loop.
 - Completed Round 2 API data wiring: media browse/search now read persisted index data; started Round 3 by adding playback target/media request contracts on `/api/playback/start` and `/api/playback/stop`.
+- Added Round 3 now-playing session state so playback start/stop mutates shared state exposed via `GET /api/now-playing`.

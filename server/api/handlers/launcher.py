@@ -1,5 +1,8 @@
+from handlers.state import get_now_playing_state
+
+
 def get_now_playing() -> dict:
-    return {"state": "idle"}
+    return get_now_playing_state()
 
 
 def get_status() -> dict:

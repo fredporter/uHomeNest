@@ -43,9 +43,22 @@ with tempfile.TemporaryDirectory() as tmpdir:
     assert code == 200 and payload["status"] == "started"
     assert payload["target"] == "living-room"
     assert payload["media"] == "movies/matrix.mkv"
+    assert payload["now_playing"]["state"] == "playing"
+    assert payload["now_playing"]["target"] == "living-room"
+    assert payload["now_playing"]["media"] == "movies/matrix.mkv"
+
+    code, payload = router.route_request("GET", "/api/now-playing")
+    assert code == 200 and payload["state"] == "playing"
+    assert payload["target"] == "living-room"
+    assert payload["media"] == "movies/matrix.mkv"
 
     code, payload = router.route_request("POST", "/api/playback/stop", "target=living-room")
     assert code == 200 and payload["status"] == "stopped" and payload["target"] == "living-room"
+    assert payload["now_playing"]["state"] == "idle"
+    assert payload["now_playing"]["media"] == ""
+
+    code, payload = router.route_request("GET", "/api/now-playing")
+    assert code == 200 and payload["state"] == "idle" and payload["target"] == "living-room"
 
 code, payload = router.route_request("GET", "/api/unknown")
 assert code == 404 and payload["error"] == "not found"
