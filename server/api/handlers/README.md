@@ -1,3 +1,10 @@
 # API Handlers
 
-Route handler modules live here.
+Route logic is split by domain:
+
+- `health.py`
+- `media.py`
+- `launcher.py`
+- `playback.py`
+
+Routing table lives in `server/api/router.py`.

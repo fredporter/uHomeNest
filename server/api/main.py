@@ -1,6 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import urlparse
+
+from router import route_get, route_post
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -14,33 +16,13 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
-        if parsed.path == "/api/health":
-            self._json({"status": "ok"})
-            return
-        if parsed.path == "/api/media/browse":
-            query = parse_qs(parsed.query)
-            self._json({"path": query.get("path", ["~"])[0], "items": []})
-            return
-        if parsed.path == "/api/media/search":
-            query = parse_qs(parsed.query)
-            self._json({"query": query.get("q", [""])[0], "results": []})
-            return
-        if parsed.path == "/api/now-playing":
-            self._json({"state": "idle"})
-            return
-        if parsed.path == "/api/launcher/status":
-            self._json({"surface": "uhome-launcher", "status": "ready"})
-            return
-        self._json({"error": "not found"}, 404)
+        code, payload = route_get(parsed.path, parsed.query)
+        self._json(payload, code)
 
     def do_POST(self) -> None:  # noqa: N802
-        if self.path == "/api/playback/start":
-            self._json({"status": "started"})
-            return
-        if self.path == "/api/playback/stop":
-            self._json({"status": "stopped"})
-            return
-        self._json({"error": "not found"}, 404)
+        parsed = urlparse(self.path)
+        code, payload = route_post(parsed.path)
+        self._json(payload, code)
 
 
 def run() -> None:

@@ -14,3 +14,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `v0/` archive pointer/manifest scaffolding to preserve pre-1.0.0 material as historical reference.
 - Archived legacy top-level trees into `v0/` and cleaned the active root to the v1-only structure.
 - Added planning assets for next execution cycles: `docs/ROADMAP.md`, `dev/ROADMAP-ROUNDS.md`, and refreshed `DEV.md`/`TASKS.md`.
+- Modularized API routing into handler modules under `server/api/handlers/` with a dedicated `server/api/router.py`.
+- Added deterministic media vault fixture structure under `media-vault/example/` and a validation test script `tests/media_vault_validate_test.sh`.

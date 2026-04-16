@@ -9,7 +9,7 @@
 
 ## In Progress
 
-- [ ] [UHN-R1-001] Stabilize fresh v1 repository structure and docs #meta
+- [ ] [UHN-R1-003] Wire API placeholder handlers to modular router flow #core
 
 ## Blocked
 
@@ -20,3 +20,5 @@
 
 - [x] [UHN-R0-001] Archive pre-v1 codebase into `v0/` and push `v0-beta` tag
 - [x] [UHN-R0-002] Scaffold v1 top-level server/ui/media-vault/scripts/docs/tests
+- [x] [UHN-R1-001] Stabilize fresh v1 repository structure and docs #meta
+- [x] [UHN-R1-002] Add deterministic media-vault fixture coverage #core
