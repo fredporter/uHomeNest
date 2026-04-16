@@ -19,3 +19,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Sonic Home Express future lane planning to roadmap docs and tracked brief `docs/UDN-SONIC-001.md`.
 - Added route-registry style API dispatch with contract test coverage and upgraded Jellyfin orchestration to real runtime control paths (docker compose, docker container, or systemd fallback).
 - Added persistent media indexing with incremental change stats (`added`, `changed`, `removed`) and watcher-driven index refresh loop.
+- Completed Round 2 API data wiring: media browse/search now read persisted index data; started Round 3 by adding playback target/media request contracts on `/api/playback/start` and `/api/playback/stop`.

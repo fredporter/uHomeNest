@@ -2,8 +2,6 @@
 
 ## Backlog
 
-- [ ] [UHN-R1-005] Add real Jellyfin start/stop wiring in `server/jellyfin/orchestrate.sh` #infra
-- [ ] [UHN-R2-004] Add media index persistence and incremental update logic #feature
 - [ ] [UHN-R3-004] Implement `/api/playback/start` target selection #feature
 - [ ] [UHN-R4-003] Add service install units for Ubuntu 22.04/24.04 #infra
 - [ ] [UHN-R5-001] Scaffold `sonic-home-express/` module and command tree #feature
@@ -14,7 +12,7 @@
 
 ## In Progress
 
-- [ ] [UHN-R2-004] Add media index persistence and incremental update logic #feature
+- [ ] [UHN-R3-004] Implement `/api/playback/start` target selection #feature
 
 ## Blocked
 
@@ -30,3 +28,4 @@
 - [x] [UHN-R1-003] Wire API placeholder handlers to modular router flow #core
 - [x] [UHN-R1-004] Add route registry + API contract tests for modular router #core
 - [x] [UHN-R1-005] Add real Jellyfin start/stop wiring in `server/jellyfin/orchestrate.sh` #infra
+- [x] [UHN-R2-004] Add media index persistence and incremental update logic #feature

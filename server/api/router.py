@@ -26,16 +26,16 @@ def route_get(path: str, query: str) -> tuple[int, dict]:
     return 200, handler()
 
 
-def route_post(path: str) -> tuple[int, dict]:
+def route_post(path: str, query: str = "") -> tuple[int, dict]:
     handler = POST_ROUTES.get(path)
     if handler is None:
         return 404, {"error": "not found"}
-    return 200, handler()
+    return 200, handler(query)
 
 
 def route_request(method: str, path: str, query: str = "") -> tuple[int, dict]:
     if method.upper() == "GET":
         return route_get(path, query)
     if method.upper() == "POST":
-        return route_post(path)
+        return route_post(path, query)
     return 405, {"error": "method not allowed"}

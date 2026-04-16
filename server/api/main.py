@@ -21,7 +21,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
-        code, payload = route_post(parsed.path)
+        code, payload = route_post(parsed.path, parsed.query)
         self._json(payload, code)
 
 
