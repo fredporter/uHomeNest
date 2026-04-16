@@ -14,7 +14,7 @@
 
 ## In Progress
 
-- [ ] [UHN-R1-004] Add route registry + API contract tests for modular router #core
+- [ ] [UHN-R1-005] Add real Jellyfin start/stop wiring in `server/jellyfin/orchestrate.sh` #infra
 
 ## Blocked
 
@@ -28,3 +28,4 @@
 - [x] [UHN-R1-001] Stabilize fresh v1 repository structure and docs #meta
 - [x] [UHN-R1-002] Add deterministic media-vault fixture coverage #core
 - [x] [UHN-R1-003] Wire API placeholder handlers to modular router flow #core
+- [x] [UHN-R1-004] Add route registry + API contract tests for modular router #core
