@@ -1,12 +1,3 @@
-# Architecture (v1)
-
-`uHomeNest` v1 is composed of three primary boundaries:
-
-- `server/` - API and media orchestration
-- `ui/` - Tailwind-rendered browser surfaces and USXD layout contracts
-- `media-vault/` - household `~/media/` structure contract and validation
-
-`Jellyfin` handles playback/transcoding while `uhome-api` handles vault browse/search and playback orchestration commands.
 # Architecture (v1.0.0)
 
 `uHomeNest` v1.0.0 is a LAN-first stream stack with three bounded components:

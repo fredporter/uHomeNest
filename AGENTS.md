@@ -1,23 +1,17 @@
-# Agent notes — uHomeNest
+# Agent notes - uHomeNest v1
 
-**Repository name:** **uHomeNest** (**v3.9.x**, see root `VERSION`). **Product:** **uHOME**. Prefer **uHomeNest** when referring to this Git repo; reserve **`uHOME-server`** for legacy JSON wire strings only.
+Repository scope is the v1.0.0 fresh-start stream stack.
 
-## What this is
+## Active product scope
 
-**uHomeNest** is a **monorepo** replacing separate clones under `uHOME-family/`:
+- Linux-first home stream server
+- Jellyfin orchestration baseline
+- `~/media/` vault scanning and indexing
+- Tailwind + USXD controller-first browser surface
 
-- **`server/`** — uHOME server (Python, docs, wiki) — primary operational surface
-- **`matter/`** — Matter / Home Assistant integration contracts
-- **`host/`** — client runtime (formerly **uHOME-client**); “host” = local-network consumer of server contracts
+## Working rules
 
-## How to work
-
-1. Prefer **path-scoped** edits inside `server/`, `matter/`, or `host/` unless changing monorepo-wide policy.
-2. **Tracked intent** → root **`TASKS.md`** (Task Forge: **`dev/TASK_FORGE.md`**). **Method** → **`DEV.md`**, **`dev/WORKFLOW.md`**.
-3. **Thinking** → **`.local/`** (gitignored). **Replaced material** → **`.compost/`** (gitignored).
-4. Each subtree may retain its own **`README.md`** and scripts; read the subtree’s root before large changes.
-5. **Multi-root editor:** **`uHomeNest.code-workspace`** adds sibling **UniversalSurfaceXD** for USXD / interchange work next to uHOME packages.
-
-## Non-goals
-
-- This repo does **not** subsume **SonicScrewdriver** (USB/bootstrap) or generic uDOS governance — only uHOME product code that lived in the three former repos.
+1. Keep active work in v1 paths: `server/`, `ui/`, `media-vault/`, `scripts/`, `docs/`, `tests/`, `dev/`.
+2. Treat `v0/` as archive-only reference. Do not wire runtime flows to `v0/`.
+3. Prefer minimal dependencies and LAN-first defaults.
+4. Keep scripts and docs executable, explicit, and Ubuntu-oriented.

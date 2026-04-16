@@ -1,0 +1,21 @@
+{
+  "archive_version": "v0-beta",
+  "archived_on": "2026-04-16",
+  "notes": "Pre-1.0.0 repository material preserved as historical reference.",
+  "cleanup_policy": {
+    "remove": [
+      "runtime executables and compiled artifacts",
+      "large binary blobs",
+      "virtual environments (venv, .venv, ~/.udos)",
+      "cache directories (__pycache__, .pytest_cache, .mypy_cache)",
+      "node_modules and build artifacts",
+      "temporary local-only folders (.local, .compost, @dev)"
+    ],
+    "keep": [
+      "source code",
+      "documentation",
+      "configuration examples",
+      "test files"
+    ]
+  }
+}

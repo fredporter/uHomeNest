@@ -1,25 +1,18 @@
-# Development method — uHomeNest
+# uHomeNest Development Notes
 
-This monorepo follows **Universal Dev Notes (UDN)** shared across `github.com/fredporter/`.
+This file tracks active engineering focus for v1.0.0+.
 
-- **Product version:** **uHomeNest v3.9** — root [`VERSION`](VERSION) (**3.9.x**); Python package **`uhome-server`** uses `pyproject.toml`.
-- **Universal dev + USXD:** [`dev/UNIVERSAL-DEV.md`](dev/UNIVERSAL-DEV.md)
-- **Workflow:** [`dev/WORKFLOW.md`](dev/WORKFLOW.md)
-- **Task format:** [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md)
-- **Monorepo migration notes:** [`docs/MONOREPO.md`](docs/MONOREPO.md)
+## Active areas
 
-## Zones
+- `server/`: API, media scanning/indexing, Jellyfin orchestration
+- `ui/`: Tailwind templates and USXD console behavior
+- `media-vault/`: schema and validation tooling
+- `scripts/`: install/start/stop/health lifecycle
+- `docs/`: architecture and deployment clarity
+- `tests/`: shell integration smoke coverage
 
-| Zone | Path | In Git |
-| --- | --- | --- |
-| Server implementation | `server/` | yes |
-| Matter bridges | `matter/` | yes |
-| Host / client runtime | `host/` | yes |
-| Dev standards (UDN) | `dev/` | yes |
-| **Active tasks** | **`TASKS.md`** | yes |
-| Private notes | `.local/` | **no** |
-| Replaced work | `.compost/` | **no** |
+## Workflow
 
-## Editor workspace
-
-Open **`uHomeNest.code-workspace`** (repo root) in Cursor/VS Code to load **uHomeNest** and sibling **UniversalSurfaceXD** for interchange / lab work alongside server and contracts.
+1. Plan in `docs/ROADMAP.md` and `dev/ROADMAP-ROUNDS.md`.
+2. Track current execution in `TASKS.md`.
+3. Keep archive references under `v0/` only.

@@ -1,24 +1,22 @@
-# TASKS.md — uHomeNest
-
-Active work surface (UDN / Task Forge v1). **Syntax:** [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md).
+# TASKS - v1 execution board
 
 ## Backlog
 
-- [ ] [UHN-META-001] Establish post-merge CI and branch protection for monorepo #infra
+- [ ] [UHN-R1-005] Add real Jellyfin start/stop wiring in `server/jellyfin/orchestrate.sh` #infra
+- [ ] [UHN-R2-004] Add media index persistence and incremental update logic #feature
+- [ ] [UHN-R3-004] Implement `/api/playback/start` target selection #feature
+- [ ] [UHN-R4-003] Add service install units for Ubuntu 22.04/24.04 #infra
 
 ## In Progress
 
-<!-- Move items here when actively coding -->
+- [ ] [UHN-R1-001] Stabilize fresh v1 repository structure and docs #meta
 
 ## Blocked
 
-<!-- ↳ Notes: reason -->
+- [ ] [UHN-R3-002] Controller runtime bindings for dpad/A/B/X/Y in browser
+  - Blocked on initial `usxd-runtime.js` implementation details.
 
 ## Done
 
-- [x] [UHN-META-006] Rename contributor/education brief files; stubs + link sweep #docs
-- [x] [UHN-META-005] Complete uHomeNest v3.9 naming in docs, metadata, briefs; MONOREPO canonical names #docs
-- [x] [UHN-META-004] Consolidate v4 plan: canonical `ROADMAP-V4.md`, `UHOME-DEV-ROADMAP.md` as redirect #docs
-- [x] [UHN-META-003] Retire pre-v4 phase/`@dev` docs and unused `uhome/` scaffold; v4-only dev entry + compost manifest #docs
-- [x] [UHN-META-002] uHomeNest **v3.9.0**: `VERSION`, universal dev + v4 roadmap docs, USXD uHOME surface scaffold, compost guidance #docs
-- [x] [UHN-META-000] Add `dev/` workflow docs, `DEV.md`, root `TASKS.md`, and `uHomeNest.code-workspace` (USXD sibling) #docs
+- [x] [UHN-R0-001] Archive pre-v1 codebase into `v0/` and push `v0-beta` tag
+- [x] [UHN-R0-002] Scaffold v1 top-level server/ui/media-vault/scripts/docs/tests
