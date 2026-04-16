@@ -13,6 +13,9 @@ DerivedData/
 # Secrets / env
 .env
 .env.*
+*.pem
+*.key
+*.crt
 
 # Python
 __pycache__/
@@ -41,7 +44,37 @@ dist/
 build/
 coverage/
 **/dist/
+*.tsbuildinfo
 
 # Repo-specific generated / local-only trees
 memory/
 docs/.compost/
+
+# Runtime / local state
+logs/
+**/logs/
+*.log
+*.out
+*.err
+*.pid
+*.pid.lock
+tmp/
+**/tmp/
+.tmp/
+**/.tmp/
+runtime/
+**/runtime/
+.runtime/
+state/
+**/state/
+.state/
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+**/.media-index.json
+
+# Packaging artifacts (generated)
+*.she
+*.delta
+*.sig

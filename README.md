@@ -23,6 +23,13 @@ Core focus:
 - `tests/` - shell-based integration smoke tests
 - `v0/` - archive references for pre-1.0.0 material
 
+## Clean Remote Rules
+
+- Commit only source, docs, and intentional fixtures in active v1 paths.
+- Keep runtime/local state out of Git (`logs/`, `tmp/`, `runtime/`, `state/`, local DBs, generated media index files).
+- Keep package/build outputs out of Git (`dist/`, `build/`, `node_modules/`, generated `.she`/`.delta` bundles).
+- Treat `v0/` as archive reference only; do not route active runtime logic through it.
+
 ## Quick Start
 
 ```bash
