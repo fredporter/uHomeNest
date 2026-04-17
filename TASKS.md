@@ -4,7 +4,39 @@ Active work surface (UDN / Task Forge v1). **Syntax:** [`dev/TASK_FORGE.md`](dev
 
 ## Backlog
 
-- [ ] [UHN-META-001] Establish post-merge CI and branch protection for monorepo #infra
+### Q2 2024 Priorities (April-June)
+
+#### CI/CD Infrastructure
+- [ ] [UHN-CI-001] Establish GitHub Actions workflows for testing and deployment #infra
+- [ ] [UHN-CI-002] Implement branch protection rules for main branch #infra
+- [ ] [UHN-CI-003] Set up automated testing pipeline with pytest #testing
+- [ ] [UHN-CI-004] Configure release automation with semantic versioning #infra
+
+#### Media & Jobs Foundation
+- [ ] [UHN-MEDIA-001] Design DVR rule model and schedule backend #media
+- [ ] [UHN-MEDIA-002] Implement basic job queue for recording and post-processing #media
+- [ ] [UHN-MEDIA-003] Harden Jellyfin integration with comprehensive tests #media
+- [ ] [UHN-MEDIA-004] Design library path model for local disks and mounted partitions #media
+
+#### Documentation Enhancement
+- [ ] [UHN-DOCS-001] Update thin UI documentation with default port information #docs
+- [ ] [UHN-DOCS-002] Create index page for safe docs/ paths #docs
+- [ ] [UHN-DOCS-003] Add LAN-only guard documentation for thin routes #docs
+- [ ] [UHN-DOCS-004] Update client API documentation #docs
+
+### Q3 2024 Priorities (July-September)
+
+#### Decentralized LAN Enhancements
+- [ ] [UHN-LAN-001] Design failover/election model for multiple nodes #lan
+- [ ] [UHN-LAN-002] Implement basic distributed library indexing #lan
+- [ ] [UHN-LAN-003] Add replication capabilities for critical data #lan
+- [ ] [UHN-LAN-004] Enhance node/storage topology management #lan
+
+#### Client Integration
+- [ ] [UHN-CLIENT-001] Finalize stable API contracts for Android/TV/Apple TV apps #clients
+- [ ] [UHN-CLIENT-002] Document launcher and session semantics #clients
+- [ ] [UHN-CLIENT-003] Implement end-to-end testing for playback handoff #clients
+- [ ] [UHN-CLIENT-004] Create comprehensive client integration guide #docs
 
 ## In Progress
 
