@@ -1,37 +1,25 @@
-# Build on uHOME Server
+# Build on uHOME (v4)
 
-Use this path if you want to extend the runtime, advance the refactor, or work
-on the cross-repo family model.
+Use this path to extend the **uHomeNest** runtime and thin surfaces. Historical phase milestones and **`@dev/`** binder trees were retired from the repo in **2026-04** (local archive: **`.compost/cleanup-2026-04-10/`**).
 
-## Start With
+## Start with
 
-1. `docs/architecture/UHOME-SERVER-DEV-PLAN.md`
-2. `docs/uHOME-server-dev-brief.md`
-3. `docs/uHOME-server-education-dev-brief.md`
-4. `docs/architecture/PHASE-1-IA-MAP.md`
-5. `docs/architecture/ROOT-POLICY.md`
-6. `docs/pathway/REPO-FAMILY.md`
-7. `docs/architecture/PHASE-3-LAN-KICKOFF.md`
-8. `docs/architecture/PHASE-3-CHECKLIST.md`
-9. `docs/architecture/PHASE-4-HOST-PROFILES-KICKOFF.md`
-10. `docs/architecture/PHASE-4-CHECKLIST.md`
-11. `docs/howto/UHOME-INSTALL-LANES.md`
-12. `src/uhome_server/`
+1. [`../ROADMAP-V4.md`](../ROADMAP-V4.md) — product **v4** line
+2. [`../architecture/UHOME-SERVER-DEV-PLAN.md`](../architecture/UHOME-SERVER-DEV-PLAN.md) — dev entry and links
+3. [`../contributor-dev-brief.md`](../contributor-dev-brief.md)
+4. [`../education-dev-brief.md`](../education-dev-brief.md)
+5. [`../pathway/REPO-FAMILY.md`](../pathway/REPO-FAMILY.md)
+6. [`../howto/UHOME-INSTALL-LANES.md`](../howto/UHOME-INSTALL-LANES.md)
+7. [`../../src/uhome_server/`](../../src/uhome_server/) — Python package
 
-## Active Build Rules
+## Rules
 
-- treat the two local briefs as governing inputs to the dev plan
-- keep the runtime package under `src/uhome_server/` until a move sharpens
-  ownership
-- prefer the new top-level roots for teaching language and repo entrypoints
-- keep `uHOME` runtime ownership separate from generic deployment ownership
-- keep client implementations downstream of server contracts
+- Treat the two local briefs as governing inputs alongside [`../ROADMAP-V4.md`](../ROADMAP-V4.md).
+- Keep runtime ownership in **`src/uhome_server/`** unless a subtree policy says otherwise.
+- Prefer **Markdown + Tailwind Prose** for operator reading; USXD for interchange handoff ([`../../dev/UNIVERSAL-DEV.md`](../../dev/UNIVERSAL-DEV.md)).
 
-## Good Next Targets
+## Good next targets
 
-- remove remaining repo-local references to the deprecated
-  `uhome_server.sonic` namespace
-- keep growing vault-backed examples
-- replace placeholder file-backed scheduling behavior with a durable backend
-- broaden storage identity and recovery rules beyond the current file-backed LAN
-  contract
+- Remove remaining references to the deprecated `uhome_server.sonic` namespace where safe.
+- Grow vault-backed examples under [`../../vault/`](../../vault/).
+- Harden file-backed registries per [`../ROADMAP-V4.md`](../ROADMAP-V4.md).

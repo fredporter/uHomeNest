@@ -1,69 +1,61 @@
-# uHOME-server
+# uHomeNest
 
-## Purpose
+**uHomeNest v3.9** — product line **3.9.x** (see root [`VERSION`](VERSION)); Python package **`uhome-server`** follows `pyproject.toml`. **v4** plan: [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md).
 
-Always-on local-network runtime for persistent services, scheduling, and home/server modules.
+**uHomeNest** is the **monorepo** for the **uHOME** product line: household media, kiosk/thin UI, LAN server, Matter/Home Assistant bridges, and the lightweight client runtime.
 
-## Ownership
+## What uHOME is
 
-- local-network services
-- persistent scheduling
-- service modules
-- home and server infrastructure surfaces
+**uHOME** is a **home media and living-room computer**: a **media player**, **controller-first** console/kiosk **TUI and thin-GUI**, and **decentralised LAN server** for the household. It targets a **dual-role machine** (often **Linux** for uHOME plus optional **Windows + Steam**), installed/refreshed through **`sonic-screwdriver`** (Ventoy/USB bootstrap), not Empire- or Wizard-centric flows. The stack includes a **curated on-disk library**, **Jellyfin**, and **home automation** via **Home Assistant**, surfaced through **kiosk-style thin UX** (with Matter bridge contracts under `matter/`).
 
-## Non-Goals
+**Non-goals:** generic USB installer product (Sonic), canonical uDOS-wide runtime semantics, macOS/iCloud-first sync as primary, or replacing a full desktop OS.
 
-- canonical runtime semantics
-- shell ownership
-- provider bridge ownership
+## Layout
 
-## Spine
+| Directory | Former standalone repo | Role |
+| --- | --- | --- |
+| **`server/`** | was **`uHOME-server`** | LAN-first server, thin UI, services, docs, wiki |
+| **`matter/`** | `uHOME-matter` | Matter / Home Assistant contracts and bridge assets |
+| **`host/`** | `uHOME-client` | Lightweight client runtime and contract consumption (local network) |
 
-- `services/`
-- `scheduling/`
-- `modules/`
-- `docs/`
-- `tests/`
-- `scripts/`
-- `config/`
+Runtime and installer-adjacent code also live at repo roots such as `src/uhome_server/`, `apps/`, `services/`, `docs/`, `wiki/`, and `examples/`—see **`docs/base-runtime-boundary.md`** for boundaries vs Sonic and Matter.
 
-## Local Development
-
-Build service modules as explicit, testable units and keep managed state outside the repo.
-
-## Family Relation
-
-uHOME-server provides persistent local services that complement Core and Wizard.
-
-## Transitional Runtime Note
-
-The existing standalone runtime and installer flow remain in `src/uhome_server/` and related legacy-support roots such as `apps/`, `courses/`, `defaults/`, `examples/`, `library/`, `memory/`, and `vault/`.
-
-This preserves the pre-existing remote history while the repo converges on the v2 scaffold and boundary model.
-
-## Quick Start
+## Clone
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install --upgrade pip setuptools wheel
-.venv/bin/python -m pip install -e '.[dev]'
-.venv/bin/python -m uvicorn uhome_server.app:app --reload
+git clone https://github.com/fredporter/uHomeNest.git
+cd uHomeNest
 ```
 
-In another terminal:
+## Development
+
+- **Universal dev (uHomeNest + USXD):** [`dev/UNIVERSAL-DEV.md`](dev/UNIVERSAL-DEV.md)
+- **v4 roadmap (product line):** [`docs/ROADMAP-V4.md`](docs/ROADMAP-V4.md)
+- **UDN / tasks:** [`DEV.md`](DEV.md), [`dev/WORKFLOW.md`](dev/WORKFLOW.md), [`dev/TASK_FORGE.md`](dev/TASK_FORGE.md), **[`TASKS.md`](TASKS.md)**
+- **Python server:** `server/README.md`, `QUICKSTART.md`, `FIRST-TIME-INSTALL.md`, `docs/`
+- **Matter:** `matter/README.md`
+- **Client / host runtime:** `host/README.md`
+- **Workspace:** open **`uHomeNest.code-workspace`** in Cursor/VS Code to include sibling **UniversalSurfaceXD** alongside this repo.
+
+## Quick start (server)
 
 ```bash
-curl http://localhost:8000/api/health
+bash scripts/run-uhome-server-checks.sh
+~/.udos/venv/uhome-server/bin/python -m uvicorn uhome_server.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-For machine setup and operational details, see `QUICKSTART.md`, `FIRST-TIME-INSTALL.md`, and the legacy documentation preserved under `docs/`.
+Console/kiosk bootstrap: `bash scripts/first-run-launch.sh` (or `open ./scripts/first-run-launch.command` on macOS). Health: `curl http://localhost:8000/api/health`
 
-## Activation
+Activation and validation: see `docs/activation.md` and `bash scripts/run-uhome-server-checks.sh`.
 
-The v2 repo activation path is documented in `docs/activation.md`.
+## Naming
 
-Run the current repo validation entrypoint with:
+- **uHomeNest** — this repository (**v3.9.x**); clone **`fredporter/uHomeNest`**.
+- **uHOME** — product name (media + LAN + thin UX).
+- **`uhome-server`** — Python package / CLI inside the monorepo (not the repo name).
 
-```bash
-scripts/run-uhome-server-checks.sh
-```
+See **`docs/MONOREPO.md`** for canonical names, migration from **`uHOME-family/`**, and old standalone repos.
+
+## Family relation
+
+Partners: **`sonic-screwdriver`** (bootstrap into uHOME), **`uHOME-matter`** (contracts; kiosk thin UX surfaces automation here), **`uHOME-client`** (remote clients). Household LAN policy ships in-repo (`src/uhome_server/contracts/`).

@@ -1,10 +1,31 @@
 # Docs
 
-`docs/` is the reference-first documentation root for `uHOME-server`.
+## Consolidated map (uHomeNest)
 
-Tutorial and student-facing step-through material belongs in `courses/`. This
-root is for architecture, pathway, client, operational, and implementation
-documentation tied to the real repo.
+| Topic | Where |
+| --- | --- |
+| **Product version** | **uHomeNest v3.9** — repo root [`../VERSION`](../VERSION) (**3.9.x**); changelog [`../CHANGELOG.md`](../CHANGELOG.md) |
+| **v4 plan (canonical)** | [`ROADMAP-V4.md`](ROADMAP-V4.md) · [`UHOME-DEV-ROADMAP.md`](UHOME-DEV-ROADMAP.md) redirects here |
+| **Monorepo** | [`MONOREPO.md`](MONOREPO.md) |
+| **Universal dev + USXD** | [`../dev/UNIVERSAL-DEV.md`](../dev/UNIVERSAL-DEV.md) |
+| **Retiring old files locally** | [`../dev/COMPOST-LEGACY.md`](../dev/COMPOST-LEGACY.md) |
+| **USXD uHOME surfaces (interchange)** | Sibling repo [`UniversalSurfaceXD/docs/uhome/README.md`](https://github.com/fredporter/UniversalSurfaceXD/blob/main/docs/uhome/README.md) |
+
+---
+
+`docs/` is the **stable reference** lane for the **uHomeNest** monorepo (**v3.9.x**) and **uHOME** product docs, aligned with the
+uDOS family split:
+
+| Lane | Location | Role |
+| --- | --- | --- |
+| Reference | [`docs/`](README.md) (here) | Architecture, clients, ops, specs |
+| Wiki | [`../wiki/`](../wiki/README.md) | Short units and quick orientation |
+| Learning | [`../learning/`](../learning/README.md) | Study order, courses pointers, uDOS Library links |
+
+Tutorial and student-facing step-through material also lives under
+[`courses/`](../courses/README.md) (repo root) with maintainer notes in
+`docs/courses/`. This tree is for architecture, pathway, client, operational,
+and implementation documentation tied to the real repo.
 
 ## Entry Points
 
@@ -14,43 +35,34 @@ documentation tied to the real repo.
 - [../FIRST-TIME-INSTALL.md](../FIRST-TIME-INSTALL.md) for clean-machine setup
 - [USE.md](pathway/USE.md) for the current operator path
 - [UHOME-DASHBOARD.md](ui/UHOME-DASHBOARD.md) for the dashboard surface
+- [BEACON-ACTIVATE.md](clients/BEACON-ACTIVATE.md)
+  for local portal and vault-reader positioning
 - [SONIC-STANDALONE-RELEASE-AND-INSTALL.md](howto/SONIC-STANDALONE-RELEASE-AND-INSTALL.md)
   for release and install guidance
 
 ### Learn
 
 - [README.md](pathway/README.md) in `docs/pathway/` for repo positioning
-- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md)
+- [education-dev-brief.md](education-dev-brief.md)
   for the local pathway brief
 - [UHOME-v1.5.md](specs/UHOME-v1.5.md) for the current canonical spec
 
-### Build
+### Build (v4)
 
-- [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) for the
-  active repo-local development plan
-- [uHOME-server-dev-brief.md](uHOME-server-dev-brief.md) for the repo workflow
-  and binder-alignment brief
-- [uHOME-server-education-dev-brief.md](uHOME-server-education-dev-brief.md)
-  for the education-structure brief
-- [PHASE-1-IA-MAP.md](architecture/PHASE-1-IA-MAP.md) for current-to-target mapping
-- [ROOT-POLICY.md](architecture/ROOT-POLICY.md) for canonical vs transitional roots
-- [PHASE-1-CHECKLIST.md](architecture/PHASE-1-CHECKLIST.md) for the completed
-  Information Architecture deliverables
-- [PHASE-2-CHECKLIST.md](architecture/PHASE-2-CHECKLIST.md) for the completed
-  installer-boundary cleanup inside `uHOME-server`
-- [PHASE-3-CHECKLIST.md](architecture/PHASE-3-CHECKLIST.md) for the completed
-  decentralized LAN-model milestone
-- [PHASE-3-LAN-KICKOFF.md](architecture/PHASE-3-LAN-KICKOFF.md) for the
-  kickoff and boundary notes for the LAN-model phase
-- [PHASE-4-HOST-PROFILES-KICKOFF.md](architecture/PHASE-4-HOST-PROFILES-KICKOFF.md)
-  for the Phase 4 kickoff and boundary notes
-- [PHASE-4-CHECKLIST.md](architecture/PHASE-4-CHECKLIST.md) for the completed
-  install-profile milestone
-- [PHASE-4-COMPLETION.md](architecture/PHASE-4-COMPLETION.md) for the summary
-  of canonical Phase 4 surfaces
-- [REPO-FAMILY.md](pathway/REPO-FAMILY.md) for family-boundary and companion-repo rules
-- the deprecated `uhome_server.sonic` namespace is compatibility-only; new
-  repo-local work should use `uhome_server.installer`
+- [UHOME-SERVER-DEV-PLAN.md](architecture/UHOME-SERVER-DEV-PLAN.md) — **v4** dev entry (roadmaps + thin UI + USXD handoff)
+- [contributor-dev-brief.md](contributor-dev-brief.md) — contributor workflow (optional `#binder` parity)
+- [thin-ui-feature-completion.md](thin-ui-feature-completion.md) — thin UI and product checklists
+- [education-dev-brief.md](education-dev-brief.md) — education-structure brief
+- [pathway/BUILD.md](pathway/BUILD.md) — extend the runtime (v4 path)
+- [REPO-FAMILY.md](pathway/REPO-FAMILY.md) — family-boundary and companion-repo rules
+- The deprecated `uhome_server.sonic` namespace is compatibility-only; new work should use `uhome_server.installer`
+
+## Family library (GitHub Pages)
+
+The **uDOS Library** indexes uHOME repos (Docs / Wiki / Learning links) from
+[`uDOS-docs` `site/data/family-source.json`](https://github.com/fredporter/uDOS-docs/blob/main/site/data/family-source.json).
+The public **Learning hub** is `https://fredporter.github.io/uDOS-docs/learning.html`
+when Pages is deployed.
 
 ## Sections
 
