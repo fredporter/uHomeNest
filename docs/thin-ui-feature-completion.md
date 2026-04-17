@@ -13,7 +13,7 @@ binder-backed reading shell.
 - [x] **Browse** markdown under `docs/` (`GET /api/runtime/thin/browse?rel=…`)
 - [x] **Automation** status HTML (`GET /api/runtime/thin/automation`)
 - [x] Compiled **`/static/thin/prose.css`** (rebuild: `thin-prose-build/`)
-- [ ] Operator doc: default **port** called out consistently (see `QUICKSTART.md`)
+- [x] Operator doc: default **port** called out consistently (see `QUICKSTART.md`)
 - [ ] Optional: index page listing safe `docs/` paths (still no binder shell)
 - [ ] Optional: auth or LAN-only guard for thin routes in production profiles
 
